@@ -8,15 +8,20 @@ import {
 	IconGraph,
 	TablerIcon,
 } from "@tabler/icons";
+import { useAtom } from "jotai";
 import Router from "next/router";
 import { ReactNode } from "react";
+import { accentColorAtom } from "../../atoms/theme.atom";
 
-export interface Applet extends Omit<SpotlightAction, "icon"> {
+interface AppletAdditionalFields extends Omit<SpotlightAction, "icon"> {
 	notifications: number;
 	route: string;
 	iconNoSize: TablerIcon;
 	icon: ReactNode;
+	triggerCallback: () => void;
 }
+
+export type Applet = SpotlightAction | AppletAdditionalFields;
 
 const applets: Array<Applet> = [
 	{
@@ -29,6 +34,12 @@ const applets: Array<Applet> = [
 		icon: <IconGauge size={20} />,
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
+		},
+		triggerCallback() {
+			// TODO: set theme
+			const [accentColor, setAccentColor] = useAtom(accentColorAtom);
+			setAccentColor("red");
+			Router.push(this.route);
 		},
 		notifications: 0,
 		route: "/dashboard",
@@ -44,6 +55,10 @@ const applets: Array<Applet> = [
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
 		},
+		triggerCallback() {
+			// TODO: set theme
+			Router.push(this.route);
+		},
 		notifications: 0,
 		route: "/recommended",
 	},
@@ -57,6 +72,10 @@ const applets: Array<Applet> = [
 		icon: <IconCalendarEvent size={20} />,
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
+		},
+		triggerCallback() {
+			// TODO: set theme
+			Router.push(this.route);
 		},
 		notifications: 10,
 		route: "/calendar",
@@ -72,6 +91,10 @@ const applets: Array<Applet> = [
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
 		},
+		triggerCallback() {
+			// TODO: set theme
+			Router.push(this.route);
+		},
 		notifications: 0,
 		route: "/tasks",
 	},
@@ -86,6 +109,10 @@ const applets: Array<Applet> = [
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
 		},
+		triggerCallback() {
+			// TODO: set theme
+			Router.push(this.route);
+		},
 		notifications: 99,
 		route: "/scores",
 	},
@@ -99,6 +126,10 @@ const applets: Array<Applet> = [
 		icon: <IconApple size={20} />,
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
+		},
+		triggerCallback() {
+			// TODO: set theme
+			Router.push(this.route);
 		},
 		notifications: 0,
 		route: "/pomo",

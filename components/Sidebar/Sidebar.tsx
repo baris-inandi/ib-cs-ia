@@ -1,64 +1,121 @@
-import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
-import { IconPlus } from "@tabler/icons";
+import {
+	Center,
+	createStyles,
+	Navbar,
+	Stack,
+	Tooltip,
+	UnstyledButton,
+} from "@mantine/core";
+import {
+	IconLogout,
+	IconSun,
+	IconSwitchHorizontal,
+	TablerIcon,
+} from "@tabler/icons";
 import { useAtom } from "jotai";
-import Link from "next/link";
+import { useState } from "react";
 import { accentColorAtom } from "../../atoms/theme.atom";
-import useStyles from "./sidebar.styles";
-import SidebarUpper from "./SidebarUpper/SidebarUpper";
+import applets, { Applet } from "../../lib/utils/applets";
 
-const collections = [
-	{ emoji: "👍", label: "Sales" },
-	{ emoji: "🚚", label: "Deliveries" },
-	{ emoji: "💸", label: "Discounts" },
-	{ emoji: "💰", label: "Profits" },
-	{ emoji: "✨", label: "Reports" },
-	{ emoji: "🛒", label: "Orders" },
-	{ emoji: "📅", label: "Events" },
-	{ emoji: "🙈", label: "Debts" },
-	{ emoji: "💁‍♀️", label: "Customers" },
-];
+const useStyles = createStyles((theme) => ({
+	link: {
+		"width": 50,
+		"height": 50,
+		"borderRadius": theme.radius.md,
+		"display": "flex",
+		"alignItems": "center",
+		"justifyContent": "center",
+		"color": theme.white,
+		"opacity": 0.85,
 
-const Sidebar = () => {
+		"&:hover": {
+			opacity: 1,
+			backgroundColor: theme.fn.lighten(
+				theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+					.background!,
+				0.1,
+			),
+		},
+	},
+
+	active: {
+		"opacity": 1,
+		"&, &:hover": {
+			backgroundColor: theme.fn.lighten(
+				theme.fn.variant({ variant: "filled", color: theme.primaryColor })
+					.background!,
+				0.15,
+			),
+		},
+	},
+}));
+
+interface NavbarLinkProps {
+	icon: TablerIcon;
+	label: string;
+	active?: boolean;
+	onClick?(): void;
+}
+
+function NavbarLink({ icon: Icon, label, active, onClick }: NavbarLinkProps) {
+	const { classes, cx } = useStyles();
+	return (
+		<Tooltip label={label} position="right" transitionDuration={0}>
+			<UnstyledButton
+				onClick={onClick}
+				className={cx(classes.link, { [classes.active]: active })}>
+				<Icon stroke={1.5} />
+			</UnstyledButton>
+		</Tooltip>
+	);
+}
+
+export default function NavbarMinimalColored() {
+	const [activeAppletID, setActiveAppletID] = useState("dashboard");
 	const [accent] = useAtom(accentColorAtom);
-	const { classes } = useStyles(accent)();
 
-	const collectionLinks = collections.map((collection) => (
-		<Link
-			href="/"
-			onClick={(event) => event.preventDefault()}
-			key={collection.label}
-			className={classes.collectionLink}>
-			<span style={{ marginRight: 10, fontSize: 18 }}>{collection.emoji}</span>{" "}
-			<span style={{ fontSize: 16 }}>{collection.label}</span>
-		</Link>
-	));
+	const links = applets.map((applet: Applet) => {
+		return (
+			<NavbarLink
+				label={applet.title}
+				key={applet.id}
+				active={applet.id === activeAppletID}
+				onClick={() => {
+					setActiveAppletID(applet.id);
+					applet.triggerCallback();
+				}}
+				icon={applet.iconNoSize as unknown as TablerIcon}
+			/>
+		);
+	});
 
 	return (
 		<Navbar
-			sx={{
-				paddingTop: "0 !important",
-				overflowY: "scroll",
-			}}
 			height="100vh"
-			width={{ sm: 400 }}
+			width={{ base: 86 }}
 			p="md"
-			className={classes.navbar}>
-			<SidebarUpper section={Navbar.Section} classes={classes} />
-			<Navbar.Section className={classes.section}>
-				<Group className={classes.collectionsHeader} position="apart">
-					<Text size="md" weight={500} color="dimmed">
-						Courses
-					</Text>
-					<Tooltip label="New Course" withArrow position="top">
-						<ActionIcon variant="default" size={32}>
-							<IconPlus size={22} stroke={1.5} />
-						</ActionIcon>
-					</Tooltip>
-				</Group>
-				<div className={classes.collections}>{collectionLinks}</div>
+			sx={(theme) => ({
+				backgroundColor: theme.fn.variant({
+					variant: "filled",
+					color: theme.colors[accent][9],
+				}).background,
+			})}>
+			<Center>
+				<IconSun color="white"></IconSun>
+			</Center>
+			<Stack
+				justify="center"
+				align="stretch"
+				style={{ height: "100%" }}
+				spacing={4}>
+				{links}
+			</Stack>
+			<Navbar.Section>
+				<Stack justify="center" spacing={0}>
+					<NavbarLink icon={IconSwitchHorizontal} label="Change account" />
+					<NavbarLink icon={IconLogout} label="Logout" />
+				</Stack>
 			</Navbar.Section>
 		</Navbar>
 	);
-};
-
-export default Sidebar;
+}
