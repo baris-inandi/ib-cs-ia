@@ -34,15 +34,15 @@ const useStyles = createStyles((theme) => ({
 	mainLinks: {
 		paddingLeft: theme.spacing.md - theme.spacing.xs,
 		paddingRight: theme.spacing.md - theme.spacing.xs,
-		paddingBottom: theme.spacing.md,
+		paddingBottom: 0,
 	},
 
 	mainLink: {
 		"display": "flex",
 		"alignItems": "center",
 		"width": "100%",
-		"fontSize": theme.fontSizes.xs,
-		"padding": `8px ${theme.spacing.xs}px`,
+		"fontSize": theme.fontSizes.sm,
+		"padding": `10px ${theme.spacing.xs}px`,
 		"borderRadius": theme.radius.sm,
 		"fontWeight": 500,
 		"color":
@@ -83,7 +83,7 @@ const useStyles = createStyles((theme) => ({
 	collections: {
 		paddingLeft: theme.spacing.md - 6,
 		paddingRight: theme.spacing.md - 6,
-		paddingBottom: theme.spacing.md,
+		paddingBottom: theme.spacing.xl,
 	},
 
 	collectionsHeader: {
@@ -94,7 +94,7 @@ const useStyles = createStyles((theme) => ({
 
 	collectionLink: {
 		"display": "block",
-		"padding": `8px ${theme.spacing.xs}px`,
+		"padding": `10px ${theme.spacing.xs}px`,
 		"textDecoration": "none",
 		"borderRadius": theme.radius.sm,
 		"fontSize": theme.fontSizes.xs,

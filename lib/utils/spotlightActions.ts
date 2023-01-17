@@ -1,9 +1,6 @@
 import { SpotlightAction } from "@mantine/spotlight";
-import topLevelSections, {TLS} from "./topLevelSections";
+import applets, { Applet } from "./applets";
 
-
-const spotlightActions: Array<SpotlightAction | TLS> = [
-	...topLevelSections
-];
+const spotlightActions: Array<SpotlightAction | Applet> = [...applets];
 
 export default spotlightActions;

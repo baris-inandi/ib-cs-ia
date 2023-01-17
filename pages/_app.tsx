@@ -1,9 +1,8 @@
-import { MantineProvider } from "@mantine/core";
-import { SpotlightAction, SpotlightProvider } from "@mantine/spotlight";
+import { Box, MantineProvider } from "@mantine/core";
 import Sidebar from "components/Sidebar/Sidebar";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import spotlightActions from "../lib/utils/spotlightActions";
+import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import mantineTheme from "../mantine.theme";
 import "../styles/tailwind.css";
 
@@ -20,18 +19,27 @@ export default function App(props: AppProps) {
 				/>
 			</Head>
 
-			<SpotlightProvider actions={spotlightActions as SpotlightAction[]}>
+			<AppSpotlightProvider>
 				<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
 					<main>
 						<div className="flex">
 							<Sidebar />
-							<div className="w-full h-screen overflow-y-scroll">
+							<Box
+								sx={(theme) => {
+									return {
+										backgroundColor: theme.colors.gray[0],
+										height: "100vh",
+										width: "100%",
+										overflowY: "scroll",
+										padding: "24px",
+									};
+								}}>
 								<Component {...pageProps} />
-							</div>
+							</Box>
 						</div>
 					</main>
 				</MantineProvider>
-			</SpotlightProvider>
+			</AppSpotlightProvider>
 		</>
 	);
 }

@@ -31,7 +31,7 @@ interface UserButtonProps extends UnstyledButtonProps {
 	icon?: React.ReactNode;
 }
 
-export function UserButton({
+export default function SidebarUpperUserButton({
 	image,
 	name,
 	email,

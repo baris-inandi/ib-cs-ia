@@ -1,20 +1,8 @@
-import {
-	ActionIcon,
-	Badge,
-	Group,
-	Kbd,
-	Navbar,
-	Text,
-	TextInput,
-	Tooltip,
-	UnstyledButton,
-} from "@mantine/core";
-import { useSpotlight } from "@mantine/spotlight";
-import { IconPlus, IconSearch } from "@tabler/icons";
+import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
+import { IconPlus } from "@tabler/icons";
 import Link from "next/link";
-import topLevelSections from "../../lib/utils/topLevelSections";
-import useStyles from "./sidebarStyles";
-import { UserButton } from "./UserButton";
+import useStyles from "./sidebar.styles";
+import SidebarUpper from "./SidebarUpper/SidebarUpper";
 
 const collections = [
 	{ emoji: "👍", label: "Sales" },
@@ -30,29 +18,6 @@ const collections = [
 
 const Sidebar = () => {
 	const { classes } = useStyles();
-	const spotlight = useSpotlight();
-
-	const mainLinks = topLevelSections.map((link) => (
-		<div key={link.id}>
-			<Link href={link.route} passHref>
-				<UnstyledButton className={classes.mainLink}>
-					<div className={classes.mainLinkInner}>
-						<link.icon
-							size={20}
-							className={classes.mainLinkIcon}
-							stroke={1.5}
-						/>
-						<span>{link.title}</span>
-					</div>
-					{link.notifications && (
-						<Badge size="sm" variant="filled" className={classes.mainLinkBadge}>
-							{link.notifications}
-						</Badge>
-					)}
-				</UnstyledButton>
-			</Link>
-		</div>
-	));
 
 	const collectionLinks = collections.map((collection) => (
 		<Link
@@ -60,57 +25,30 @@ const Sidebar = () => {
 			onClick={(event) => event.preventDefault()}
 			key={collection.label}
 			className={classes.collectionLink}>
-			<span style={{ marginRight: 9, fontSize: 16 }}>{collection.emoji}</span>{" "}
-			{collection.label}
+			<span style={{ marginRight: 10, fontSize: 18 }}>{collection.emoji}</span>{" "}
+			<span style={{ fontSize: 16 }}>{collection.label}</span>
 		</Link>
 	));
 
 	return (
 		<Navbar
+			sx={{
+				paddingTop: "0 !important",
+				overflowY: "scroll",
+			}}
 			height="100vh"
-			width={{ sm: 300 }}
+			width={{ sm: 400 }}
 			p="md"
 			className={classes.navbar}>
-			<Navbar.Section className={classes.section}>
-				<UserButton
-					image="https://i.imgur.com/fGxgcDF.png"
-					name="Bob Rulebreaker"
-					email="Product owner"
-				/>
-			</Navbar.Section>
-
-			<UnstyledButton
-				onClick={() => {
-					spotlight.openSpotlight();
-				}}>
-				<TextInput
-					sx={{ pointerEvents: "none" }}
-					placeholder="Search"
-					size="sm"
-					icon={<IconSearch size={14} stroke={1.5} />}
-					rightSectionWidth={32}
-					rightSection={
-						<>
-							<Kbd>/</Kbd>
-						</>
-					}
-					styles={{ rightSection: { pointerEvents: "none" } }}
-					mb="sm"
-				/>
-			</UnstyledButton>
-
-			<Navbar.Section className={classes.section}>
-				<div className={classes.mainLinks}>{mainLinks}</div>
-			</Navbar.Section>
-
+			<SidebarUpper section={Navbar.Section} classes={classes} />
 			<Navbar.Section className={classes.section}>
 				<Group className={classes.collectionsHeader} position="apart">
-					<Text size="xs" weight={500} color="dimmed">
+					<Text size="md" weight={500} color="dimmed">
 						Courses
 					</Text>
 					<Tooltip label="New Course" withArrow position="top">
-						<ActionIcon variant="default" size={24}>
-							<IconPlus size={12} stroke={1.8} />
+						<ActionIcon variant="default" size={32}>
+							<IconPlus size={22} stroke={1.5} />
 						</ActionIcon>
 					</Tooltip>
 				</Group>
