@@ -1,5 +1,5 @@
 import { Box, MantineProvider } from "@mantine/core";
-import Sidebar from "components/Sidebar/Sidebar";
+import AppLayout from "components/Sidebar/AppLayout";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
@@ -22,20 +22,19 @@ export default function App(props: AppProps) {
 			<AppSpotlightProvider>
 				<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
 					<main>
-						<div className="flex">
-							<Sidebar />
+						<AppLayout>
 							<Box
 								sx={(theme) => {
 									return {
-										backgroundColor: theme.colors.gray[0],
-										height: "100vh",
+										backgroundColor: theme.colors.gray[2],
+										height: "100%",
 										width: "100%",
 										overflowY: "scroll",
 									};
 								}}>
 								<Component {...pageProps} />
 							</Box>
-						</div>
+						</AppLayout>
 					</main>
 				</MantineProvider>
 			</AppSpotlightProvider>

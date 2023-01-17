@@ -1,6 +1,10 @@
 import { Group, Paper, RingProgress, Text } from "@mantine/core";
+import { useAtom } from "jotai";
+import { accentColorAtom } from "../atoms/theme.atom";
 
 const Pomo = () => {
+	const [_, setAccentColor] = useAtom(accentColorAtom);
+	setAccentColor("red");
 	return (
 		<Group position="apart">
 			<Paper withBorder>
