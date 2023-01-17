@@ -1,6 +1,8 @@
 import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
 import { IconPlus } from "@tabler/icons";
+import { useAtom } from "jotai";
 import Link from "next/link";
+import { accentColorAtom } from "../../atoms/theme.atom";
 import useStyles from "./sidebar.styles";
 import SidebarUpper from "./SidebarUpper/SidebarUpper";
 
@@ -17,7 +19,8 @@ const collections = [
 ];
 
 const Sidebar = () => {
-	const { classes } = useStyles();
+	const [accent] = useAtom(accentColorAtom);
+	const { classes } = useStyles(accent)();
 
 	const collectionLinks = collections.map((collection) => (
 		<Link

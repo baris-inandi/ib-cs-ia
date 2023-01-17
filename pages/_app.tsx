@@ -31,7 +31,6 @@ export default function App(props: AppProps) {
 										height: "100vh",
 										width: "100%",
 										overflowY: "scroll",
-										padding: "24px",
 									};
 								}}>
 								<Component {...pageProps} />
