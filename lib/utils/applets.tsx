@@ -113,12 +113,12 @@ const applets: Array<Applet> = [
 		group: "Applets",
 		keywords: ["courses", "lectures", "lessons"],
 		iconNoSize: IconChalkboard,
-		icon: <IconApple size={20} />,
+		icon: <IconChalkboard size={20} />,
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);
 		},
 		notifications: 0,
-		route: "/pomo",
+		route: "/classes",
 	},
 ];
 
