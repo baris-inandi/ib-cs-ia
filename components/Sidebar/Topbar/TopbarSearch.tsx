@@ -19,12 +19,12 @@ export default function TopbarSearch() {
 				spotlight.openSpotlight();
 			}}>
 			<Box
-				w={360}
+				w={280}
 				p={3}
 				sx={(theme) => {
 					return {
 						borderRadius: theme.radius.md,
-						backgroundColor: "rgba(255,255,255,0.9)",
+						backgroundColor: "rgba(255,255,255,0.8)",
 						color: "black",
 						textAlign: "left",
 					};
@@ -32,14 +32,14 @@ export default function TopbarSearch() {
 				<Group w="100%" position="apart">
 					<Group pl={12}>
 						<IconSearch width={16} height={16} />
-						Search...
+						<Text size={14}>Search...</Text>
 					</Group>
 					<Text
-						px={8}
-						py={4}
+						px={10}
+						py={3}
 						sx={(theme) => {
 							return {
-								fontSize: 14,
+								fontSize: 12,
 								borderRadius: theme.radius.sm,
 								backgroundColor: "white",
 								border: `1px solid ${theme.colors.gray[4]}`,

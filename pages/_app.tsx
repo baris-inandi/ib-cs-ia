@@ -1,7 +1,8 @@
 import { Box, MantineProvider } from "@mantine/core";
 import AppLayout from "components/Sidebar/AppLayout";
 import { AppProps } from "next/app";
-import Head from "next/head";
+import AppHead from "../components/global/AppHead";
+import GlobalStyles from "../components/global/GlobalStyles";
 import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import mantineTheme from "../mantine.theme";
 import "../styles/tailwind.css";
@@ -11,17 +12,11 @@ export default function App(props: AppProps) {
 
 	return (
 		<>
-			<Head>
-				<title>Page title</title>
-				<meta
-					name="viewport"
-					content="minimum-scale=1, initial-scale=1, width=device-width"
-				/>
-			</Head>
-
+			<AppHead />
 			<AppSpotlightProvider>
 				<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
 					<main>
+						<GlobalStyles />
 						<AppLayout>
 							<Box
 								sx={(theme) => {

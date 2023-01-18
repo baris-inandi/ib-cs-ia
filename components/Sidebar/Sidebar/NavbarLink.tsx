@@ -33,7 +33,7 @@ const useStyles = (accent: MantineColor) => {
 				color: theme.colors[accent][9],
 				background: `linear-gradient(0deg, ${theme.fn.lighten(
 					theme.colors[accent][1],
-					0.4,
+					0.33,
 				)} ,${theme.colors[accent][1]});`,
 				border: `2px solid ${theme.colors[accent][1]}`,
 			},
