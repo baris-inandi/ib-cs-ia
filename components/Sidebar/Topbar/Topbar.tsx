@@ -1,10 +1,11 @@
 import { Box, Group, Text } from "@mantine/core";
 import { IconBell, IconSchoolBell } from "@tabler/icons";
 import { useAtom } from "jotai";
-import { accentColorAtom } from "../../../atoms/theme.atom";
+import { accentColorAtom, activeAppletAtom } from "../../../atoms/atoms";
 import TopbarSearch from "./TopbarSearch";
 
-export default function Topbar(props: { activeAppletTitle: string }) {
+export default function Topbar() {
+	const [activeApplet] = useAtom(activeAppletAtom);
 	const [accent] = useAtom(accentColorAtom);
 	return (
 		<Group
@@ -28,7 +29,7 @@ export default function Topbar(props: { activeAppletTitle: string }) {
 						sx={{
 							minWidth: 140,
 						}}>
-						{props.activeAppletTitle}
+						{activeApplet?.title}
 					</Text>
 					<Box pl={20}>
 						<TopbarSearch />

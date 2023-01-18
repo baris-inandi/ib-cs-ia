@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
 	const url = request.nextUrl.clone();
 	const isLoggedIn = true;
 	if (isLoggedIn && url.pathname === "/") {
-		url.pathname = "/dashboard";
+		url.pathname = "/app/dashboard";
 		return NextResponse.redirect(url);
 	}
 }

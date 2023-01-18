@@ -1,8 +1,13 @@
-import { createStyles, MantineColor, Tooltip, UnstyledButton } from "@mantine/core";
+import {
+	createStyles,
+	MantineColor,
+	Tooltip,
+	UnstyledButton,
+} from "@mantine/core";
 import { TablerIcon } from "@tabler/icons";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import { accentColorAtom } from "../../../atoms/theme.atom";
+import { accentColorAtom } from "../../../atoms/atoms";
 
 const useStyles = (accent: MantineColor) => {
 	return createStyles((theme) => ({
@@ -14,7 +19,7 @@ const useStyles = (accent: MantineColor) => {
 			"alignItems": "center",
 			"justifyContent": "center",
 			"color": theme.black,
-			"opacity": 0.85,
+			"opacity": 0.7,
 
 			"&:hover": {
 				opacity: 1,
@@ -25,12 +30,16 @@ const useStyles = (accent: MantineColor) => {
 		active: {
 			"opacity": 1,
 			"&, &:hover": {
-				backgroundColor: theme.colors[accent][0],
-				border: `1px solid ${theme.colors[accent][3]}`
+				color: theme.colors[accent][9],
+				background: `linear-gradient(0deg, ${theme.fn.lighten(
+					theme.colors[accent][1],
+					0.4,
+				)} ,${theme.colors[accent][1]});`,
+				border: `2px solid ${theme.colors[accent][1]}`,
 			},
 		},
 	}));
-}
+};
 
 interface NavbarLinkProps {
 	icon: TablerIcon;
@@ -38,6 +47,7 @@ interface NavbarLinkProps {
 	active?: boolean;
 	onClick?(): void;
 	route?: string;
+	tooltipIDForColor?: string;
 }
 
 export default function NavbarLink({
@@ -46,6 +56,7 @@ export default function NavbarLink({
 	active,
 	onClick,
 	route,
+	tooltipIDForColor,
 }: NavbarLinkProps) {
 	const [accent] = useAtom(accentColorAtom);
 	const { classes, cx } = useStyles(accent)();
@@ -58,11 +69,10 @@ export default function NavbarLink({
 			withArrow
 			transitionDuration={200}
 			transition="pop-top-left"
-			sx={(theme) => {
-				return {
-					backgroundColor: theme.black,
-				};
-			}}>
+			sx={{
+				fontSize: 15,
+			}}
+			arrowSize={8}>
 			<UnstyledButton
 				onClick={() => {
 					if (onClick) {

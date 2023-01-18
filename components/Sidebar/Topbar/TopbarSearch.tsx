@@ -1,9 +1,16 @@
 import { Box, Group, Text, UnstyledButton } from "@mantine/core";
 import { useSpotlight } from "@mantine/spotlight";
 import { IconSearch } from "@tabler/icons";
+import { useEffect, useState } from "react";
+import getOS from "../../../lib/utils/getOS";
 
 export default function TopbarSearch() {
 	const spotlight = useSpotlight();
+	const [mod, setMod] = useState("Mod");
+
+	useEffect(() => {
+		setMod(getOS() == "macos" ? "⌘" : "Ctrl");
+	}, []);
 
 	return (
 		<UnstyledButton
@@ -12,8 +19,8 @@ export default function TopbarSearch() {
 				spotlight.openSpotlight();
 			}}>
 			<Box
-				w={400}
-				p={4}
+				w={360}
+				p={3}
 				sx={(theme) => {
 					return {
 						borderRadius: theme.radius.md,
@@ -38,7 +45,7 @@ export default function TopbarSearch() {
 								border: `1px solid ${theme.colors.gray[4]}`,
 							};
 						}}>
-						Ctrl+K
+						{mod}+K
 					</Text>
 				</Group>
 			</Box>

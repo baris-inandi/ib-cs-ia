@@ -1,24 +1,24 @@
 import { Navbar, Stack } from "@mantine/core";
 import { IconLogout, IconSwitchHorizontal, TablerIcon } from "@tabler/icons";
-import { Dispatch, SetStateAction } from "react";
+import { useAtom } from "jotai";
+import { activeAppletAtom } from "../../../atoms/atoms";
 import applets, { Applet } from "../../../lib/utils/applets";
 import NavbarLink from "./NavbarLink";
 
-export default function Sidebar(props: {
-	activeApplet: Applet;
-	setActiveApplet: Dispatch<SetStateAction<any>>;
-}) {
-	const links = applets.map((applet: Applet) => {
+export default function Sidebar() {
+	const [activeApplet, setActiveApplet] = useAtom(activeAppletAtom);
+	const links = Array.from(applets.values()).map((applet: Applet) => {
 		return (
 			<NavbarLink
 				label={applet.title}
 				key={applet.id}
-				active={applet.id === props.activeApplet.id}
+				active={applet.id === activeApplet?.id}
 				onClick={() => {
-					props.setActiveApplet(applet);
+					setActiveApplet(applet);
 				}}
 				route={applet.route}
 				icon={applet.iconNoSize as unknown as TablerIcon}
+				tooltipIDForColor={applet.id}
 			/>
 		);
 	});
