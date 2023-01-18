@@ -2,6 +2,7 @@ import type { SpotlightAction } from "@mantine/spotlight";
 import {
 	IconApple,
 	IconCalendarEvent,
+	IconChalkboard,
 	IconCheckbox,
 	IconComet,
 	IconGauge,
@@ -54,7 +55,7 @@ const applets: Array<Applet> = [
 		title: "Calendar",
 		description: "Your events all in one place.",
 		group: "Applets",
-		keywords: ["calendar", "events", "schedule", "appointments"],
+		keywords: ["calendar", "lectures", "events", "schedule", "appointments"],
 		iconNoSize: IconCalendarEvent,
 		icon: <IconCalendarEvent size={20} />,
 		onTrigger: (action: SpotlightAction) => {
@@ -98,6 +99,20 @@ const applets: Array<Applet> = [
 		group: "Applets",
 		keywords: ["pomodoro", "timer", "study", "focus"],
 		iconNoSize: IconApple,
+		icon: <IconApple size={20} />,
+		onTrigger: (action: SpotlightAction) => {
+			Router.push(action.route);
+		},
+		notifications: 0,
+		route: "/pomo",
+	},
+	{
+		id: "classes",
+		title: "Classes",
+		description: "Pomodoro timer for studying",
+		group: "Applets",
+		keywords: ["courses", "lectures", "lessons"],
+		iconNoSize: IconChalkboard,
 		icon: <IconApple size={20} />,
 		onTrigger: (action: SpotlightAction) => {
 			Router.push(action.route);

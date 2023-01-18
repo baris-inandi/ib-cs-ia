@@ -10,7 +10,7 @@ export default function Topbar(props: { activeAppletTitle: string }) {
 		<Group
 			position="apart"
 			w="100%"
-			h={{ base: 70 }}
+			h={{ base: 60 }}
 			sx={(theme) => {
 				return {
 					color: "white",

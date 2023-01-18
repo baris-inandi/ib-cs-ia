@@ -13,7 +13,7 @@ export default function TopbarSearch() {
 			}}>
 			<Box
 				w={400}
-				p={6}
+				p={4}
 				sx={(theme) => {
 					return {
 						borderRadius: theme.radius.md,
