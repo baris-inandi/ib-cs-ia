@@ -5,10 +5,10 @@ import {
 	accentColorAtom,
 	accentColorRgbaAtom,
 	activeAppletAtom,
-} from "../../../atoms/atoms";
+} from "../../../globalAtoms";
 import TopbarSearch from "./TopbarSearch";
 
-export default function Topbar() {
+export default function Topbar(props: { h: number }) {
 	const [activeApplet] = useAtom(activeAppletAtom);
 	const [_, setAccentRgba] = useAtom(accentColorRgbaAtom);
 	const [accent] = useAtom(accentColorAtom);
@@ -16,7 +16,7 @@ export default function Topbar() {
 		<Group
 			position="apart"
 			w="100%"
-			h={50}
+			h={props.h}
 			sx={(theme) => {
 				const c = theme.fn.rgba(
 					theme.fn.darken(theme.colors[accent][8], 0.1),

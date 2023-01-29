@@ -7,7 +7,7 @@ import {
 import { TablerIcon } from "@tabler/icons";
 import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import { accentColorAtom } from "../../../atoms/atoms";
+import { accentColorAtom } from "../../../globalAtoms";
 
 const useStyles = (accent: MantineColor) => {
 	return createStyles((theme) => ({

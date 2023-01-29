@@ -15,7 +15,7 @@ import { ReactNode } from "react";
 import Calendar from "../../components/Applets/Pages/Calendar";
 import Classes from "../../components/Applets/Pages/Classes";
 import Dashboard from "../../components/Applets/Pages/Dashboard";
-import Pomo from "../../components/Applets/Pages/Pomo";
+import Pomo from "../../components/Applets/Pages/Pomo/Pomo";
 import Recommended from "../../components/Applets/Pages/Recommended";
 import Scores from "../../components/Applets/Pages/Scores";
 import Tasks from "../../components/Applets/Pages/Tasks";
@@ -125,7 +125,7 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 99,
 			route: "/app/scores",
 			FC: Scores,
-			accentColor: "yellow"
+			accentColor: "lime",
 		},
 	],
 	[
@@ -144,7 +144,7 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/pomo",
 			FC: Pomo,
-			accentColor: "red",
+			accentColor: "pink",
 		},
 	],
 	[

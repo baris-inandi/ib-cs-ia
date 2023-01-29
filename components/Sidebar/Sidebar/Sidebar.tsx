@@ -1,7 +1,7 @@
 import { Navbar, Stack } from "@mantine/core";
-import { IconLogout, IconSwitchHorizontal, TablerIcon } from "@tabler/icons";
+import { IconSettings, TablerIcon } from "@tabler/icons";
 import { useAtom } from "jotai";
-import { activeAppletAtom } from "../../../atoms/atoms";
+import { activeAppletAtom } from "../../../globalAtoms";
 import applets, { Applet } from "../../../lib/utils/applets";
 import NavbarLink from "./NavbarLink";
 
@@ -40,8 +40,7 @@ export default function Sidebar() {
 			</Stack>
 			<Navbar.Section>
 				<Stack justify="center" spacing={0}>
-					<NavbarLink icon={IconSwitchHorizontal} label="Change account" />
-					<NavbarLink icon={IconLogout} label="Logout" />
+					<NavbarLink icon={IconSettings} label="Settings" />
 				</Stack>
 			</Navbar.Section>
 		</Navbar>

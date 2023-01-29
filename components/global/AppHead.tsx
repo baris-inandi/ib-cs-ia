@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import Head from "next/head";
-import { accentColorRgbaAtom } from "../../atoms/atoms";
+import { accentColorRgbaAtom } from "../../globalAtoms";
 
 export default function AppHead() {
 	const [accent] = useAtom(accentColorRgbaAtom);

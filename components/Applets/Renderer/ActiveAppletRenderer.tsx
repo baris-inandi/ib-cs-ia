@@ -1,6 +1,7 @@
 import { useAtom } from "jotai";
-import { accentColorAtom, activeAppletAtom } from "../../../atoms/atoms";
+import { accentColorAtom, activeAppletAtom } from "../../../globalAtoms";
 import applets, { Applet } from "../../../lib/utils/applets";
+import InnerAppletViewportWrapper from "./InnerAppletViewportWrapper";
 
 export default function ActiveAppletRenderer(props: { entryApplet: string }) {
 	const DEFAULT_APPLET = applets.get("dashboard");
@@ -10,7 +11,11 @@ export default function ActiveAppletRenderer(props: { entryApplet: string }) {
 	setApplet(applets.get(props.entryApplet) ?? (DEFAULT_APPLET as Applet));
 	setAccent(applet?.accentColor ?? DEFAULT_APPLET?.accentColor);
 	if (applet) {
-		return <applet.FC />;
+		return (
+			<InnerAppletViewportWrapper>
+				<applet.FC />
+			</InnerAppletViewportWrapper>
+		);
 	}
 	return <div />;
 }

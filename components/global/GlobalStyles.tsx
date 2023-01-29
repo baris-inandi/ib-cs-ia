@@ -1,6 +1,6 @@
 import { css, Global } from "@emotion/react";
 import { useAtom } from "jotai";
-import { accentColorRgbaAtom } from "../../atoms/atoms";
+import { accentColorRgbaAtom } from "../../globalAtoms";
 
 export default function GlobalStyles() {
 	const [accentColorRgba] = useAtom(accentColorRgbaAtom);
