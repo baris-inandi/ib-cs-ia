@@ -1,9 +1,7 @@
 import { useAtom } from "jotai";
 import Head from "next/head";
-import { accentColorRgbaAtom } from "../../globalAtoms";
 
 export default function AppHead() {
-	const [accent] = useAtom(accentColorRgbaAtom);
 	return (
 		<Head>
 			<title>Page title</title>
@@ -13,15 +11,21 @@ export default function AppHead() {
 			/>
 			<meta name="application-name" content="PWA App" />
 			<meta name="apple-mobile-web-app-capable" content="yes" />
-			<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+			<meta
+				name="apple-mobile-web-app-status-bar-style"
+				content="default"
+			/>
 			<meta name="apple-mobile-web-app-title" content="PWA App" />
 			<meta name="description" content="Best PWA App in the world" />
 			<meta name="format-detection" content="telephone=no" />
 			<meta name="mobile-web-app-capable" content="yes" />
-			<meta name="msapplication-config" content="/icons/browserconfig.xml" />
-			<meta name="msapplication-TileColor" content={accent} />
+			<meta
+				name="msapplication-config"
+				content="/icons/browserconfig.xml"
+			/>
 			<meta name="msapplication-tap-highlight" content="no" />
-			<meta name="theme-color" content={accent} />
+			<meta name="msapplication-TileColor" content="white" />
+			<meta name="theme-color" content="white" />
 
 			<link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
 			<link
@@ -67,7 +71,10 @@ export default function AppHead() {
 			<meta name="twitter:card" content="summary" />
 			<meta name="twitter:url" content="https://yourdomain.com" />
 			<meta name="twitter:title" content="PWA App" />
-			<meta name="twitter:description" content="Best PWA App in the world" />
+			<meta
+				name="twitter:description"
+				content="Best PWA App in the world"
+			/>
 			<meta
 				name="twitter:image"
 				content="https://yourdomain.com/icons/android-chrome-192x192.png"
@@ -75,7 +82,10 @@ export default function AppHead() {
 			<meta name="twitter:creator" content="@DavidWShadow" />
 			<meta property="og:type" content="website" />
 			<meta property="og:title" content="PWA App" />
-			<meta property="og:description" content="Best PWA App in the world" />
+			<meta
+				property="og:description"
+				content="Best PWA App in the world"
+			/>
 			<meta property="og:site_name" content="PWA App" />
 			<meta property="og:url" content="https://yourdomain.com" />
 			<meta

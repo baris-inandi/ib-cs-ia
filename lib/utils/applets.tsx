@@ -1,4 +1,3 @@
-import { MantineColor } from "@mantine/core";
 import type { SpotlightAction } from "@mantine/spotlight";
 import {
 	IconApple,
@@ -26,10 +25,9 @@ interface AppletAdditionalFields extends Omit<SpotlightAction, "icon"> {
 	iconNoSize: TablerIcon;
 	icon: ReactNode;
 	FC: React.FC;
-	accentColor: MantineColor;
 }
 
-export type Applet = SpotlightAction | AppletAdditionalFields;
+export type Applet = SpotlightAction & AppletAdditionalFields;
 export type AppletMap = Map<string, Applet>;
 
 const applets: AppletMap = new Map<string, Applet>([
@@ -49,7 +47,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/dashboard",
 			FC: Dashboard,
-			accentColor: "blue",
 		},
 	],
 	[
@@ -68,7 +65,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/recommended",
 			FC: Recommended,
-			accentColor: "grape",
 		},
 	],
 	[
@@ -78,7 +74,13 @@ const applets: AppletMap = new Map<string, Applet>([
 			title: "Calendar",
 			description: "Your events all in one place.",
 			group: "Applets",
-			keywords: ["calendar", "lectures", "events", "schedule", "appointments"],
+			keywords: [
+				"calendar",
+				"lectures",
+				"events",
+				"schedule",
+				"appointments",
+			],
 			iconNoSize: IconCalendarEvent,
 			icon: <IconCalendarEvent size={20} />,
 			onTrigger: (action: SpotlightAction) => {
@@ -87,7 +89,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 10,
 			route: "/app/calendar",
 			FC: Calendar,
-			accentColor: "teal",
 		},
 	],
 	[
@@ -106,7 +107,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/tasks",
 			FC: Tasks,
-			accentColor: "orange",
 		},
 	],
 	[
@@ -125,7 +125,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 99,
 			route: "/app/scores",
 			FC: Scores,
-			accentColor: "lime",
 		},
 	],
 	[
@@ -144,7 +143,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/pomo",
 			FC: Pomo,
-			accentColor: "pink",
 		},
 	],
 	[
@@ -163,7 +161,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			notifications: 0,
 			route: "/app/classes",
 			FC: Classes,
-			accentColor: "gray",
 		},
 	],
 ]);

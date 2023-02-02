@@ -2,31 +2,22 @@ import { Box, Group, Text } from "@mantine/core";
 import { IconBell, IconSchoolBell } from "@tabler/icons";
 import { useAtom } from "jotai";
 import {
-	accentColorAtom,
-	accentColorRgbaAtom,
 	activeAppletAtom,
 } from "../../../globalAtoms";
 import TopbarSearch from "./TopbarSearch";
 
 export default function Topbar(props: { h: number }) {
 	const [activeApplet] = useAtom(activeAppletAtom);
-	const [_, setAccentRgba] = useAtom(accentColorRgbaAtom);
-	const [accent] = useAtom(accentColorAtom);
 	return (
 		<Group
 			position="apart"
 			w="100%"
 			h={props.h}
 			sx={(theme) => {
-				const c = theme.fn.rgba(
-					theme.fn.darken(theme.colors[accent][8], 0.1),
-					1,
-				);
-				setAccentRgba(c);
 				return {
-					color: "white",
-					backgroundColor: c,
-					borderBottom: `2px solid ${theme.colors[accent][9]}`,
+					color: "black",
+					backgroundColor: "white",
+					borderBottom: `1px solid ${theme.colors.gray[4]}`
 				};
 			}}>
 			<Group w="100%" position="apart" px={28}>

@@ -1,18 +1,13 @@
+import { Paper } from "@mantine/core";
+import { toValidTimeString } from "../../../../../lib/applets/pomo/pomoTimeValidation";
+
 export default function TimerClockInput(props: {
-	value: string;
+	value: number;
 	align: "left" | "center" | "right";
-	onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }) {
 	return (
-		<input
-			onChange={props.onChange}
-			onBlur={props.onBlur}
-			value={props.value}
-			style={{
-				all: "unset",
-				width: "100%",
-				textAlign: props.align,
-			}}></input>
+		<Paper w={"fit-content"}>
+			{toValidTimeString(props.value)}
+		</Paper>
 	);
 }

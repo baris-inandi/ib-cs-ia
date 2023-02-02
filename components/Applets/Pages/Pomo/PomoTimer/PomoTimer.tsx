@@ -1,23 +1,22 @@
-import { Box, Flex, Paper, Progress, Text } from "@mantine/core";
+import { Box, Button, Flex, Paper, Progress, Text } from "@mantine/core";
 import { useAtom } from "jotai";
-import { accentColorAtom } from "../../../../../globalAtoms";
-import { pomoTimeAtom } from "../atoms/time.atom";
+import { useState } from "react";
+import { PomoTime } from "../../../../../lib/applets/pomo/PomoTime";
+import { DEFAULT_MINS, DEFAULT_SECS, pomoTimeAtom } from "../atoms/time.atom";
 import TimerClockInput from "./TimerClockInput";
 
 export default function PomoTimer() {
-	let [accent] = useAtom(accentColorAtom);
-	let [secs, setSecs] = useAtom(pomoTimeAtom);
-	let secsToMinsValidString = (secs: number) => {
-		let s = Math.floor(secs & 60);
-		return (s < 10 ? "0" + s : s).toString();
-	};
-	let secsToSecsValidString = (secs: number) => {
-		let s = Math.floor(secs / 60);
-		return (s < 10 ? "0" + s : s).toString();
+	let [ptimeAtom, setPtimeAtom] = useAtom(pomoTimeAtom);
+	let [secs, setSecs] = useState<number>(DEFAULT_SECS);
+	let [mins, setMins] = useState<number>(DEFAULT_MINS);
+
+	const resetTimer = () => {
+		setPtimeAtom(new PomoTime(Number(mins), Number(secs)));
 	};
 
 	return (
 		<Paper withBorder h={200} w="100%">
+			{ptimeAtom.value()}
 			<Flex
 				direction="column"
 				w="100%"
@@ -29,31 +28,35 @@ export default function PomoTimer() {
 						h={20}
 						radius={3}
 						w="100%"
-						color={accent}
-						value={(secs.totalSecs / secs.secs) * 100}></Progress>
+						color="gray"
+						value={
+							(ptimeAtom.totalSecs / ptimeAtom.secs) * 100
+						}></Progress>
 				</Box>
 				<Flex align="center" h="100%">
 					<Text color="black" size={64} fw={500}>
-						<Flex>
-							<TimerClockInput
-								onChange={(e) => {}}
-								onBlur={(e) => {
-									console.log(e.target.value);
-									let s = parseInt(e.target.value) * 60 ?? 0;
-									setSecs({ secs: s, totalSecs: s });
-								}}
-								align="right"
-								value={secsToSecsValidString(secs.secs)}></TimerClockInput>
-							<span>:</span>
-							<TimerClockInput
-								onChange={(e) => {}}
-								onBlur={(e) => {
-									console.log(e.target.value);
-									let s = parseInt(e.target.value) ?? 0;
-									setSecs({ secs: s, totalSecs: s });
-								}}
-								align="left"
-								value={secsToMinsValidString(secs.secs)}></TimerClockInput>
+						<Flex justify="center" align="center">
+							<Button
+								variant="outline"
+								radius={9999}
+								sx={{ fontSize: 20 }}>
+								-5
+							</Button>
+							<Flex justify="center" align="center" px={32}>
+								<TimerClockInput
+									value={mins}
+									align="right"></TimerClockInput>
+								<span>:</span>
+								<TimerClockInput
+									value={secs}
+									align="left"></TimerClockInput>
+							</Flex>
+							<Button
+								variant="outline"
+								radius={9999}
+								sx={{ fontSize: 20 }}>
+								+5
+							</Button>
 						</Flex>
 					</Text>
 				</Flex>

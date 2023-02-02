@@ -24,7 +24,8 @@ export default function TopbarSearch() {
 				sx={(theme) => {
 					return {
 						borderRadius: theme.radius.md,
-						backgroundColor: "rgba(255,255,255,0.8)",
+						border: `1px solid ${theme.colors.gray[4]}`,
+						backgroundColor: theme.colors.gray[0],
 						color: "black",
 						textAlign: "left",
 					};

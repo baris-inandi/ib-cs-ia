@@ -1,16 +1,10 @@
-import {
-	createStyles,
-	MantineColor,
-	Tooltip,
-	UnstyledButton,
-} from "@mantine/core";
+import { createStyles, Tooltip, UnstyledButton } from "@mantine/core";
 import { TablerIcon } from "@tabler/icons";
-import { useAtom } from "jotai";
 import { useRouter } from "next/router";
-import { accentColorAtom } from "../../../globalAtoms";
 
-const useStyles = (accent: MantineColor) => {
-	return createStyles((theme) => ({
+const useStyles = createStyles((theme) => {
+	let accent = "gray";
+	return {
 		link: {
 			"width": 50,
 			"height": 50,
@@ -38,16 +32,14 @@ const useStyles = (accent: MantineColor) => {
 				border: `2px solid ${theme.colors[accent][1]}`,
 			},
 		},
-	}));
-};
-
+	};
+});
 interface NavbarLinkProps {
 	icon: TablerIcon;
 	label: string;
 	active?: boolean;
 	onClick?(): void;
 	route?: string;
-	tooltipIDForColor?: string;
 }
 
 export default function NavbarLink({
@@ -56,10 +48,8 @@ export default function NavbarLink({
 	active,
 	onClick,
 	route,
-	tooltipIDForColor,
 }: NavbarLinkProps) {
-	const [accent] = useAtom(accentColorAtom);
-	const { classes, cx } = useStyles(accent)();
+	const { classes, cx } = useStyles();
 	const router = useRouter();
 
 	return (

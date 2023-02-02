@@ -18,7 +18,6 @@ export default function Sidebar() {
 				}}
 				route={applet.route}
 				icon={applet.iconNoSize as unknown as TablerIcon}
-				tooltipIDForColor={applet.id}
 			/>
 		);
 	});
@@ -28,7 +27,7 @@ export default function Sidebar() {
 			width={{ base: 86 }}
 			p="md"
 			sx={(theme) => ({
-				borderRight: `1px solid ${theme.colors.gray[5]}`,
+				borderRight: `1px solid ${theme.colors.gray[4]}`,
 				backgroundColor: theme.white,
 			})}>
 			<Stack

@@ -2,7 +2,6 @@ import { Box, MantineProvider } from "@mantine/core";
 import AppLayout from "components/Sidebar/AppLayout";
 import { AppProps } from "next/app";
 import AppHead from "../components/global/AppHead";
-import GlobalStyles from "../components/global/GlobalStyles";
 import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import mantineTheme from "../mantine.theme";
 import "../styles/tailwind.css";
@@ -16,7 +15,6 @@ export default function App(props: AppProps) {
 			<AppSpotlightProvider>
 				<MantineProvider withGlobalStyles withNormalizeCSS theme={mantineTheme}>
 					<main>
-						<GlobalStyles />
 						<AppLayout>
 							<Box
 								sx={(theme) => {

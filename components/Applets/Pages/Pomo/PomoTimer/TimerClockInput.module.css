@@ -1,0 +1,10 @@
+.pomotimerinput::-webkit-outer-spin-button,
+.pomotimerinput::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+	margin: 0 !important;
+}
+
+/* Firefox */
+.pomotimerinput[type="number"] {
+	-moz-appearance: textfield !important;
+}
