@@ -1,47 +1,64 @@
-import { Navbar, Stack } from "@mantine/core";
-import { IconSettings, TablerIcon } from "@tabler/icons";
-import { useAtom } from "jotai";
-import { activeAppletAtom } from "../../../globalAtoms";
-import applets, { Applet } from "../../../lib/utils/applets";
-import NavbarLink from "./NavbarLink";
+import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
+import { IconPlus } from "@tabler/icons";
+import Link from "next/link";
+import useStyles from "./sidebar.styles";
+import SidebarUpper from "./SidebarUpper/SidebarUpper";
 
-export default function Sidebar() {
-	const [activeApplet, setActiveApplet] = useAtom(activeAppletAtom);
-	const links = Array.from(applets.values()).map((applet: Applet) => {
-		return (
-			<NavbarLink
-				label={applet.title}
-				key={applet.id}
-				active={applet.id === activeApplet?.id}
-				onClick={() => {
-					setActiveApplet(applet);
-				}}
-				route={applet.route}
-				icon={applet.iconNoSize as unknown as TablerIcon}
-			/>
-		);
-	});
+const collections = [
+	{ emoji: "👍", label: "Sales" },
+	{ emoji: "🚚", label: "Deliveries" },
+	{ emoji: "💸", label: "Discounts" },
+	{ emoji: "💰", label: "Profits" },
+	{ emoji: "✨", label: "Reports" },
+	{ emoji: "🛒", label: "Orders" },
+	{ emoji: "📅", label: "Events" },
+	{ emoji: "🙈", label: "Debts" },
+	{ emoji: "💁‍♀️", label: "Customers" },
+];
+
+const Sidebar = () => {
+	const { classes } = useStyles();
+
+	const collectionLinks = collections.map((collection) => (
+		<Link
+			href="/"
+			onClick={(event) => event.preventDefault()}
+			key={collection.label}
+			className={classes.collectionLink}>
+			<span style={{ marginRight: 10, fontSize: 18 }}>
+				{collection.emoji}
+			</span>{" "}
+			<span style={{ fontSize: 16 }}>{collection.label}</span>
+		</Link>
+	));
+
 	return (
 		<Navbar
+			id="sidebar"
+			sx={{
+				paddingTop: "0 !important",
+				overflowY: "scroll",
+			}}
 			height="100%"
-			width={{ base: 86 }}
+			width={{ sm: 420 }}
 			p="md"
-			sx={(theme) => ({
-				borderRight: `1px solid ${theme.colors.gray[4]}`,
-				backgroundColor: theme.white,
-			})}>
-			<Stack
-				justify="center"
-				align="stretch"
-				style={{ height: "100%" }}
-				spacing={4}>
-				{links}
-			</Stack>
-			<Navbar.Section>
-				<Stack justify="center" spacing={0}>
-					<NavbarLink icon={IconSettings} label="Settings" />
-				</Stack>
+			className={classes.navbar + " noscrollbar"}>
+			<SidebarUpper section={Navbar.Section} classes={classes} />
+			<Navbar.Section className={classes.section}>
+				<Group className={classes.collectionsHeader} position="apart">
+					<Text size="md" weight={500} color="dimmed">
+						Courses
+					</Text>
+					<Tooltip label="New Course" withArrow position="top">
+						<ActionIcon variant="default" size={24}>
+							<IconPlus size={16} stroke={1.5} />
+						</ActionIcon>
+					</Tooltip>
+				</Group>
+				<div className={classes.collections}>{collectionLinks}</div>
 			</Navbar.Section>
 		</Navbar>
 	);
-}
+};
+
+export default Sidebar;

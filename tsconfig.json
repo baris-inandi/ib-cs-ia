@@ -30,7 +30,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"lib/utils/applets.tsx"
+		"lib/applets/global/applets.tsx"
 	],
 	"exclude": ["node_modules"]
 }

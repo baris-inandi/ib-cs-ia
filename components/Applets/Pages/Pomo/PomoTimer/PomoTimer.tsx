@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { useState } from "react";
 import { PomoTime } from "../../../../../lib/applets/pomo/PomoTime";
 import { DEFAULT_MINS, DEFAULT_SECS, pomoTimeAtom } from "../atoms/time.atom";
-import TimerClockInput from "./TimerClockInput";
+import TimerClockText from "./TimerClockText";
 
 export default function PomoTimer() {
 	let [ptimeAtom, setPtimeAtom] = useAtom(pomoTimeAtom);
@@ -15,52 +15,72 @@ export default function PomoTimer() {
 	};
 
 	return (
-		<Paper withBorder h={200} w="100%">
-			{ptimeAtom.value()}
-			<Flex
-				direction="column"
+		<>
+			<Box w="100%" pb={12}>
+				<Progress
+					h={26}
+					radius="md"
+					w="100%"
+					color="violet"
+					striped
+					sx={(theme) => {
+						return {
+							backgroundColor: theme.colors.violet[3],
+						};
+					}}
+					value={
+						40
+						/* (ptimeAtom.totalSecs / ptimeAtom.secs) * 100 */
+					}></Progress>
+			</Box>
+			<Paper
+				withBorder
+				h={400}
 				w="100%"
-				h="100%"
-				justify="space-between"
-				align="center">
-				<Box w="100%" p={12} pb={0}>
-					<Progress
-						h={20}
-						radius={3}
-						w="100%"
-						color="gray"
-						value={
-							(ptimeAtom.totalSecs / ptimeAtom.secs) * 100
-						}></Progress>
-				</Box>
-				<Flex align="center" h="100%">
-					<Text color="black" size={64} fw={500}>
-						<Flex justify="center" align="center">
-							<Button
-								variant="outline"
-								radius={9999}
-								sx={{ fontSize: 20 }}>
-								-5
-							</Button>
-							<Flex justify="center" align="center" px={32}>
-								<TimerClockInput
-									value={mins}
-									align="right"></TimerClockInput>
-								<span>:</span>
-								<TimerClockInput
-									value={secs}
-									align="left"></TimerClockInput>
+				sx={(theme) => {
+					return {
+						backgroundColor: theme.colors.violet[5],
+					};
+				}}>
+				<Flex
+					direction="column"
+					w="100%"
+					h="100%"
+					justify="space-between"
+					align="center">
+					<Flex align="center" h="100%">
+						<Text color="black" size={64} fw={500}>
+							<Flex justify="center" align="center" gap={24}>
+								<Button
+									variant="light"
+									color="violet"
+									radius={9999}
+									sx={{ fontSize: 20 }}>
+									-5
+								</Button>
+								<Flex justify="center" align="center" px={32}>
+									<TimerClockText
+										value={mins}
+										align="right"></TimerClockText>
+									<Text c="white" size={96}>
+										:
+									</Text>
+									<TimerClockText
+										value={secs}
+										align="left"></TimerClockText>
+								</Flex>
+								<Button
+									variant="light"
+									color="violet"
+									radius={9999}
+									sx={{ fontSize: 20 }}>
+									+5
+								</Button>
 							</Flex>
-							<Button
-								variant="outline"
-								radius={9999}
-								sx={{ fontSize: 20 }}>
-								+5
-							</Button>
-						</Flex>
-					</Text>
+						</Text>
+					</Flex>
 				</Flex>
-			</Flex>
-		</Paper>
+			</Paper>
+		</>
 	);
 }

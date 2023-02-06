@@ -1,8 +1,8 @@
-import { Box, Group, Text, UnstyledButton } from "@mantine/core";
+import { Box, Flex, Group, Text, UnstyledButton } from "@mantine/core";
 import { useSpotlight } from "@mantine/spotlight";
 import { IconSearch } from "@tabler/icons";
 import { useEffect, useState } from "react";
-import getOS from "../../../lib/utils/getOS";
+import getOS from "../../../../../lib/utils/getOS";
 
 export default function TopbarSearch() {
 	const spotlight = useSpotlight();
@@ -19,22 +19,30 @@ export default function TopbarSearch() {
 				spotlight.openSpotlight();
 			}}>
 			<Box
-				w={280}
-				p={4}
+				w="100%"
+				p={5}
 				sx={(theme) => {
 					return {
 						borderRadius: theme.radius.md,
-						border: `1px solid ${theme.colors.gray[4]}`,
 						backgroundColor: theme.colors.gray[0],
 						color: "black",
 						textAlign: "left",
+						border: `1px solid ${theme.colors.gray[4]}`,
 					};
 				}}>
 				<Group w="100%" position="apart">
-					<Group pl={12}>
-						<IconSearch width={16} height={16} />
-						<Text size={14}>Search...</Text>
-					</Group>
+					<Flex
+						gap={6}
+						align="center"
+						pl={6}
+						sx={(theme) => {
+							return {
+								color: theme.colors.gray[7],
+							};
+						}}>
+						<IconSearch size={18} />
+						<Text size={16}>Search</Text>
+					</Flex>
 					<Text
 						px={10}
 						py={3}
@@ -44,6 +52,7 @@ export default function TopbarSearch() {
 								borderRadius: theme.radius.sm,
 								backgroundColor: "white",
 								border: `1px solid ${theme.colors.gray[4]}`,
+								color: theme.colors.gray[6],
 							};
 						}}>
 						{mod}+K

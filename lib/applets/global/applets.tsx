@@ -2,7 +2,6 @@ import type { SpotlightAction } from "@mantine/spotlight";
 import {
 	IconApple,
 	IconCalendarEvent,
-	IconChalkboard,
 	IconCheckbox,
 	IconComet,
 	IconGauge,
@@ -11,16 +10,14 @@ import {
 } from "@tabler/icons";
 import Router from "next/router";
 import { ReactNode } from "react";
-import Calendar from "../../components/Applets/Pages/Calendar";
-import Classes from "../../components/Applets/Pages/Classes";
-import Dashboard from "../../components/Applets/Pages/Dashboard";
-import Pomo from "../../components/Applets/Pages/Pomo/Pomo";
-import Recommended from "../../components/Applets/Pages/Recommended";
-import Scores from "../../components/Applets/Pages/Scores";
-import Tasks from "../../components/Applets/Pages/Tasks";
+import Calendar from "../../../components/Applets/Pages/Calendar";
+import Dashboard from "../../../components/Applets/Pages/Dashboard";
+import Pomo from "../../../components/Applets/Pages/Pomo/Pomo";
+import Recommended from "../../../components/Applets/Pages/Recommended";
+import Scores from "../../../components/Applets/Pages/Scores";
+import Tasks from "../../../components/Applets/Pages/Tasks";
 
 interface AppletAdditionalFields extends Omit<SpotlightAction, "icon"> {
-	notifications: number;
 	route: string;
 	iconNoSize: TablerIcon;
 	icon: ReactNode;
@@ -44,7 +41,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 0,
 			route: "/app/dashboard",
 			FC: Dashboard,
 		},
@@ -62,7 +58,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 0,
 			route: "/app/recommended",
 			FC: Recommended,
 		},
@@ -86,7 +81,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 10,
 			route: "/app/calendar",
 			FC: Calendar,
 		},
@@ -104,7 +98,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 0,
 			route: "/app/tasks",
 			FC: Tasks,
 		},
@@ -122,7 +115,6 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 99,
 			route: "/app/scores",
 			FC: Scores,
 		},
@@ -140,27 +132,8 @@ const applets: AppletMap = new Map<string, Applet>([
 			onTrigger: (action: SpotlightAction) => {
 				Router.push(action.route);
 			},
-			notifications: 0,
-			route: "/app/pomo",
+			route: "/app/pomodoro",
 			FC: Pomo,
-		},
-	],
-	[
-		"classes",
-		{
-			id: "classes",
-			title: "Classes",
-			description: "All your enrolled classes",
-			group: "Applets",
-			keywords: ["courses", "lectures", "lessons"],
-			iconNoSize: IconChalkboard,
-			icon: <IconChalkboard size={20} />,
-			onTrigger: (action: SpotlightAction) => {
-				Router.push(action.route);
-			},
-			notifications: 0,
-			route: "/app/classes",
-			FC: Classes,
 		},
 	],
 ]);
