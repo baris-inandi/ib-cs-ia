@@ -48,7 +48,7 @@ export default function TopbarSearch() {
 						py={3}
 						sx={(theme) => {
 							return {
-								fontSize: 12,
+								fontSize: 13,
 								borderRadius: theme.radius.sm,
 								backgroundColor: "white",
 								border: `1px solid ${theme.colors.gray[4]}`,

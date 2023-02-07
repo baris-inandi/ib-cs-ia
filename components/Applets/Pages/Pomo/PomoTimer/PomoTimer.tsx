@@ -1,18 +1,43 @@
-import { Box, Button, Flex, Paper, Progress, Text } from "@mantine/core";
-import { useAtom } from "jotai";
-import { useState } from "react";
-import { PomoTime } from "../../../../../lib/applets/pomo/PomoTime";
-import { DEFAULT_MINS, DEFAULT_SECS, pomoTimeAtom } from "../atoms/time.atom";
-import TimerClockText from "./TimerClockText";
+import { Box, Flex, Paper, Progress } from "@mantine/core";
+import { useEffect, useReducer, useRef } from "react";
+import DEFAULT_POMOSTATE from "../../../../../lib/applets/pomo/libPomoState/defaultPomoState";
+import pomoTimerReducer from "../../../../../lib/applets/pomo/libPomoState/pomoTimerReducer/pomoTimerReducer";
+import { NodeInterval } from "../../../../../lib/utils/types";
+import PomoControls from "./PomoControls/PomoControls";
+import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
 
 export default function PomoTimer() {
-	let [ptimeAtom, setPtimeAtom] = useAtom(pomoTimeAtom);
-	let [secs, setSecs] = useState<number>(DEFAULT_SECS);
-	let [mins, setMins] = useState<number>(DEFAULT_MINS);
+	const [pomoState, updatePomoState] = useReducer(
+		pomoTimerReducer,
+		DEFAULT_POMOSTATE,
+	);
 
-	const resetTimer = () => {
-		setPtimeAtom(new PomoTime(Number(mins), Number(secs)));
+	let interval = useRef<NodeInterval | null>(null);
+	const toggleTimer = () => {
+		const startTimer = () => {
+			console.log("start timer");
+			interval.current = setInterval(() => {
+				updatePomoState({
+					...pomoState,
+					remainingSecs: pomoState.remainingSecs - 1,
+				});
+			}, 1000);
+		};
+
+		const stopTimer = () => {
+			console.log("stop timer");
+			clearInterval(interval.current!);
+			interval.current = null;
+		};
+
+		let out = { ...pomoState, paused: !pomoState.paused };
+		out.paused ? stopTimer() : startTimer();
+		updatePomoState(out);
 	};
+
+	useEffect(() => {
+		clearInterval(interval.current!);
+	}, [pomoState]);
 
 	return (
 		<>
@@ -29,8 +54,7 @@ export default function PomoTimer() {
 						};
 					}}
 					value={
-						40
-						/* (ptimeAtom.totalSecs / ptimeAtom.secs) * 100 */
+						(pomoState.totalSecs / pomoState.remainingSecs) * 100
 					}></Progress>
 			</Box>
 			<Paper
@@ -49,37 +73,17 @@ export default function PomoTimer() {
 					justify="space-between"
 					align="center">
 					<Flex align="center" h="100%">
-						<Text color="black" size={64} fw={500}>
-							<Flex justify="center" align="center" gap={24}>
-								<Button
-									variant="light"
-									color="violet"
-									radius={9999}
-									sx={{ fontSize: 20 }}>
-									-5
-								</Button>
-								<Flex justify="center" align="center" px={32}>
-									<TimerClockText
-										value={mins}
-										align="right"></TimerClockText>
-									<Text c="white" size={96}>
-										:
-									</Text>
-									<TimerClockText
-										value={secs}
-										align="left"></TimerClockText>
-								</Flex>
-								<Button
-									variant="light"
-									color="violet"
-									radius={9999}
-									sx={{ fontSize: 20 }}>
-									+5
-								</Button>
-							</Flex>
-						</Text>
+						<PomoTimerInner
+							pomoState={pomoState}
+							updatePomoState={updatePomoState}
+						/>
 					</Flex>
 				</Flex>
+				<PomoControls
+					pomoState={pomoState}
+					toggleTimer={toggleTimer}
+					updatePomoState={updatePomoState}
+				/>
 			</Paper>
 		</>
 	);

@@ -3,7 +3,7 @@ import { IconCat } from "@tabler/icons";
 import { useAtom } from "jotai";
 import { activeAppletAtom } from "../../../../global.atom";
 import applets from "../../../../lib/applets/global/applets";
-import { Style } from "../../../../lib/utils/style";
+import { Style } from "../../../../lib/utils/types";
 import SidebarApplet from "./SidebarApplet/SidebarApplet";
 import SidebarUpperSearchbar from "./SidebarUpperSections/SidebarUpperSearchbar";
 import SidebarUpperUpcoming from "./SidebarUpperSections/SidebarUpperUpcoming";
@@ -15,15 +15,16 @@ interface Props {
 }
 
 const SidebarUpper: React.FC<Props> = (props) => {
+	const [activeApplet] = useAtom(activeAppletAtom);
+
 	const appletSidebarItems = Array.from(applets.values()).map((applet) => (
 		<SidebarApplet
 			classes={props.classes}
 			applet={applet}
 			key={applet.id}
+			active={activeApplet.id === applet.id}
 		/>
 	));
-
-	const [activeApplet] = useAtom(activeAppletAtom);
 
 	return (
 		<>
@@ -34,13 +35,9 @@ const SidebarUpper: React.FC<Props> = (props) => {
 						<Text size={18} fw={600}>
 							SchoolApp
 						</Text>
-						<Text
-							size={14}
-							sx={{
-								minWidth: 200,
-							}}>
-							{activeApplet?.title}
-						</Text>
+						<div className="hidden md:inline">
+							<Text size={14}>{activeApplet?.title}</Text>
+						</div>
 					</Group>
 				</Flex>
 			</props.section>

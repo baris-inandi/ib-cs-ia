@@ -40,19 +40,14 @@ const useStyles = createStyles((theme) => {
 		},
 
 		mainLink: {
-			"display": "flex",
-			"alignItems": "center",
-			"width": "100%",
-			"fontSize": theme.fontSizes.sm,
-			"padding": `10px ${theme.spacing.xs}px`,
-			"borderRadius": theme.radius.md,
-			"fontWeight": 500,
-			"color": theme.colors.gray[7],
-
-			"&:hover": {
-				backgroundColor: theme.colors.gray[1],
-				color: theme.black,
-			},
+			display: "flex",
+			alignItems: "center",
+			width: "100%",
+			fontSize: theme.fontSizes.sm,
+			padding: `10px ${theme.spacing.xs}px`,
+			borderRadius: theme.radius.md,
+			fontWeight: 500,
+			color: theme.colors.gray[7],
 		},
 
 		mainLinkInner: {
@@ -89,19 +84,14 @@ const useStyles = createStyles((theme) => {
 		},
 
 		collectionLink: {
-			"display": "block",
-			"padding": `10px ${theme.spacing.xs}px`,
-			"textDecoration": "none",
-			"borderRadius": theme.radius.md,
-			"fontSize": theme.fontSizes.xs,
-			"color": theme.colors.gray[7],
-			"lineHeight": 1,
-			"fontWeight": 500,
-
-			"&:hover": {
-				backgroundColor: theme.colors.gray[1],
-				color: theme.black,
-			},
+			display: "block",
+			padding: `10px ${theme.spacing.xs}px`,
+			textDecoration: "none",
+			borderRadius: theme.radius.md,
+			fontSize: theme.fontSizes.xs,
+			color: theme.colors.gray[7],
+			lineHeight: 1,
+			fontWeight: 500,
 		},
 	};
 });

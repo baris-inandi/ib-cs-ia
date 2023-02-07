@@ -40,7 +40,7 @@ const Sidebar = () => {
 				overflowY: "scroll",
 			}}
 			height="100%"
-			width={{ sm: 420 }}
+			width={{ sm: 320, md: 380, lg: 450, xl: 480 }}
 			p="md"
 			className={classes.navbar + " noscrollbar"}>
 			<SidebarUpper section={Navbar.Section} classes={classes} />
