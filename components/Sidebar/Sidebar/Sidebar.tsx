@@ -1,8 +1,6 @@
 import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
 import { IconPlus } from "@tabler/icons";
-import { useAtom } from "jotai";
 import Link from "next/link";
-import { accentColorAtom } from "../../atoms/theme.atom";
 import useStyles from "./sidebar.styles";
 import SidebarUpper from "./SidebarUpper/SidebarUpper";
 
@@ -19,8 +17,7 @@ const collections = [
 ];
 
 const Sidebar = () => {
-	const [accent] = useAtom(accentColorAtom);
-	const { classes } = useStyles(accent)();
+	const { classes } = useStyles();
 
 	const collectionLinks = collections.map((collection) => (
 		<Link
@@ -28,21 +25,24 @@ const Sidebar = () => {
 			onClick={(event) => event.preventDefault()}
 			key={collection.label}
 			className={classes.collectionLink}>
-			<span style={{ marginRight: 10, fontSize: 18 }}>{collection.emoji}</span>{" "}
+			<span style={{ marginRight: 10, fontSize: 18 }}>
+				{collection.emoji}
+			</span>{" "}
 			<span style={{ fontSize: 16 }}>{collection.label}</span>
 		</Link>
 	));
 
 	return (
 		<Navbar
+			id="sidebar"
 			sx={{
 				paddingTop: "0 !important",
 				overflowY: "scroll",
 			}}
-			height="100vh"
-			width={{ sm: 400 }}
+			height="100%"
+			width={{ sm: 320, md: 380, lg: 450, xl: 480 }}
 			p="md"
-			className={classes.navbar}>
+			className={classes.navbar + " noscrollbar"}>
 			<SidebarUpper section={Navbar.Section} classes={classes} />
 			<Navbar.Section className={classes.section}>
 				<Group className={classes.collectionsHeader} position="apart">
@@ -50,8 +50,8 @@ const Sidebar = () => {
 						Courses
 					</Text>
 					<Tooltip label="New Course" withArrow position="top">
-						<ActionIcon variant="default" size={32}>
-							<IconPlus size={22} stroke={1.5} />
+						<ActionIcon variant="default" size={24}>
+							<IconPlus size={16} stroke={1.5} />
 						</ActionIcon>
 					</Tooltip>
 				</Group>

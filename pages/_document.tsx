@@ -1,11 +1,11 @@
+import { createStylesServer, ServerStyles } from "@mantine/next";
 import Document, {
+	DocumentContext,
 	Head,
 	Html,
 	Main,
 	NextScript,
-	DocumentContext,
 } from "next/document";
-import { ServerStyles, createStylesServer } from "@mantine/next";
 const stylesServer = createStylesServer();
 
 export default class _Document extends Document {

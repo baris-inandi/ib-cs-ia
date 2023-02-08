@@ -10,12 +10,13 @@ interface Props {
 const AppSpotlightProvider: React.FC<Props> = (props) => {
 	return (
 		<SpotlightProvider
+			limit={5}
 			placeholder="Search..."
 			searchIcon={(<IconSearch size={18} />) as unknown as ReactNode}
 			shortcut={["mod + P", "mod + K", "."]}
 			highlightQuery
-			transitionDuration={150}
-			transition="rotate-right"
+			transitionDuration={200}
+			transition="scale"
 			actions={spotlightActions as SpotlightAction[]}>
 			{props.children}
 		</SpotlightProvider>
