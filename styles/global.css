@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 /* width */
 ::-webkit-scrollbar {
@@ -8,11 +8,11 @@
 /* Track */
 ::-webkit-scrollbar-track {
 	background: transparent;
-	border: 1px solid #40405020;
+	border: 1px solid #ced4da;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: #40405050;
+	background: #ced4da;
 	border-radius: 999px;
 }

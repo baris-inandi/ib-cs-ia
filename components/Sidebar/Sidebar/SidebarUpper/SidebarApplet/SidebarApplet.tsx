@@ -1,4 +1,4 @@
-import { UnstyledButton } from "@mantine/core";
+import { Box, Text, UnstyledButton } from "@mantine/core";
 import { useRouter } from "next/router";
 import { Applet } from "../../../../../lib/applets/global/applets";
 import { Style } from "../../../../../lib/utils/types";
@@ -20,20 +20,34 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
 			sx={(theme) => {
 				return props.active
 					? {
-							background: theme.colors.gray[0],
-							border: `1px solid ${theme.colors.gray[4]}`,
+							background: theme.colors.indigo[0],
+							border: `1px solid ${theme.colors.indigo[1]}`,
 					  }
-					: {};
+					: {
+							border: `1px solid transparent`,
+					  };
 			}}
 			className={props.classes.mainLink}>
-			<div className={props.classes.mainLinkInner}>
+			<Box
+				sx={(theme) => {
+					return props.active
+						? {
+								color: theme.colors.indigo[9],
+						  }
+						: {};
+				}}
+				className={props.classes.mainLinkInner}>
 				<props.appletOrCourse.iconNoSize
 					size={20}
-					className={props.classes.mainLinkIcon}
+					className={`${props.classes.mainLinkIcon} ${
+						props.active
+							? props.classes.mainLinkIconActive
+							: props.classes.mainLinkIconInactive
+					}`}
 					stroke={1.5}
 				/>
-				<span>{props.appletOrCourse.title}</span>
-			</div>
+				<Text>{props.appletOrCourse.title}</Text>
+			</Box>
 		</UnstyledButton>
 	);
 };

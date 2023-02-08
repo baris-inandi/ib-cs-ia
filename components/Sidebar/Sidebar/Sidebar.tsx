@@ -1,5 +1,4 @@
-import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
-import { IconPlus } from "@tabler/icons";
+import { Navbar } from "@mantine/core";
 import useStyles from "./sidebar.styles";
 import SidebarApplet from "./SidebarUpper/SidebarApplet/SidebarApplet";
 import SidebarUpper from "./SidebarUpper/SidebarUpper";
@@ -32,24 +31,24 @@ const Sidebar = () => {
 		<Navbar
 			id="sidebar"
 			sx={{
-				paddingTop: "0 !important",
+				border: "none",
 				overflowY: "scroll",
 			}}
 			height="100%"
-			width={{ sm: 300, md: 350, lg: 400, xl: 450 }}
-			p="md"
+			width={{ sm: 280, md: 300, lg: 320, xl: 400 }}
+			pb="lg"
 			className={classes.navbar + " noscrollbar"}>
 			<SidebarUpper section={Navbar.Section} classes={classes} />
 			{/* <Navbar.Section className={classes.section}>
 				<Group position="apart" px={20}>
-					<Text size="md" weight={500} color="dimmed">
-						Courses
-					</Text>
-					<Tooltip label="New Course" withArrow position="top">
-						<ActionIcon radius="md" variant="default" size={24}>
-							<IconPlus size={16} stroke={1.5} />
-						</ActionIcon>
-					</Tooltip>
+				<Text size="md" weight={500} color="dimmed">
+				Courses
+				</Text>
+				<Tooltip label="New Course" withArrow position="top">
+				<ActionIcon radius="md" variant="default" size={24}>
+				<IconPlus size={16} stroke={1.5} />
+				</ActionIcon>
+				</Tooltip>
 				</Group>
 			</Navbar.Section> */}
 		</Navbar>

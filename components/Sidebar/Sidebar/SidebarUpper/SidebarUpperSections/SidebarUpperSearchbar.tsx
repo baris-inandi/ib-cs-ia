@@ -40,12 +40,12 @@ export default function TopbarSearch() {
 								color: theme.colors.gray[7],
 							};
 						}}>
-						<IconSearch size={18} />
-						<Text size={16}>Search</Text>
+						<IconSearch size={16} />
+						<Text size={14}>Search</Text>
 					</Flex>
 					<Text
 						px={10}
-						py={3}
+						py={2}
 						sx={(theme) => {
 							return {
 								fontSize: 13,

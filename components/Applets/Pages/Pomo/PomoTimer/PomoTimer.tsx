@@ -1,10 +1,11 @@
-import { Box, Flex, Paper, Progress } from "@mantine/core";
+import { Flex, Paper } from "@mantine/core";
 import { useAtom } from "jotai";
 import { useEffect, useReducer, useRef } from "react";
 import DEFAULT_POMOSTATE from "../../../../../lib/applets/pomo/libPomoState/defaultPomoState";
 import pomoTimerReducer from "../../../../../lib/applets/pomo/libPomoState/pomoTimerReducer/pomoTimerReducer";
 import { NodeInterval } from "../../../../../lib/utils/types";
 import { pomoThemeAtom } from "../atoms/pomoTheme.atom";
+import PomoProgress from "./PomoProgress/PomoProgress";
 import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
 
 export default function PomoTimer() {
@@ -44,15 +45,18 @@ export default function PomoTimer() {
 
 	const skip = () => {};
 
+	const progressHeight = 20;
+
 	return (
 		<>
 			<Paper
-				withBorder
 				h={400}
+				pt={progressHeight}
 				w="100%"
 				sx={(theme) => {
 					return {
-						backgroundColor: theme.colors[pomoTheme][4],
+						backgroundColor: theme.colors[pomoTheme][0],
+						border: `1px solid ${theme.colors[pomoTheme][1]}`,
 					};
 				}}>
 				<Flex
@@ -69,24 +73,12 @@ export default function PomoTimer() {
 							updatePomoState={updatePomoState}
 						/>
 					</Flex>
+					<PomoProgress
+						height={progressHeight}
+						pomoState={pomoState}
+					/>
 				</Flex>
 			</Paper>
-			<Box w="100%" pt={12}>
-				<Progress
-					h={26}
-					radius="md"
-					w="100%"
-					color={pomoTheme}
-					striped
-					sx={(theme) => {
-						return {
-							backgroundColor: theme.colors[pomoTheme][3],
-						};
-					}}
-					value={
-						(pomoState.totalSecs / pomoState.remainingSecs) * 100
-					}></Progress>
-			</Box>
 		</>
 	);
 }

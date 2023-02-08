@@ -18,10 +18,11 @@ const PomoTimerControlsButton: React.FC<PomoTimerControlsButtonProps> = (
 
 	return (
 		<Button
-			variant="light"
+			variant="outline"
 			color={pomoTheme}
 			radius={9999}
 			onClick={props.onClick}
+			fw={400}
 			sx={{ fontSize: 20 }}
 			disabled={props.disabled}>
 			{props.children

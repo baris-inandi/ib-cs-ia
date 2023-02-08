@@ -3,15 +3,13 @@ import { createStyles } from "@mantine/core";
 const useStyles = createStyles((theme) => {
 	return {
 		navbar: {
+			padding: "0 !important",
 			backgroundColor: theme.white,
 		},
 
-		sectionCompact: {
-			"marginLeft": -theme.spacing.md,
-			"marginRight": -theme.spacing.md,
-
+		section: {
 			"&:not(:last-of-type)": {
-				borderBottom: `1px solid ${theme.colors.gray[3]}`,
+				borderBottom: `1px solid ${theme.colors.gray[4]}`,
 			},
 		},
 
@@ -20,12 +18,6 @@ const useStyles = createStyles((theme) => {
 			fontSize: 10,
 			backgroundColor: theme.colors.gray[0],
 			border: `1px solid ${theme.colors.gray[2]}`,
-		},
-
-		mainLinks: {
-			paddingLeft: 10,
-			paddingRight: 10,
-			paddingBottom: 20,
 		},
 
 		mainLink: {
@@ -47,7 +39,14 @@ const useStyles = createStyles((theme) => {
 
 		mainLinkIcon: {
 			marginRight: theme.spacing.sm,
+		},
+
+		mainLinkIconInactive: {
 			color: theme.colors.gray[7],
+		},
+
+		mainLinkIconActive: {
+			color: theme.colors.indigo[9],
 		},
 	};
 });

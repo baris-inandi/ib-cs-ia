@@ -4,8 +4,10 @@ import {
 	IconPlayerPlay,
 	IconPlayerSkipForward,
 } from "@tabler/icons";
+import { useAtom } from "jotai";
 import IPomoState from "../../../../../../lib/applets/pomo/libPomoState/IPomoState";
 import libPomoState from "../../../../../../lib/applets/pomo/libPomoState/libPomoState";
+import { pomoThemeAtom } from "../../atoms/pomoTheme.atom";
 import PomoTimerClock from "./PomoTimerClock/PomoTimerClock";
 import PomoTimerControlsButton from "./PomoTimerControlsButton/PomoTimerControlsButton";
 interface PomoTimerInnerProps {
@@ -16,11 +18,24 @@ interface PomoTimerInnerProps {
 }
 
 const PomoTimerInner: React.FC<PomoTimerInnerProps> = (props) => {
+	const [pomoTheme] = useAtom(pomoThemeAtom);
+
 	return (
-		<Flex direction="column" align="center" c="white" gap={20}>
-			<Text size={18}>Pomodoro #1 - focus</Text>
+		<Flex
+			direction="column"
+			align="center"
+			sx={(theme) => {
+				return {
+					color: theme.colors[pomoTheme][9],
+				};
+			}}
+			gap={20}>
+			<Text size={18}>
+				Pomodoro #{props.pomoState.currentPomodoroNumber} •{" "}
+				{props.pomoState.currentPomodoroType}
+			</Text>
 			<PomoTimerClock pomoState={props.pomoState} />
-			<Flex justify="center" align="center" gap={20}>
+			<Flex justify="center" align="center" gap={18}>
 				<PomoTimerControlsButton
 					onClick={() => {
 						props.updatePomoState(
@@ -36,13 +51,13 @@ const PomoTimerInner: React.FC<PomoTimerInnerProps> = (props) => {
 					disabled={false}
 					onClick={props.toggleTimer}>
 					{props.pomoState.paused ? (
-						<IconPlayerPlay />
+						<IconPlayerPlay size={20} />
 					) : (
-						<IconPlayerPause />
+						<IconPlayerPause size={20} />
 					)}
 				</PomoTimerControlsButton>
 				<PomoTimerControlsButton disabled={false} onClick={props.skip}>
-					<IconPlayerSkipForward />
+					<IconPlayerSkipForward size={20} />
 				</PomoTimerControlsButton>
 				<PomoTimerControlsButton
 					onClick={() => {

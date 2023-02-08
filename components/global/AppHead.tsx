@@ -23,8 +23,8 @@ export default function AppHead() {
 				content="/icons/browserconfig.xml"
 			/>
 			<meta name="msapplication-tap-highlight" content="no" />
-			<meta name="msapplication-TileColor" content="white" />
-			<meta name="theme-color" content="white" />
+			<meta name="msapplication-TileColor" content="#4c6ef5" />
+			<meta name="theme-color" content="#4c6ef5" />
 
 			<link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
 			<link

@@ -1,5 +1,5 @@
 import { Box, Flex, Group, Text } from "@mantine/core";
-import { IconCat } from "@tabler/icons";
+import { IconBox } from "@tabler/icons";
 import { useAtom } from "jotai";
 import { activeAppletAtom } from "../../../../global.atom";
 import applets from "../../../../lib/applets/global/applets";
@@ -28,37 +28,36 @@ const SidebarUpper: React.FC<Props> = (props) => {
 
 	return (
 		<>
-			<props.section className={props.classes.sectionCompact}>
-				<Flex gap={8} py={14} px={20} align="center">
-					<IconCat size={18} />
+			<props.section className={props.classes.section}>
+				<Flex gap={8} py={14} px={20} h={50} align="center">
+					<IconBox size={22} />
 					<Group align="baseline">
-						<Text size={15} fw={600}>
+						<Text size={16} fw={600}>
 							SchoolApp
 						</Text>
-						<div className="hidden md:inline">
-							<Text size={12}>{activeApplet?.title}</Text>
-						</div>
 					</Group>
 				</Flex>
 			</props.section>
 
-			<props.section className={props.classes.sectionCompact}>
+			<props.section className={props.classes.section}>
 				<SidebarUpperUserButton
 					image="https://i.imgur.com/fGxgcDF.png"
 					name="Bob Rulebreaker"
 					email="Product owner"
 				/>
 			</props.section>
-			<props.section className={props.classes.sectionCompact}>
+			<props.section className={props.classes.section}>
 				<Box p={10}>
-					<SidebarUpperSearchbar />
+					<Box pb={15}>
+						<SidebarUpperSearchbar />
+					</Box>
+					<div className={props.classes.mainLinks}>
+						{appletSidebarItems}
+					</div>
 				</Box>
-				<div className={props.classes.mainLinks}>
-					{appletSidebarItems}
-				</div>
-				<SidebarUpperUpcoming />
-			</props.section>
-			<props.section className={props.classes.sectionCompact}>
+				<Box p={10}>
+					<SidebarUpperUpcoming />
+				</Box>
 			</props.section>
 		</>
 	);

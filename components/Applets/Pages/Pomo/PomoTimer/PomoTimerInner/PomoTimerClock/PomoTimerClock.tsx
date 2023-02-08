@@ -21,7 +21,7 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
 			<TimerClockText
 				value={remaining.mins}
 				align="right"></TimerClockText>
-			<Text c="white" size={96} lh={1}>
+			<Text size={96} lh={1} fw={300}>
 				:
 			</Text>
 			<TimerClockText

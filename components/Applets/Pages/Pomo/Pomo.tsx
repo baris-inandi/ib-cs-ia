@@ -3,7 +3,7 @@ import PomoTimer from "./PomoTimer/PomoTimer";
 
 const Pomo = () => {
 	return (
-		<Box w="100%" p={20}>
+		<Box w="100%">
 			<PomoTimer />
 		</Box>
 	);
