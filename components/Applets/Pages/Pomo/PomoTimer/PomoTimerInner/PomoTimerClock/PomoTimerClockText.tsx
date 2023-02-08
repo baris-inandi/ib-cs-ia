@@ -6,7 +6,7 @@ export default function TimerClockText(props: {
 	align: "left" | "center" | "right";
 }) {
 	return (
-		<Text size={96} c="white" w={"fit-content"}>
+		<Text size={96} c="white" w={"fit-content"} lh={1}>
 			{toValidTimeString(props.value)}
 		</Text>
 	);

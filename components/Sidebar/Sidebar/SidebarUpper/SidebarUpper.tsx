@@ -20,7 +20,7 @@ const SidebarUpper: React.FC<Props> = (props) => {
 	const appletSidebarItems = Array.from(applets.values()).map((applet) => (
 		<SidebarApplet
 			classes={props.classes}
-			applet={applet}
+			appletOrCourse={applet}
 			key={applet.id}
 			active={activeApplet.id === applet.id}
 		/>
@@ -29,14 +29,14 @@ const SidebarUpper: React.FC<Props> = (props) => {
 	return (
 		<>
 			<props.section className={props.classes.sectionCompact}>
-				<Flex gap={8} p={20} align="center">
-					<IconCat />
+				<Flex gap={8} py={14} px={20} align="center">
+					<IconCat size={18} />
 					<Group align="baseline">
-						<Text size={18} fw={600}>
+						<Text size={15} fw={600}>
 							SchoolApp
 						</Text>
 						<div className="hidden md:inline">
-							<Text size={14}>{activeApplet?.title}</Text>
+							<Text size={12}>{activeApplet?.title}</Text>
 						</div>
 					</Group>
 				</Flex>
@@ -56,9 +56,9 @@ const SidebarUpper: React.FC<Props> = (props) => {
 				<div className={props.classes.mainLinks}>
 					{appletSidebarItems}
 				</div>
-			</props.section>
-			<props.section className={props.classes.section}>
 				<SidebarUpperUpcoming />
+			</props.section>
+			<props.section className={props.classes.sectionCompact}>
 			</props.section>
 		</>
 	);
