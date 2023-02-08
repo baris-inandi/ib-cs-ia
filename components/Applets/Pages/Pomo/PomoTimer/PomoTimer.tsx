@@ -1,9 +1,10 @@
 import { Box, Flex, Paper, Progress } from "@mantine/core";
+import { useAtom } from "jotai";
 import { useEffect, useReducer, useRef } from "react";
 import DEFAULT_POMOSTATE from "../../../../../lib/applets/pomo/libPomoState/defaultPomoState";
 import pomoTimerReducer from "../../../../../lib/applets/pomo/libPomoState/pomoTimerReducer/pomoTimerReducer";
 import { NodeInterval } from "../../../../../lib/utils/types";
-import PomoControls from "./PomoControls/PomoControls";
+import { pomoThemeAtom } from "../atoms/pomoTheme.atom";
 import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
 
 export default function PomoTimer() {
@@ -11,6 +12,8 @@ export default function PomoTimer() {
 		pomoTimerReducer,
 		DEFAULT_POMOSTATE,
 	);
+
+	const [pomoTheme] = useAtom(pomoThemeAtom);
 
 	let interval = useRef<NodeInterval | null>(null);
 	const toggleTimer = () => {
@@ -39,31 +42,17 @@ export default function PomoTimer() {
 		clearInterval(interval.current!);
 	}, [pomoState]);
 
+	const skip = () => {};
+
 	return (
 		<>
-			<Box w="100%" pb={12}>
-				<Progress
-					h={26}
-					radius="md"
-					w="100%"
-					color="violet"
-					striped
-					sx={(theme) => {
-						return {
-							backgroundColor: theme.colors.violet[3],
-						};
-					}}
-					value={
-						(pomoState.totalSecs / pomoState.remainingSecs) * 100
-					}></Progress>
-			</Box>
 			<Paper
 				withBorder
 				h={400}
 				w="100%"
 				sx={(theme) => {
 					return {
-						backgroundColor: theme.colors.violet[5],
+						backgroundColor: theme.colors[pomoTheme][4],
 					};
 				}}>
 				<Flex
@@ -74,17 +63,30 @@ export default function PomoTimer() {
 					align="center">
 					<Flex align="center" h="100%">
 						<PomoTimerInner
+							toggleTimer={toggleTimer}
+							skip={skip}
 							pomoState={pomoState}
 							updatePomoState={updatePomoState}
 						/>
 					</Flex>
 				</Flex>
-				<PomoControls
-					pomoState={pomoState}
-					toggleTimer={toggleTimer}
-					updatePomoState={updatePomoState}
-				/>
 			</Paper>
+			<Box w="100%" pt={12}>
+				<Progress
+					h={26}
+					radius="md"
+					w="100%"
+					color={pomoTheme}
+					striped
+					sx={(theme) => {
+						return {
+							backgroundColor: theme.colors[pomoTheme][3],
+						};
+					}}
+					value={
+						(pomoState.totalSecs / pomoState.remainingSecs) * 100
+					}></Progress>
+			</Box>
 		</>
 	);
 }

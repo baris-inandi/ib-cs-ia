@@ -4,7 +4,7 @@ import { Applet } from "../../../../../lib/applets/global/applets";
 import { Style } from "../../../../../lib/utils/types";
 
 interface SidebarAppletProps {
-	applet: Applet;
+	appletOrCourse?: Applet | any; // TODO: type this when Course has an interface implemented
 	classes: Style;
 	active?: boolean;
 }
@@ -15,7 +15,7 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
 	return (
 		<UnstyledButton
 			onClick={() => {
-				router.push(props.applet.route);
+				router.push(props.appletOrCourse.route);
 			}}
 			sx={(theme) => {
 				return props.active
@@ -27,12 +27,12 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
 			}}
 			className={props.classes.mainLink}>
 			<div className={props.classes.mainLinkInner}>
-				<props.applet.iconNoSize
-					size={24}
+				<props.appletOrCourse.iconNoSize
+					size={20}
 					className={props.classes.mainLinkIcon}
 					stroke={1.5}
 				/>
-				<span>{props.applet.title}</span>
+				<span>{props.appletOrCourse.title}</span>
 			</div>
 		</UnstyledButton>
 	);

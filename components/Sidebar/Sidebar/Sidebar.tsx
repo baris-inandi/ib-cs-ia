@@ -1,10 +1,10 @@
 import { ActionIcon, Group, Navbar, Text, Tooltip } from "@mantine/core";
 import { IconPlus } from "@tabler/icons";
-import Link from "next/link";
 import useStyles from "./sidebar.styles";
+import SidebarApplet from "./SidebarUpper/SidebarApplet/SidebarApplet";
 import SidebarUpper from "./SidebarUpper/SidebarUpper";
 
-const collections = [
+const courses = [
 	{ emoji: "👍", label: "Sales" },
 	{ emoji: "🚚", label: "Deliveries" },
 	{ emoji: "💸", label: "Discounts" },
@@ -19,17 +19,13 @@ const collections = [
 const Sidebar = () => {
 	const { classes } = useStyles();
 
-	const collectionLinks = collections.map((collection) => (
-		<Link
-			href="/"
-			onClick={(event) => event.preventDefault()}
-			key={collection.label}
-			className={classes.collectionLink}>
-			<span style={{ marginRight: 10, fontSize: 18 }}>
-				{collection.emoji}
-			</span>{" "}
-			<span style={{ fontSize: 16 }}>{collection.label}</span>
-		</Link>
+	const coursesLinks = courses.map((course) => (
+		<SidebarApplet
+			classes={classes}
+			appletOrCourse={course}
+			key={course.label}
+			active={false} /* TODO: fix */
+		/>
 	));
 
 	return (
@@ -40,23 +36,22 @@ const Sidebar = () => {
 				overflowY: "scroll",
 			}}
 			height="100%"
-			width={{ sm: 320, md: 380, lg: 450, xl: 480 }}
+			width={{ sm: 300, md: 350, lg: 400, xl: 450 }}
 			p="md"
 			className={classes.navbar + " noscrollbar"}>
 			<SidebarUpper section={Navbar.Section} classes={classes} />
-			<Navbar.Section className={classes.section}>
-				<Group className={classes.collectionsHeader} position="apart">
+			{/* <Navbar.Section className={classes.section}>
+				<Group position="apart" px={20}>
 					<Text size="md" weight={500} color="dimmed">
 						Courses
 					</Text>
 					<Tooltip label="New Course" withArrow position="top">
-						<ActionIcon variant="default" size={24}>
+						<ActionIcon radius="md" variant="default" size={24}>
 							<IconPlus size={16} stroke={1.5} />
 						</ActionIcon>
 					</Tooltip>
 				</Group>
-				<div className={classes.collections}>{collectionLinks}</div>
-			</Navbar.Section>
+			</Navbar.Section> */}
 		</Navbar>
 	);
 };

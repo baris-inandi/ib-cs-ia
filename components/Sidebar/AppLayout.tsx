@@ -8,7 +8,7 @@ export default function AppLayout(props: { children: React.ReactNode }) {
 				return {
 					height: "100vh",
 					width: "100%",
-					backgroundColor: theme.colors.gray[1],
+					backgroundColor: theme.white,
 					borderTop: `1px solid ${theme.colors.gray[4]}`,
 				};
 			}}>
