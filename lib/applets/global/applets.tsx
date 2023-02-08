@@ -31,15 +31,31 @@ import CalendarToolbar from "../../../components/Applets/Toolbars/Calendar/Calen
 		- The app layout is a component that renders the sidebar, the toolbar, and the applet.
 		- Every applet has a toolbar. The toolbar is a component that is rendered in the top right of the applet.
 		  It is used to provide additional functionality to the applet - similar to that of MacOS toolbars.
+		- The toolbar is configured using the optional `toolbar?` property of `Applet`. It can be any `React.FC`
+	- Applets must follow the structure below. Every property is explained in the comments below.
 */
 
 interface AppletAdditionalFields extends SpotlightAction {
+	// IA: The additional fields on `Applet` for the project's business logic.
 	route: string;
+	// route: any web route that complies with the Next.js dyanmic route `/app/[appId].tsx`.
+	// This is where the applet is meant to live.
 	iconNoSize: TablerIcon;
+	// iconNoSize: the icon of the applet. This is the icon that is used in the sidebar.
+	// It is not sized so that the component calling this can resize it.
 	icon: ReactNode;
+	// icon: Same as `iconNoSize` but has a predefined size of 20px. This is used in the spotlight
+	// since the Mantine spotlight component doesn't enforce an icon size by default.
 	FC: React.FC;
+	// FC: The React functional component that is rendered when the applet is accessed.
+	// The entirety of the applet is encapsulated in this component.
 	toolbar?: React.FC;
+	// toolbar?: The optional field that contains the toolbar component for the applet.
+	// The `<AppLayout />` will render this component in the top right of the applet.
 	toolbarTitleOverride?: string;
+	// toolbarTitleOverride?: The optional field that overrides the applet title on the toolbar.
+	// Eg.this field can override the title `Calendar` with `February 2023` to make use of the
+	// title area for additional functionality.
 }
 
 export type Applet = SpotlightAction & AppletAdditionalFields;
