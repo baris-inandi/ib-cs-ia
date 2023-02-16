@@ -16,10 +16,10 @@ import Dashboard from "../../../components/Applets/Pages/Dashboard";
 import Pomo from "../../../components/Applets/Pages/Pomo/Pomo";
 import Recommended from "../../../components/Applets/Pages/Recommended";
 import Scores from "../../../components/Applets/Pages/Scores";
-import Tasks from "../../../components/Applets/Pages/Tasks";
+import Tasks from "../../../components/Applets/Pages/Tasks/Tasks";
 import CalendarToolbar from "../../../components/Applets/Toolbars/Calendar/CalendarToolbar";
 
-/* 
+/*
 	IA:
 	- Applets are primary pages of the app. They are accessed via the sidebar. Each of them are smaller apps that communicate with each other.
 	- Each applet is stored in a Nextjs route. When the sidebar item is clicked, the `applet.route` is pushed to the router.
