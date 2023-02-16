@@ -9,77 +9,76 @@ import PomoProgress from "./PomoProgress/PomoProgress";
 import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
 
 export default function PomoTimer() {
-	const [pomoState, updatePomoState] = useReducer(
-		pomoTimerReducer,
-		DEFAULT_POMOSTATE,
-	);
+  const [pomoState, updatePomoState] = useReducer(
+    pomoTimerReducer,
+    DEFAULT_POMOSTATE,
+  );
 
-	const [pomoTheme] = useAtom(pomoThemeAtom);
+  const [pomoTheme] = useAtom(pomoThemeAtom);
 
-	let interval = useRef<NodeInterval | null>(null);
-	const toggleTimer = () => {
-		const startTimer = () => {
-			console.log("start timer");
-			interval.current = setInterval(() => {
-				updatePomoState({
-					...pomoState,
-					remainingSecs: pomoState.remainingSecs - 1,
-				});
-			}, 1000);
-		};
+  let interval = useRef<NodeInterval | null>(null);
+  const toggleTimer = () => {
+    const startTimer = () => {
+      console.log("start timer");
+      interval.current = setInterval(() => {
+        updatePomoState({
+          ...pomoState,
+          remainingSecs: pomoState.remainingSecs - 1,
+        });
+      }, 1000);
+    };
 
-		const stopTimer = () => {
-			console.log("stop timer");
-			clearInterval(interval.current!);
-			interval.current = null;
-		};
+    const stopTimer = () => {
+      console.log("stop timer");
+      clearInterval(interval.current!);
+      interval.current = null;
+    };
 
-		let out = { ...pomoState, paused: !pomoState.paused };
-		out.paused ? stopTimer() : startTimer();
-		updatePomoState(out);
-	};
+    let out = { ...pomoState, paused: !pomoState.paused };
+    out.paused ? stopTimer() : startTimer();
+    updatePomoState(out);
+  };
 
-	useEffect(() => {
-		clearInterval(interval.current!);
-	}, [pomoState]);
+  useEffect(() => {
+    clearInterval(interval.current!);
+  }, [pomoState]);
 
-	const skip = () => {};
+  const skip = () => {};
 
-	const progressHeight = 20;
+  const progressHeight = 20;
 
-	return (
-		<>
-			<Paper
-				h={400}
-				pt={progressHeight}
-				w="100%"
-				radius="lg"
-				sx={(theme) => {
-					return {
-						backgroundColor: theme.colors[pomoTheme][0],
-						border: `1px solid ${theme.colors[pomoTheme][1]}`,
-					};
-				}}>
-				<Flex
-					direction="column"
-					w="100%"
-					h="100%"
-					justify="space-between"
-					align="center">
-					<Flex align="center" h="100%">
-						<PomoTimerInner
-							toggleTimer={toggleTimer}
-							skip={skip}
-							pomoState={pomoState}
-							updatePomoState={updatePomoState}
-						/>
-					</Flex>
-					<PomoProgress
-						height={progressHeight}
-						pomoState={pomoState}
-					/>
-				</Flex>
-			</Paper>
-		</>
-	);
+  return (
+    <>
+      <Paper
+        h={400}
+        pt={progressHeight}
+        w="100%"
+        radius="lg"
+        sx={(theme) => {
+          return {
+            backgroundColor: theme.colors[pomoTheme][0],
+            border: `1px solid ${theme.colors[pomoTheme][1]}`,
+          };
+        }}
+      >
+        <Flex
+          direction="column"
+          w="100%"
+          h="100%"
+          justify="space-between"
+          align="center"
+        >
+          <Flex align="center" h="100%">
+            <PomoTimerInner
+              toggleTimer={toggleTimer}
+              skip={skip}
+              pomoState={pomoState}
+              updatePomoState={updatePomoState}
+            />
+          </Flex>
+          <PomoProgress height={progressHeight} pomoState={pomoState} />
+        </Flex>
+      </Paper>
+    </>
+  );
 }

@@ -7,21 +7,22 @@ import "../styles/global.css";
 import "../styles/tailwind.css";
 
 export default function App(props: AppProps) {
-	const { Component, pageProps } = props;
+  const { Component, pageProps } = props;
 
-	return (
-		<>
-			<AppHead />
-			<AppSpotlightProvider>
-				<MantineProvider
-					withGlobalStyles
-					withNormalizeCSS
-					theme={mantineTheme}>
-					<main>
-						<Component {...pageProps} />
-					</main>
-				</MantineProvider>
-			</AppSpotlightProvider>
-		</>
-	);
+  return (
+    <>
+      <AppHead />
+      <AppSpotlightProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={mantineTheme}
+        >
+          <main>
+            <Component {...pageProps} />
+          </main>
+        </MantineProvider>
+      </AppSpotlightProvider>
+    </>
+  );
 }

@@ -1,5 +1,5 @@
 const Scores = () => {
-	return <div>Scores</div>;
+  return <div>Scores</div>;
 };
 
 export default Scores;
