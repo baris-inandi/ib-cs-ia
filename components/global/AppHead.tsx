@@ -1,6 +1,15 @@
+import { useMantineColorScheme, useMantineTheme } from "@mantine/core";
 import Head from "next/head";
 
 export default function AppHead() {
+  const theme = useMantineTheme();
+  const { colorScheme } = useMantineColorScheme();
+  const themeColor =
+    colorScheme === "dark"
+      ? theme.colors.dark[9]
+      : theme.white;
+  console.log(themeColor);
+
   return (
     <Head>
       <title>Page title</title>
@@ -23,8 +32,8 @@ export default function AppHead() {
         content="/icons/browserconfig.xml"
       />
       <meta name="msapplication-tap-highlight" content="no" />
-      <meta name="msapplication-TileColor" content="#4c6ef5" />
-      <meta name="theme-color" content="#4c6ef5" />
+      <meta name="msapplication-TileColor" content={themeColor} />
+      <meta name="theme-color" content={themeColor} />
 
       <link
         rel="apple-touch-icon"

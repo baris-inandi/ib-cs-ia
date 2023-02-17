@@ -1,25 +1,30 @@
 import { Text } from "@mantine/core";
 import { useListState } from "@mantine/hooks";
 import { IconGripVertical } from "@tabler/icons";
+import { useEffect } from "react";
 import {
   DragDropContext,
   Draggable,
   Droppable,
 } from "react-beautiful-dnd";
 import useStyles from "./DragList.styles";
-
 interface DragListProps {
-  data: Array<{
+  data: {
     position: number;
     mass: number;
     symbol: string;
     name: string;
-  }>;
+  }[];
 }
 
-const DragList: React.FC<DragListProps> = ({ data }) => {
+export default function DragList({ data }: DragListProps) {
   const { classes, cx } = useStyles();
   const [state, handlers] = useListState(data);
+
+  useEffect(() => {
+    console.log(state);
+    // TODO: update the list order in the database
+  }, [state]);
 
   const items = state.map((item, index) => (
     <Draggable
@@ -27,7 +32,7 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
       index={index}
       draggableId={item.symbol}
     >
-      {(provided: any, snapshot: any) => (
+      {(provided, snapshot) => (
         <div
           className={cx(classes.item, {
             [classes.itemDragging]: snapshot.isDragging,
@@ -43,7 +48,13 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
           </div>
           <Text className={classes.symbol}>{item.symbol}</Text>
           <div>
-            <Text>{item.name}</Text>
+            <Text
+              onClick={() => {
+                console.log("click");
+              }}
+            >
+              {item.name}
+            </Text>
             <Text color="dimmed" size="sm">
               Position: {item.position} • Mass: {item.mass}
             </Text>
@@ -55,7 +66,7 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
 
   return (
     <DragDropContext
-      onDragEnd={({ destination, source }: any) =>
+      onDragEnd={({ destination, source }) =>
         handlers.reorder({
           from: source.index,
           to: destination?.index || 0,
@@ -63,7 +74,7 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
       }
     >
       <Droppable droppableId="dnd-list" direction="vertical">
-        {(provided: any) => (
+        {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {items}
             {provided.placeholder}
@@ -72,6 +83,4 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
       </Droppable>
     </DragDropContext>
   );
-};
-
-export default DragList;
+}

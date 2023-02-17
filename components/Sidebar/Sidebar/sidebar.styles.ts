@@ -4,12 +4,19 @@ const useStyles = createStyles((theme) => {
   return {
     navbar: {
       padding: "0 !important",
-      backgroundColor: theme.white,
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[7]
+          : theme.white,
     },
 
     section: {
       "&:not(:last-of-type)": {
-        borderBottom: `1px solid ${theme.colors.gray[4]}`,
+        borderBottom: `1px solid ${
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[5]
+            : theme.colors.gray[4]
+        }`,
       },
     },
 
@@ -28,7 +35,7 @@ const useStyles = createStyles((theme) => {
       padding: `9px ${theme.spacing.xs}px`,
       borderRadius: theme.radius.md,
       fontWeight: 500,
-      color: theme.colors.gray[7],
+      color: theme.colorScheme === "dark" ? theme.colors.dark[0]: theme.colors.gray[7],
     },
 
     mainLinkInner: {
@@ -39,14 +46,6 @@ const useStyles = createStyles((theme) => {
 
     mainLinkIcon: {
       marginRight: theme.spacing.sm,
-    },
-
-    mainLinkIconInactive: {
-      color: theme.colors.gray[7],
-    },
-
-    mainLinkIconActive: {
-      color: theme.colors.indigo[9],
     },
   };
 });

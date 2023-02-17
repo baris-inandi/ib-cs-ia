@@ -2,19 +2,21 @@ import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   item: {
+    transition: "box-shadow 0.1s ease-out",
     display: "flex",
     alignItems: "center",
     borderRadius: theme.radius.md,
     border: `1px solid ${
       theme.colorScheme === "dark"
         ? theme.colors.dark[5]
-        : theme.colors.gray[2]
+        : theme.colors.gray[3]
     }`,
     padding: `${theme.spacing.sm}px ${theme.spacing.xl}px`,
     paddingLeft: theme.spacing.xl - theme.spacing.md, // to offset drag handle
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white,
     marginBottom: theme.spacing.sm,
+    height: "100%",
   },
 
   itemDragging: {
@@ -39,6 +41,7 @@ const useStyles = createStyles((theme) => ({
         : theme.colors.gray[6],
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
+    backgroundColor: "accent",
   },
 }));
 

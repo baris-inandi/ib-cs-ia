@@ -30,10 +30,14 @@ const Sidebar = () => {
   return (
     <Navbar
       id="sidebar"
-      sx={{
-        border: "none",
+      sx={(theme) => ({
+        borderRight: `1px solid ${
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[5]
+            : theme.colors.gray[4]
+        }`,
         overflowY: "scroll",
-      }}
+      })}
       height="100%"
       width={{ sm: 280, md: 300, lg: 320, xl: 400 }}
       pb="lg"

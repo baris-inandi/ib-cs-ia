@@ -20,8 +20,7 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
       sx={(theme) => {
         return props.active
           ? {
-              background: theme.colors.indigo[0],
-              border: `1px solid ${theme.colors.indigo[1]}`,
+              background: theme.fn.rgba(theme.colors.accent[5], 0.12),
             }
           : {
               border: `1px solid transparent`,
@@ -33,7 +32,10 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
         sx={(theme) => {
           return props.active
             ? {
-                color: theme.colors.indigo[9],
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.accent[3]
+                    : theme.colors.accent[9],
               }
             : {};
         }}
@@ -41,11 +43,7 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
       >
         <props.appletOrCourse.iconNoSize
           size={20}
-          className={`${props.classes.mainLinkIcon} ${
-            props.active
-              ? props.classes.mainLinkIconActive
-              : props.classes.mainLinkIconInactive
-          }`}
+          className={props.classes.mainLinkIcon}
           stroke={1.5}
         />
         <Text>{props.appletOrCourse.title}</Text>

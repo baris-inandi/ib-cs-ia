@@ -25,10 +25,17 @@ export default function TopbarSearch() {
         sx={(theme) => {
           return {
             borderRadius: theme.radius.md,
-            backgroundColor: theme.colors.gray[0],
+            backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[6]
+                    : theme.colors.gray[0],
             color: "black",
             textAlign: "left",
-            border: `1px solid ${theme.colors.gray[4]}`,
+            border: `1px solid ${
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[5]
+                : theme.colors.gray[4]
+            }`,
           };
         }}
       >
@@ -53,8 +60,15 @@ export default function TopbarSearch() {
               return {
                 fontSize: 13,
                 borderRadius: theme.radius.sm,
-                backgroundColor: "white",
-                border: `1px solid ${theme.colors.gray[4]}`,
+                backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[4]
+                    : theme.white,
+                border: `1px solid ${
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[4]
+                    : theme.colors.gray[4]
+                }`,
                 color: theme.colors.gray[6],
               };
             }}

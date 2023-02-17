@@ -13,8 +13,17 @@ export default function AppLayout(props: {
         return {
           height: "100vh",
           width: "100%",
-          backgroundColor: theme.white,
-          borderTop: `1px solid ${theme.colors.gray[4]}`,
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0],
+          color:
+            theme.colorScheme === "dark" ? theme.white : theme.black,
+          borderTop: `1px solid ${
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[5]
+              : theme.colors.gray[4]
+          }`,
         };
       }}
     >
@@ -31,11 +40,15 @@ export default function AppLayout(props: {
         <Flex
           px={20}
           align="center"
-          h={50}
+          h={51}
           mih={50}
           sx={(theme) => {
             return {
-              borderBottom: `1px solid ${theme.colors.gray[4]}`,
+              borderBottom: `1px solid ${
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[5]
+                  : theme.colors.gray[4]
+              }`,
             };
           }}
         >
@@ -43,7 +56,10 @@ export default function AppLayout(props: {
             sx={(theme) => {
               return {
                 flexShrink: 0,
-                color: theme.colors.gray[8],
+                color:
+                  theme.colorScheme === "dark"
+                    ? theme.white
+                    : theme.colors.gray[8],
                 fontWeight: 600,
                 lineHeight: 1,
                 paddingRight: 24,

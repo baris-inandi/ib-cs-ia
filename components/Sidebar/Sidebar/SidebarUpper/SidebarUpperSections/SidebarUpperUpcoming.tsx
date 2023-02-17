@@ -1,4 +1,4 @@
-import { Box, Flex, Group, Text } from "@mantine/core";
+import { Badge, Box, Flex, Group, Text } from "@mantine/core";
 
 const SidebarUpperUpcoming = () => {
   return (
@@ -6,39 +6,31 @@ const SidebarUpperUpcoming = () => {
       p="sm"
       sx={(theme) => {
         return {
-          backgroundColor: theme.colors.gray[0],
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[6]
+              : theme.colors.gray[0],
           borderRadius: theme.radius.md,
-          border: `1px solid ${theme.colors.gray[4]}`,
-          color: theme.colors.gray[9],
+          border: `1px solid ${
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[5]
+              : theme.colors.gray[4]
+          }`,
+          color:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[0]
+              : theme.colors.gray[8],
           fontSize: theme.fontSizes.sm,
         };
       }}
     >
-      <Group position="apart" pb={10}>
-        <Group
-          pt={4}
-          px={8}
-          position="apart"
-          w="100%"
-          sx={(theme) => {
-            return {
-              color: theme.colors.gray[8],
-            };
-          }}
-        >
-          <Text size="md" weight={600}>
-            Up Next
-          </Text>
-          <Text
-            sx={(theme) => {
-              return {
-                color: theme.colors.gray[7],
-              };
-            }}
-          >
-            due Monday
-          </Text>
-        </Group>
+      <Group px={4} pb={10} pt={4}>
+        <Text size="md" weight={600}>
+          Up Next
+        </Text>
+        <Badge variant="filled" color="accent">
+          due Monday
+        </Badge>
       </Group>
       <Flex
         px={16}
@@ -46,8 +38,17 @@ const SidebarUpperUpcoming = () => {
         direction="column"
         sx={(theme) => {
           return {
-            background: theme.white,
-            border: `1px solid ${theme.colors.gray[4]}`,
+            color:
+              theme.colorScheme === "dark" ? theme.white : theme.black,
+            background:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[5]
+                : theme.white,
+            border: `1px solid ${
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[5]
+                : theme.colors.gray[4]
+            }`,
             borderRadius: theme.radius.md,
           };
         }}

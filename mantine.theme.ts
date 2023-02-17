@@ -1,4 +1,4 @@
-import { MantineThemeOverride } from "@mantine/core";
+import { DEFAULT_THEME, MantineThemeOverride } from "@mantine/core";
 
 const theme: MantineThemeOverride = {
   colorScheme: "light",
@@ -16,6 +16,7 @@ const theme: MantineThemeOverride = {
       "#000000",
       "#000000",
     ],
+    accent: DEFAULT_THEME.colors.blue,
   },
   fontFamily:
     '-apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif',
