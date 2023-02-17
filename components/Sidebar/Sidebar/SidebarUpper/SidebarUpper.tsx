@@ -31,10 +31,19 @@ const SidebarUpper: React.FC<Props> = (props) => {
   return (
     <>
       <props.section className={props.classes.section}>
-        <Flex gap={8} py={14} px={20} h={50} align="center">
+        <Flex
+          gap={8}
+          py={14}
+          px={20}
+          h={50}
+          align="center"
+        >
           <IconBox size={22} />
           <Group align="baseline">
-            <Text size={16} fw={600}>
+            <Text
+              size={16}
+              fw={600}
+            >
               SchoolApp
             </Text>
           </Group>
