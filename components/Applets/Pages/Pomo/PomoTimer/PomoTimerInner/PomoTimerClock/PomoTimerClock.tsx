@@ -17,20 +17,12 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
     setRemaining(libPomoState.remainingFormatted(props.pomoState));
   }, [props.pomoState]);
   return (
-    <Flex
-      justify="center"
-      align="center"
-      px={12}
-    >
+    <Flex justify="center" align="center" px={12}>
       <TimerClockText
         value={remaining.mins}
         align="right"
       ></TimerClockText>
-      <Text
-        size={96}
-        lh={1}
-        fw={300}
-      >
+      <Text size={96} lh={1} fw={300}>
         :
       </Text>
       <TimerClockText

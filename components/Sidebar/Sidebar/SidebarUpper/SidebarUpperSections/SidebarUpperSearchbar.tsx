@@ -32,10 +32,7 @@ export default function TopbarSearch() {
           };
         }}
       >
-        <Group
-          w="100%"
-          position="apart"
-        >
+        <Group w="100%" position="apart">
           <Flex
             gap={6}
             align="center"

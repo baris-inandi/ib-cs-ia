@@ -9,12 +9,12 @@ import {
 import useStyles from "./DragList.styles";
 
 interface DragListProps {
-  data: {
+  data: Array<{
     position: number;
     mass: number;
     symbol: string;
     name: string;
-  }[];
+  }>;
 }
 
 const DragList: React.FC<DragListProps> = ({ data }) => {
@@ -39,18 +39,12 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
             {...provided.dragHandleProps}
             className={classes.dragHandle}
           >
-            <IconGripVertical
-              size={20}
-              stroke={1.5}
-            />
+            <IconGripVertical size={20} stroke={1.5} />
           </div>
           <Text className={classes.symbol}>{item.symbol}</Text>
           <div>
             <Text>{item.name}</Text>
-            <Text
-              color="dimmed"
-              size="sm"
-            >
+            <Text color="dimmed" size="sm">
               Position: {item.position} • Mass: {item.mass}
             </Text>
           </div>
@@ -68,15 +62,9 @@ const DragList: React.FC<DragListProps> = ({ data }) => {
         })
       }
     >
-      <Droppable
-        droppableId="dnd-list"
-        direction="vertical"
-      >
+      <Droppable droppableId="dnd-list" direction="vertical">
         {(provided: any) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <div {...provided.droppableProps} ref={provided.innerRef}>
             {items}
             {provided.placeholder}
           </div>

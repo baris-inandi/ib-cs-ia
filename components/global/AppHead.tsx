@@ -8,50 +8,23 @@ export default function AppHead() {
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width"
       />
-      <meta
-        name="application-name"
-        content="PWA App"
-      />
-      <meta
-        name="apple-mobile-web-app-capable"
-        content="yes"
-      />
+      <meta name="application-name" content="PWA App" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta
         name="apple-mobile-web-app-status-bar-style"
         content="default"
       />
-      <meta
-        name="apple-mobile-web-app-title"
-        content="PWA App"
-      />
-      <meta
-        name="description"
-        content="Best PWA App in the world"
-      />
-      <meta
-        name="format-detection"
-        content="telephone=no"
-      />
-      <meta
-        name="mobile-web-app-capable"
-        content="yes"
-      />
+      <meta name="apple-mobile-web-app-title" content="PWA App" />
+      <meta name="description" content="Best PWA App in the world" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
       <meta
         name="msapplication-config"
         content="/icons/browserconfig.xml"
       />
-      <meta
-        name="msapplication-tap-highlight"
-        content="no"
-      />
-      <meta
-        name="msapplication-TileColor"
-        content="#4c6ef5"
-      />
-      <meta
-        name="theme-color"
-        content="#4c6ef5"
-      />
+      <meta name="msapplication-tap-highlight" content="no" />
+      <meta name="msapplication-TileColor" content="#4c6ef5" />
+      <meta name="theme-color" content="#4c6ef5" />
 
       <link
         rel="apple-touch-icon"
@@ -85,32 +58,17 @@ export default function AppHead() {
         sizes="16x16"
         href="/icons/favicon-16x16.png"
       />
-      <link
-        rel="manifest"
-        href="/manifest.json"
-      />
+      <link rel="manifest" href="/manifest.json" />
       <link
         rel="mask-icon"
         href="/icons/safari-pinned-tab.svg"
         color="#5bbad5"
       />
-      <link
-        rel="shortcut icon"
-        href="/favicon.ico"
-      />
+      <link rel="shortcut icon" href="/favicon.ico" />
 
-      <meta
-        name="twitter:card"
-        content="summary"
-      />
-      <meta
-        name="twitter:url"
-        content="https://yourdomain.com"
-      />
-      <meta
-        name="twitter:title"
-        content="PWA App"
-      />
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:url" content="https://yourdomain.com" />
+      <meta name="twitter:title" content="PWA App" />
       <meta
         name="twitter:description"
         content="Best PWA App in the world"
@@ -119,30 +77,15 @@ export default function AppHead() {
         name="twitter:image"
         content="https://yourdomain.com/icons/android-chrome-192x192.png"
       />
-      <meta
-        name="twitter:creator"
-        content="@DavidWShadow"
-      />
-      <meta
-        property="og:type"
-        content="website"
-      />
-      <meta
-        property="og:title"
-        content="PWA App"
-      />
+      <meta name="twitter:creator" content="@DavidWShadow" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="PWA App" />
       <meta
         property="og:description"
         content="Best PWA App in the world"
       />
-      <meta
-        property="og:site_name"
-        content="PWA App"
-      />
-      <meta
-        property="og:url"
-        content="https://yourdomain.com"
-      />
+      <meta property="og:site_name" content="PWA App" />
+      <meta property="og:url" content="https://yourdomain.com" />
       <meta
         property="og:image"
         content="https://yourdomain.com/icons/apple-touch-icon.png"

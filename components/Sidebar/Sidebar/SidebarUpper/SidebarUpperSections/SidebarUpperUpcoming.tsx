@@ -14,10 +14,7 @@ const SidebarUpperUpcoming = () => {
         };
       }}
     >
-      <Group
-        position="apart"
-        pb={10}
-      >
+      <Group position="apart" pb={10}>
         <Group
           pt={4}
           px={8}
@@ -29,10 +26,7 @@ const SidebarUpperUpcoming = () => {
             };
           }}
         >
-          <Text
-            size="md"
-            weight={600}
-          >
+          <Text size="md" weight={600}>
             Up Next
           </Text>
           <Text

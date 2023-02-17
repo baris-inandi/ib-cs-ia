@@ -36,11 +36,7 @@ const PomoTimerInner: React.FC<PomoTimerInnerProps> = (props) => {
         {props.pomoState.currentPomodoroType}
       </Text>
       <PomoTimerClock pomoState={props.pomoState} />
-      <Flex
-        justify="center"
-        align="center"
-        gap={18}
-      >
+      <Flex justify="center" align="center" gap={18}>
         <PomoTimerControlsButton
           onClick={() => {
             props.updatePomoState(
@@ -60,10 +56,7 @@ const PomoTimerInner: React.FC<PomoTimerInnerProps> = (props) => {
             <IconPlayerPause size={20} />
           )}
         </PomoTimerControlsButton>
-        <PomoTimerControlsButton
-          disabled={false}
-          onClick={props.skip}
-        >
+        <PomoTimerControlsButton disabled={false} onClick={props.skip}>
           <IconPlayerSkipForward size={20} />
         </PomoTimerControlsButton>
         <PomoTimerControlsButton

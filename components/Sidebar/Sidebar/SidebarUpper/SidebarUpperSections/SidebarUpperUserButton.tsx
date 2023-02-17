@@ -41,36 +41,21 @@ export default function SidebarUpperUserButton({
   const { classes } = useStyles();
 
   return (
-    <UnstyledButton
-      className={classes.user}
-      {...others}
-    >
+    <UnstyledButton className={classes.user} {...others}>
       <Group>
-        <Avatar
-          src={image}
-          radius="xl"
-        />
+        <Avatar src={image} radius="xl" />
 
         <div style={{ flex: 1 }}>
-          <Text
-            size="md"
-            weight={500}
-          >
+          <Text size="md" weight={500}>
             {name}
           </Text>
 
-          <Text
-            color="dimmed"
-            size="xs"
-          >
+          <Text color="dimmed" size="xs">
             {email}
           </Text>
         </div>
 
-        <IconChevronDown
-          size={14}
-          stroke={1.5}
-        />
+        <IconChevronDown size={14} stroke={1.5} />
       </Group>
     </UnstyledButton>
   );

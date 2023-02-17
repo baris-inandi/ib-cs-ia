@@ -39,10 +39,7 @@ const Sidebar = () => {
       pb="lg"
       className={classes.navbar + " noscrollbar"}
     >
-      <SidebarUpper
-        section={Navbar.Section}
-        classes={classes}
-      />
+      <SidebarUpper section={Navbar.Section} classes={classes} />
       {/* <Navbar.Section className={classes.section}>
 				<Group position="apart" px={20}>
 				<Text size="md" weight={500} color="dimmed">

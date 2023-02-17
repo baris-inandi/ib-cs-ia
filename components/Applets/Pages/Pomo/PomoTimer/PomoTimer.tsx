@@ -68,10 +68,7 @@ export default function PomoTimer() {
           justify="space-between"
           align="center"
         >
-          <Flex
-            align="center"
-            h="100%"
-          >
+          <Flex align="center" h="100%">
             <PomoTimerInner
               toggleTimer={toggleTimer}
               skip={skip}
@@ -79,10 +76,7 @@ export default function PomoTimer() {
               updatePomoState={updatePomoState}
             />
           </Flex>
-          <PomoProgress
-            height={progressHeight}
-            pomoState={pomoState}
-          />
+          <PomoProgress height={progressHeight} pomoState={pomoState} />
         </Flex>
       </Paper>
     </>
