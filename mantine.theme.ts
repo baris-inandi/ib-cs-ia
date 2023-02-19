@@ -1,7 +1,6 @@
 import { DEFAULT_THEME, MantineThemeOverride } from "@mantine/core";
 
 const theme: MantineThemeOverride = {
-  colorScheme: "light",
   defaultRadius: "md",
   colors: {
     black: [
