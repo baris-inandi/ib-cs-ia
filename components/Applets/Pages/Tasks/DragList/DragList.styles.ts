@@ -11,16 +11,16 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[5]
         : theme.colors.gray[3]
     }`,
-    padding: `${theme.spacing.sm}px ${theme.spacing.xl}px`,
-    paddingLeft: theme.spacing.xl - theme.spacing.md, // to offset drag handle
+    padding: `${theme.spacing.xs}px ${theme.spacing.xl}px`,
+    paddingLeft: 0,
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.white,
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
     marginBottom: theme.spacing.sm,
     height: "100%",
   },
 
   itemDragging: {
-    boxShadow: theme.shadows.sm,
+    boxShadow: theme.shadows.md,
   },
 
   symbol: {

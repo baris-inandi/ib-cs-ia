@@ -46,7 +46,7 @@ export default function TopbarSearch() {
             pl={6}
             sx={(theme) => {
               return {
-                color: theme.colors.gray[7],
+                color: theme.colorScheme === "dark" ? theme.colors.dark[2] : theme.colors.gray[7],
               };
             }}
           >

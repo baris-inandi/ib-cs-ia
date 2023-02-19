@@ -8,7 +8,7 @@ import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import AppHead from "../components/global/AppHead";
 import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
-import mantineTheme from "../mantine.theme";
+import _mantineTheme from "../mantine.theme";
 import "../styles/global.css";
 import "../styles/tailwind.css";
 
@@ -19,12 +19,13 @@ export default function App(props: AppProps) {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
     preferredColorScheme,
   );
+  const [mantineTheme] = useState(_mantineTheme);
 
   useEffect(() => {
     console.log("preferred", preferredColorScheme);
     mantineTheme.colorScheme = preferredColorScheme;
     setColorScheme(preferredColorScheme);
-  }, [preferredColorScheme]);
+  }, [preferredColorScheme, mantineTheme]);
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(

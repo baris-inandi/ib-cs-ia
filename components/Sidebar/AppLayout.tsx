@@ -40,7 +40,7 @@ export default function AppLayout(props: {
         <Flex
           px={20}
           align="center"
-          h={51}
+          h={50}
           mih={50}
           sx={(theme) => {
             return {

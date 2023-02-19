@@ -17,6 +17,8 @@ interface DragListProps {
   }[];
 }
 
+// TODO: sometimes render occurs before the dnd provider inits. WAIT FOR THE RENDER!
+
 export default function DragList({ data }: DragListProps) {
   const { classes, cx } = useStyles();
   const [state, handlers] = useListState(data);
@@ -66,12 +68,14 @@ export default function DragList({ data }: DragListProps) {
 
   return (
     <DragDropContext
-      onDragEnd={({ destination, source }) =>
+      onDragEnd={({ destination, source, reason }) => {
+        console.log(reason);
+
         handlers.reorder({
           from: source.index,
-          to: destination?.index || 0,
-        })
-      }
+          to: destination?.index || source.index,
+        });
+      }}
     >
       <Droppable droppableId="dnd-list" direction="vertical">
         {(provided) => (
