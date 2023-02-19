@@ -56,15 +56,15 @@ const libPomoState = {
     let s =
       libPomoState.remaningSecs(self) +
       libPomoState.getIncrementMins(self) * 60 +
-      1;
+      (self.pause.is ? 0 : 1);
     /* 
       IA:
         Here, and in function `decrement`, we add (or subtract) 1 to the total seconds.
         This is a clever hack to improve the user experience of the applet.
-        This is because we want to freeze time for 1 second, so that subsequent presses to the
-        + or - buttons will preserve the remaining seconds (and not subtract 1 second as it
-        normally would on every passing second due to the `useEffect` on `Pomo.tsx`).
-        It feels more natural to the user.
+        This is because if the timer is running we want to freeze time for 1 second
+        so that subsequent presses to the + or - buttons will preserve the remaining
+        seconds (and not subtract 1 second as it normally would on every passing second
+        due to the `useEffect` hook on `Pomo.tsx`). It feels more natural to the user.
     */
     return {
       ...self,
@@ -84,7 +84,7 @@ const libPomoState = {
     let s =
       libPomoState.remaningSecs(self) -
       libPomoState.getIncrementMins(self) * 60 +
-      1;
+      (self.pause.is ? 0 : 1);
     return {
       ...self,
       end: dayjs().add(s, "seconds"),
