@@ -7,6 +7,7 @@ import { useColorScheme } from "@mantine/hooks";
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import AppHead from "../components/global/AppHead";
+import AppWebkitScrollbarStyleProvider from "../components/global/AppWebkitScrollbarStyleProvider";
 import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import _mantineTheme from "../mantine.theme";
 import "../styles/global.css";
@@ -46,7 +47,9 @@ export default function App(props: AppProps) {
           >
             <AppHead />
             <main>
-              <Component {...pageProps} />
+              <AppWebkitScrollbarStyleProvider>
+                <Component {...pageProps} />
+              </AppWebkitScrollbarStyleProvider>
             </main>
           </ColorSchemeProvider>
         </MantineProvider>

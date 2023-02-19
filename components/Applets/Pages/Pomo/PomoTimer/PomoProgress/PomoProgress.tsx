@@ -20,9 +20,11 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
         radius={0}
         sx={(theme) => {
           return {
-            backgroundColor: theme.colors[pomoTheme][2],
-            borderRadius: theme.radius.lg - 1,
-            outline: `1px solid ${theme.colors[pomoTheme][3]}`,
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.fn.rgba(theme.colors[pomoTheme][5], 0.25)
+                : theme.colors[pomoTheme][2],
+            borderRadius: theme.radius.md - 1,
           };
         }}
         value={

@@ -53,11 +53,17 @@ export default function PomoTimer() {
         h={400}
         pt={progressHeight}
         w="100%"
-        radius="lg"
         sx={(theme) => {
           return {
-            backgroundColor: theme.colors[pomoTheme][0],
-            border: `1px solid ${theme.colors[pomoTheme][1]}`,
+            background:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.white,
+            border: `1px solid ${
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[5]
+                : theme.colors.gray[3]
+            }`,
           };
         }}
       >
