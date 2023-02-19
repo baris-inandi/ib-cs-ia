@@ -2,7 +2,7 @@ import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   item: {
-    transition: "box-shadow 0.1s ease-out",
+    transition: "box-shadow 0.33s ease-out",
     display: "flex",
     alignItems: "center",
     borderRadius: theme.radius.md,

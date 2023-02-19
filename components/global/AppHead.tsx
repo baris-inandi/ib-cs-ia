@@ -5,10 +5,7 @@ export default function AppHead() {
   const theme = useMantineTheme();
   const { colorScheme } = useMantineColorScheme();
   const themeColor =
-    colorScheme === "dark"
-      ? theme.colors.dark[9]
-      : theme.white;
-  console.log(themeColor);
+    colorScheme === "dark" ? theme.colors.dark[9] : theme.white;
 
   return (
     <Head>

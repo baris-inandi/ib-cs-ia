@@ -18,6 +18,8 @@ import Recommended from "../../../components/Applets/Pages/Recommended";
 import Scores from "../../../components/Applets/Pages/Scores";
 import Tasks from "../../../components/Applets/Pages/Tasks/Tasks";
 import CalendarToolbar from "../../../components/Applets/Toolbars/Calendar/CalendarToolbar";
+import PomoToolbar from "../../../components/Applets/Toolbars/Pomo/PomoToolbar";
+import TasksToolbar from "../../../components/Applets/Toolbars/Tasks/TasksToolbar";
 
 /*
 	IA:
@@ -138,6 +140,7 @@ const applets: AppletMap = new Map<string, Applet>([
       },
       route: "/app/tasks",
       FC: Tasks,
+      toolbar: TasksToolbar,
     },
   ],
   [
@@ -172,6 +175,7 @@ const applets: AppletMap = new Map<string, Applet>([
       },
       route: "/app/pomodoro",
       FC: Pomo,
+      toolbar: PomoToolbar,
     },
   ],
 ]);

@@ -22,7 +22,7 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
           return {
             backgroundColor:
               theme.colorScheme === "dark"
-                ? theme.fn.rgba(theme.colors[pomoTheme][5], 0.25)
+                ? theme.fn.rgba(theme.colors[pomoTheme][5], 0.2)
                 : theme.colors[pomoTheme][2],
             borderRadius: theme.radius.md - 1,
           };

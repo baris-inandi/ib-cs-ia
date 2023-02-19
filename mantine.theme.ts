@@ -15,8 +15,9 @@ const theme: MantineThemeOverride = {
       "#000000",
       "#000000",
     ],
-    accent: DEFAULT_THEME.colors.indigo,
+    accent: DEFAULT_THEME.colors.orange,
   },
+  primaryShade: 5,
   fontFamily:
     '-apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif',
 };

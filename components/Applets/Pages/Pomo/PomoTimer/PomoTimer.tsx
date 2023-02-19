@@ -1,10 +1,8 @@
 import { Flex, Paper } from "@mantine/core";
-import { useAtom } from "jotai";
 import { useEffect, useReducer, useRef } from "react";
 import DEFAULT_POMOSTATE from "../../../../../lib/applets/pomo/libPomoState/defaultPomoState";
 import pomoTimerReducer from "../../../../../lib/applets/pomo/libPomoState/pomoTimerReducer/pomoTimerReducer";
 import { NodeInterval } from "../../../../../lib/utils/types";
-import { pomoThemeAtom } from "../atoms/pomoTheme.atom";
 import PomoProgress from "./PomoProgress/PomoProgress";
 import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
 
@@ -13,8 +11,6 @@ export default function PomoTimer() {
     pomoTimerReducer,
     DEFAULT_POMOSTATE,
   );
-
-  const [pomoTheme] = useAtom(pomoThemeAtom);
 
   let interval = useRef<NodeInterval | null>(null);
   const toggleTimer = () => {
@@ -45,12 +41,12 @@ export default function PomoTimer() {
 
   const skip = () => {};
 
-  const progressHeight = 20;
+  const progressHeight = 12;
 
   return (
     <>
       <Paper
-        h={400}
+        h={300}
         pt={progressHeight}
         w="100%"
         sx={(theme) => {

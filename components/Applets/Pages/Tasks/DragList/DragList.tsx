@@ -70,10 +70,10 @@ export default function DragList({ data }: DragListProps) {
     <DragDropContext
       onDragEnd={({ destination, source, reason }) => {
         console.log(reason);
-
+        if (!destination) return;
         handlers.reorder({
           from: source.index,
-          to: destination?.index || source.index,
+          to: destination.index >= 0 ? destination.index : source.index,
         });
       }}
     >
