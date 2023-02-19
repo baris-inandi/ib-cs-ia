@@ -54,9 +54,10 @@ const libPomoState = {
 
   increment: (self: IPomoState): IPomoState => {
     let s =
-      libPomoState.remaningSecs(self) +
-      libPomoState.getIncrementMins(self) * 60 +
-      (self.pause.is ? 0 : 1);
+      (self.pause.is
+        ? self.pause.clockState.mins * 60 + self.pause.clockState.secs
+        : libPomoState.remaningSecs(self) + 1) +
+      libPomoState.getIncrementMins(self) * 60;
     /* 
       IA:
         Here, and in function `decrement`, we add (or subtract) 1 to the total seconds.
@@ -82,9 +83,10 @@ const libPomoState = {
 
   decrement: (self: IPomoState): IPomoState => {
     let s =
-      libPomoState.remaningSecs(self) -
-      libPomoState.getIncrementMins(self) * 60 +
-      (self.pause.is ? 0 : 1);
+      (self.pause.is
+        ? self.pause.clockState.mins * 60 + self.pause.clockState.secs
+        : libPomoState.remaningSecs(self) + 1) -
+      libPomoState.getIncrementMins(self) * 60;
     return {
       ...self,
       end: dayjs().add(s, "seconds"),
