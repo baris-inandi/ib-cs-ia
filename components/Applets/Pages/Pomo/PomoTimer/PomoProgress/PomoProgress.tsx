@@ -1,15 +1,17 @@
 import { Progress } from "@mantine/core";
 import { useAtom } from "jotai";
-import IPomoState from "../../../../../../lib/applets/pomo/libPomoState/IPomoState";
+import libPomoState from "../../../../../../lib/applets/pomo/libPomoState/libPomoState";
+import { pomoStateAtom } from "../../atoms/pomoState.atom";
 import { pomoThemeAtom } from "../../atoms/pomoTheme.atom";
 
 interface PomoProgressProps {
-  pomoState: IPomoState;
   height: number;
 }
 
 const PomoProgress: React.FC<PomoProgressProps> = (props) => {
   const [pomoTheme] = useAtom(pomoThemeAtom);
+  const [pomoState] = useAtom(pomoStateAtom);
+
   return (
     <div className="w-full p-4">
       <Progress
@@ -28,9 +30,8 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
           };
         }}
         value={
-          (props.pomoState.totalSecs / props.pomoState.remainingSecs) *
-            100 -
-          60
+          (libPomoState.remaningSecs(pomoState) / pomoState.totalSecs) *
+          100
         }
       ></Progress>
     </div>

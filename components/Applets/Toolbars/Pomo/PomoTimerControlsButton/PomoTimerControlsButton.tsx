@@ -2,6 +2,7 @@ import { Button, ButtonVariant } from "@mantine/core";
 import { useAtom } from "jotai";
 import { ReactNode } from "react";
 import libPomoState from "../../../../../lib/applets/pomo/libPomoState/libPomoState";
+import { pomoStateAtom } from "../../../Pages/Pomo/atoms/pomoState.atom";
 import { pomoThemeAtom } from "../../../Pages/Pomo/atoms/pomoTheme.atom";
 
 interface PomoTimerControlsButtonProps {
@@ -16,6 +17,7 @@ const PomoTimerControlsButton: React.FC<
   PomoTimerControlsButtonProps
 > = (props) => {
   const [pomoTheme] = useAtom(pomoThemeAtom);
+  const [pomoState] = useAtom(pomoStateAtom);
 
   return (
     <Button
@@ -30,7 +32,7 @@ const PomoTimerControlsButton: React.FC<
       {props.children
         ? props.children
         : (props.isPositiveIfForIncreaseDecreaseTime ? "+" : "-") +
-          libPomoState.INCREMENT_MINS}
+          libPomoState.getIncrementMins(pomoState)}
     </Button>
   );
 };

@@ -18,4 +18,3 @@ export default styled.div(() => ({
     borderRadius: "999px",
   },
 }));
-

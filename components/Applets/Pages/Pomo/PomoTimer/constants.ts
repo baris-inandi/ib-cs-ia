@@ -1,0 +1,2 @@
+export const POMO_PROGRESSBAR_HEIGHT = 20;
+export const POMO_STAGEBAR_HEIGHT = 40;

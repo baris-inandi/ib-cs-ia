@@ -35,7 +35,10 @@ const useStyles = createStyles((theme) => {
       padding: `9px ${theme.spacing.xs}px`,
       borderRadius: theme.radius.md,
       fontWeight: 500,
-      color: theme.colorScheme === "dark" ? theme.colors.dark[0]: theme.colors.gray[7],
+      color:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[0]
+          : theme.colors.gray[7],
     },
 
     mainLinkInner: {

@@ -39,7 +39,7 @@ const Sidebar = () => {
         overflowY: "scroll",
       })}
       height="100%"
-      width={{ xs: 200, sm: 250, md: 300, lg: 320, xl: 400 }}
+      width={{ xs: 200, sm: 280, md: 350, lg: 380, xl: 450 }}
       pb="lg"
       className={classes.navbar + " noscrollbar"}
     >

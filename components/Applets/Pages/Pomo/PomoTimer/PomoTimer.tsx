@@ -1,53 +1,22 @@
-import { Flex, Paper } from "@mantine/core";
-import { useEffect, useReducer, useRef } from "react";
-import DEFAULT_POMOSTATE from "../../../../../lib/applets/pomo/libPomoState/defaultPomoState";
-import pomoTimerReducer from "../../../../../lib/applets/pomo/libPomoState/pomoTimerReducer/pomoTimerReducer";
-import { NodeInterval } from "../../../../../lib/utils/types";
+import { Box, Flex, Paper, Text } from "@mantine/core";
+import { useAtom } from "jotai";
+import { pomoStateAtom } from "../atoms/pomoState.atom";
+import { pomoThemeAtom } from "../atoms/pomoTheme.atom";
+import {
+  POMO_PROGRESSBAR_HEIGHT,
+  POMO_STAGEBAR_HEIGHT,
+} from "./constants";
 import PomoProgress from "./PomoProgress/PomoProgress";
-import PomoTimerInner from "./PomoTimerInner/PomoTimerInner";
+import PomoTimerClock from "./PomoTimerClock/PomoTimerClock";
 
 export default function PomoTimer() {
-  const [pomoState, updatePomoState] = useReducer(
-    pomoTimerReducer,
-    DEFAULT_POMOSTATE,
-  );
-
-  let interval = useRef<NodeInterval | null>(null);
-  const toggleTimer = () => {
-    const startTimer = () => {
-      console.log("start timer");
-      interval.current = setInterval(() => {
-        updatePomoState({
-          ...pomoState,
-          remainingSecs: pomoState.remainingSecs - 1,
-        });
-      }, 1000);
-    };
-
-    const stopTimer = () => {
-      console.log("stop timer");
-      clearInterval(interval.current!);
-      interval.current = null;
-    };
-
-    let out = { ...pomoState, paused: !pomoState.paused };
-    out.paused ? stopTimer() : startTimer();
-    updatePomoState(out);
-  };
-
-  useEffect(() => {
-    clearInterval(interval.current!);
-  }, [pomoState]);
-
-  const skip = () => {};
-
-  const progressHeight = 12;
+  const [pomoState] = useAtom(pomoStateAtom);
+  const [pomoTheme] = useAtom(pomoThemeAtom);
 
   return (
     <>
       <Paper
         h={300}
-        pt={progressHeight}
         w="100%"
         sx={(theme) => {
           return {
@@ -64,21 +33,39 @@ export default function PomoTimer() {
         }}
       >
         <Flex
+          justify="center"
+          align="center"
+          w="100%"
+          h={POMO_STAGEBAR_HEIGHT}
+          sx={(theme) => {
+            return {
+              color: theme.white,
+              textAlign: "center",
+              borderTopLeftRadius: theme.radius.md,
+              borderTopRightRadius: theme.radius.md,
+              backgroundColor: theme.colors[pomoTheme][5],
+              textTransform: "capitalize",
+            };
+          }}
+        >
+          <Text size={18}>
+            Pomodoro {pomoState.currentPomodoroNumber} •{" "}
+            {pomoState.currentPomodoroStage}
+          </Text>
+        </Flex>
+        <Flex
           direction="column"
           w="100%"
-          h="100%"
-          justify="space-between"
+          sx={{
+            height: `calc(100% - ${POMO_STAGEBAR_HEIGHT}px)`,
+          }}
+          justify="center"
           align="center"
         >
-          <Flex align="center" h="100%">
-            <PomoTimerInner
-              toggleTimer={toggleTimer}
-              skip={skip}
-              pomoState={pomoState}
-              updatePomoState={updatePomoState}
-            />
-          </Flex>
-          <PomoProgress height={progressHeight} pomoState={pomoState} />
+          <PomoTimerClock />
+          <Box w="100%" maw={300}>
+            <PomoProgress height={POMO_PROGRESSBAR_HEIGHT} />
+          </Box>
         </Flex>
       </Paper>
     </>

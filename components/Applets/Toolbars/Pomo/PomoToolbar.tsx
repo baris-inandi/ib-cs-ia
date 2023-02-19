@@ -4,56 +4,65 @@ import {
   IconPlayerPlay,
   IconPlayerSkipForward,
 } from "@tabler/icons";
+import { useAtom } from "jotai";
 import React from "react";
+import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
+import nextStage from "../../../../lib/applets/pomo/toolbar/nextStage";
+import toggleTimer from "../../../../lib/applets/pomo/toolbar/toggleTimer";
+import { pomoStateAtom } from "../../Pages/Pomo/atoms/pomoState.atom";
 import PomoTimerControlsButton from "./PomoTimerControlsButton/PomoTimerControlsButton";
 
 interface PomoToolbarProps {}
 
 const PomoToolbar: React.FC<PomoToolbarProps> = () => {
+  const [pomoState, setPomoState] = useAtom(pomoStateAtom);
+
   return (
     <Flex h="100%" justify="center" align="center" gap={10}>
       <PomoTimerControlsButton
         onClick={() => {
-          /* props.updatePomoState(
-              libPomoState.decrement(props.pomoState),
-            ); */
+          setPomoState(libPomoState.decrement(pomoState));
         }}
-        disabled={
-          /* libPomoState.ui.decrementDisabled(props.pomoState) */ false
-        }
+        disabled={libPomoState.ui.decrementDisabled(pomoState)}
         isPositiveIfForIncreaseDecreaseTime={false}
         variant="outline"
       />
       <PomoTimerControlsButton
         onClick={() => {
-          /*  props.updatePomoState(
-            libPomoState.increment(props.pomoState),
-          ); */
+          setPomoState(libPomoState.increment(pomoState));
         }}
-        disabled={
-          /* libPomoState.ui.incrementDisabled(props.pomoState) */ false
-        }
+        disabled={libPomoState.ui.incrementDisabled(pomoState)}
         isPositiveIfForIncreaseDecreaseTime={true}
         variant="outline"
       />
       <div className="w-3"></div>
       <PomoTimerControlsButton
         disabled={false}
-        onClick={/* props.toggleTimer */ () => {}}
+        onClick={() => {
+          setPomoState(libPomoState.generateDefaultPomoState());
+        }}
       >
-        {
-          /* props.pomoState.paused */ false ? (
-            <IconPlayerPlay size={18} />
-          ) : (
-            <IconPlayerPause size={18} />
-          )
-        }
+        Reset
       </PomoTimerControlsButton>
       <PomoTimerControlsButton
         disabled={false}
-        onClick={/* props.skip */ () => {}}
+        onClick={() => {
+          toggleTimer(pomoState, setPomoState);
+        }}
       >
-        <IconPlayerSkipForward size={18} />
+        {pomoState.pause.is ? (
+          <IconPlayerPlay size={20} />
+        ) : (
+          <IconPlayerPause size={20} />
+        )}
+      </PomoTimerControlsButton>
+      <PomoTimerControlsButton
+        disabled={false}
+        onClick={() => {
+          nextStage(pomoState, setPomoState);
+        }}
+      >
+        <IconPlayerSkipForward size={20} />
       </PomoTimerControlsButton>
     </Flex>
   );
