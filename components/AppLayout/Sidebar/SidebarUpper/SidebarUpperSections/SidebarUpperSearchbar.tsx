@@ -3,6 +3,7 @@ import { useSpotlight } from "@mantine/spotlight";
 import { IconSearch } from "@tabler/icons";
 import { useEffect, useState } from "react";
 import getOS from "../../../../../lib/utils/getOS";
+import AppKbd from "../../../../global/AppKbd";
 
 export default function TopbarSearch() {
   const spotlight = useSpotlight();
@@ -58,28 +59,7 @@ export default function TopbarSearch() {
             <IconSearch size={16} />
             <Text size={14}>Search</Text>
           </Flex>
-          <Text
-            px={10}
-            py={2}
-            sx={(theme) => {
-              return {
-                fontSize: 13,
-                borderRadius: theme.radius.sm,
-                backgroundColor:
-                  theme.colorScheme === "dark"
-                    ? theme.colors.dark[4]
-                    : theme.white,
-                border: `1px solid ${
-                  theme.colorScheme === "dark"
-                    ? theme.colors.dark[4]
-                    : theme.colors.gray[4]
-                }`,
-                color: theme.colors.gray[6],
-              };
-            }}
-          >
-            {mod}+K
-          </Text>
+          <AppKbd content={mod + "+K"}></AppKbd>
         </Group>
       </Box>
     </UnstyledButton>

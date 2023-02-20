@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
 import { pomoStateAtom } from "./atoms/pomoState.atom";
+import HotkeyHandler from "./HotkeyHandler";
 import PomoTimer from "./PomoTimer/PomoTimer";
 
 const Pomo = () => {
@@ -33,6 +34,7 @@ const Pomo = () => {
 
   return (
     <Box w="100%">
+      <HotkeyHandler />
       <PomoTimer />
     </Box>
   );

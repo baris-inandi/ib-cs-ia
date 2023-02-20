@@ -30,7 +30,11 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
           };
         }}
         value={
-          (libPomoState.remaningSecs(pomoState) / pomoState.totalSecs) *
+          ((pomoState.pause.is
+            ? pomoState.pause.clockState.mins * 60 +
+              pomoState.pause.clockState.secs
+            : libPomoState.remaningSecs(pomoState)) /
+            pomoState.totalSecs) *
           100
         }
       ></Progress>
