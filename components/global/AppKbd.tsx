@@ -11,6 +11,7 @@ const AppKbd: React.FC<AppKbdProps> = (props) => {
       py={2}
       sx={(theme) => {
         return {
+          display: "inline-block",
           fontSize: 13,
           borderRadius: theme.radius.sm,
           backgroundColor:

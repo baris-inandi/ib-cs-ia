@@ -31,6 +31,7 @@ const Sidebar = () => {
     <Navbar
       id="sidebar"
       sx={(theme) => ({
+        zIndex: 1,
         borderRight: `1px solid ${
           theme.colorScheme === "dark"
             ? theme.colors.dark[5]
