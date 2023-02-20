@@ -37,4 +37,3 @@ const toggleTimer = (
 };
 
 export default toggleTimer;
-

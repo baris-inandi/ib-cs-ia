@@ -9,4 +9,3 @@ const nextStage = (
 };
 
 export default nextStage;
-

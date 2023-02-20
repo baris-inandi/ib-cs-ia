@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import IPomoState, { PomoStage } from "./IPomoState";
+import IPomoState from "./IPomoState";
 
 /* 
   IA:
@@ -120,10 +120,13 @@ const libPomoState = {
   },
 
   skipToNextStage: (pomoState: IPomoState): IPomoState => {
-    const POMO_STAGES: PomoStage[] = ["focus", "break", "long break"];
     const stage = pomoState.currentPomodoroStage;
-    const i = POMO_STAGES.indexOf(stage);
-    const newStage = POMO_STAGES[(i + 1) % 3];
+    const newStage =
+      stage === "focus"
+        ? pomoState.currentPomodoroNumber % 4 === 0
+          ? "long break"
+          : "break"
+        : "focus";
     return {
       ...pomoState,
       end: dayjs().add(
@@ -140,9 +143,8 @@ const libPomoState = {
       },
       currentPomodoroStage: newStage,
       currentPomodoroNumber:
-        i === 2
-          ? pomoState.currentPomodoroNumber + 1
-          : pomoState.currentPomodoroNumber,
+        pomoState.currentPomodoroNumber +
+        (newStage === "focus" ? 1 : 0),
     };
   },
 
