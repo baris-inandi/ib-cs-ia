@@ -2,8 +2,6 @@ import { Box } from "@mantine/core";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
-import toggleTimer from "../../../../lib/applets/pomo/toolbar/toggleTimer";
-import Hotkeys from "../../../global/Hotkeys";
 import { pomoStateAtom } from "./atoms/pomoState.atom";
 import PomoHotkeys from "./PomoHotkeys";
 import PomoTimer from "./PomoTimer/PomoTimer";
@@ -23,7 +21,12 @@ const Pomo = () => {
       if (libPomoState.checkForAutoNextStage(pomoState)) {
         setPomoState(libPomoState.skipToNextStage(pomoState));
       }
-      setPomoState({ ...pomoState, $: !pomoState.$ });
+      setPomoState({
+        ...pomoState,
+        secondsPassed:
+          pomoState.secondsPassed + (pomoState.pause.is ? 0 : 1),
+        $: !pomoState.$,
+      });
     };
     const interval = setInterval(() => {
       setTime(Date.now());

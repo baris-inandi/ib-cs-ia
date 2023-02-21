@@ -7,7 +7,6 @@ import {
 import { useAtom } from "jotai";
 import React from "react";
 import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
-import nextStage from "../../../../lib/applets/pomo/toolbar/nextStage";
 import toggleTimer from "../../../../lib/applets/pomo/toolbar/toggleTimer";
 import { pomoStateAtom } from "../../Pages/Pomo/atoms/pomoState.atom";
 import PomoTimerControlsButton from "./PomoTimerControlsButton/PomoTimerControlsButton";
@@ -59,7 +58,7 @@ const PomoToolbar: React.FC<PomoToolbarProps> = () => {
       <PomoTimerControlsButton
         disabled={false}
         onClick={() => {
-          nextStage(pomoState, setPomoState);
+          libPomoState. nextStage(pomoState, setPomoState);
         }}
       >
         <IconPlayerSkipForward size={20} />

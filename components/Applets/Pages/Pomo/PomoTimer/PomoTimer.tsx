@@ -20,7 +20,6 @@ export default function PomoTimer() {
         w="100%"
         sx={(theme) => {
           return {
-            transition: "all 0.9s ease",
             background:
               theme.colorScheme === "dark"
                 ? theme.colors.dark[6]

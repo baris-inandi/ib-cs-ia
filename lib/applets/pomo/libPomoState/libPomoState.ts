@@ -119,7 +119,12 @@ const libPomoState = {
     );
   },
 
-  skipToNextStage: (pomoState: IPomoState): IPomoState => {
+  nextStage: (
+    pomoState: IPomoState,
+    setPomoState: (pomoState: IPomoState) => void,
+  ) => {
+    // TODO: also send this to the database so that the total hours of pomo is recorded
+    // also attach a course that was studied in this session (according to the tasks completed during the pomo)
     const stage = pomoState.currentPomodoroStage;
     const newStage =
       stage === "focus"
@@ -127,7 +132,7 @@ const libPomoState = {
           ? "long break"
           : "break"
         : "focus";
-    return {
+    const out = {
       ...pomoState,
       end: dayjs().add(
         libPomoState.STAGE_DURATION_MINS[newStage],
@@ -141,11 +146,13 @@ const libPomoState = {
           secs: 0,
         },
       },
+      secondsPassed: 0,
       currentPomodoroStage: newStage,
       currentPomodoroNumber:
         pomoState.currentPomodoroNumber +
         (newStage === "focus" ? 1 : 0),
     };
+    setPomoState(out);
   },
 
   generateDefaultPomoState: (): IPomoState => {
@@ -161,6 +168,8 @@ const libPomoState = {
       },
       currentPomodoroNumber: 1,
       currentPomodoroStage: "focus",
+      secondsPassed: 0,
+      history: [],
       $: false,
     };
   },
