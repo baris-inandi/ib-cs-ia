@@ -1,13 +1,8 @@
-import { Box, Flex, Paper, Text } from "@mantine/core";
+import { Flex, Paper, Text } from "@mantine/core";
 import { useAtom } from "jotai";
 import { pomoStateAtom } from "../atoms/pomoState.atom";
 import { pomoThemeAtom } from "../atoms/pomoTheme.atom";
-import {
-  POMO_PROGRESSBAR_HEIGHT,
-  POMO_STAGEBAR_HEIGHT,
-} from "./constants";
 import PomoProgress from "./PomoProgress/PomoProgress";
-import PomoTimerClock from "./PomoTimerClock/PomoTimerClock";
 
 export default function PomoTimer() {
   const [pomoState] = useAtom(pomoStateAtom);
@@ -16,7 +11,7 @@ export default function PomoTimer() {
   return (
     <>
       <Paper
-        h={300}
+        h={360}
         w="100%"
         sx={(theme) => {
           return {
@@ -36,14 +31,17 @@ export default function PomoTimer() {
           justify="center"
           align="center"
           w="100%"
-          h={POMO_STAGEBAR_HEIGHT}
+          h={40}
           sx={(theme) => {
             return {
               color: theme.white,
               textAlign: "center",
               borderTopLeftRadius: theme.radius.md,
               borderTopRightRadius: theme.radius.md,
-              backgroundColor: theme.colors[pomoTheme][5],
+              backgroundColor:
+                theme.colorScheme === "dark"
+                  ? theme.colors.dark[4]
+                  : theme.colors[pomoTheme][5],
               textTransform: "capitalize",
             };
           }}
@@ -56,16 +54,11 @@ export default function PomoTimer() {
         <Flex
           direction="column"
           w="100%"
-          sx={{
-            height: `calc(100% - ${POMO_STAGEBAR_HEIGHT}px)`,
-          }}
+          h="100%"
           justify="center"
           align="center"
         >
-          <PomoTimerClock />
-          <Box w="100%" maw={300}>
-            <PomoProgress height={POMO_PROGRESSBAR_HEIGHT} />
-          </Box>
+          <PomoProgress />
         </Flex>
       </Paper>
     </>

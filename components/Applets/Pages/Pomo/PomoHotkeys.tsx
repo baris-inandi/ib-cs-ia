@@ -47,7 +47,7 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
           help: "Skip to next stage",
           hotkey: "Mod+Enter",
           callback: () => {
-            setPomoState(libPomoState.skipToNextStage(pomoState));
+            libPomoState.nextStage(pomoState, setPomoState);
           },
         },
       ]}
@@ -56,4 +56,3 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
 };
 
 export default PomoHotkeys;
-

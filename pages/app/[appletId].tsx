@@ -1,8 +1,8 @@
 import { useAtom } from "jotai";
 import { GetServerSidePropsContext } from "next";
 import AppLayout from "../../components/AppLayout/AppLayout";
-import { activeAppletAtom } from "../../global.atom";
 import applets from "../../lib/applets/global/applets";
+import { activeAppletAtom } from "../../lib/global.atom";
 
 interface AppletProps {
   appletId: string;

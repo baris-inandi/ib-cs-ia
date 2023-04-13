@@ -10,7 +10,10 @@ const withPWA = require("next-pwa")({
   dest: "public",
 });
 
-if (process.env.USE_PWA === "true") {
+if (process.env.USE_PWA !== "false") {
+  console.log(
+    "process.env.USE_PWA is not explicitly disabled, using PWA features.",
+  );
   nextConfig = withPWA(nextConfig);
 }
 

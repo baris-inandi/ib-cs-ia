@@ -73,7 +73,7 @@ const applets: AppletMap = new Map<string, Applet>([
       group: "Applets",
       keywords: ["home", "overview", "dashboard", "day"],
       iconNoSize: IconGauge,
-      icon: <IconGauge size={20} />,
+      icon: <IconGauge size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },
@@ -90,7 +90,7 @@ const applets: AppletMap = new Map<string, Applet>([
       group: "Applets",
       keywords: ["study", "recommendations", "recommended", "new"],
       iconNoSize: IconComet,
-      icon: <IconComet size={20} />,
+      icon: <IconComet size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },
@@ -113,7 +113,7 @@ const applets: AppletMap = new Map<string, Applet>([
         "appointments",
       ],
       iconNoSize: IconCalendarEvent,
-      icon: <IconCalendarEvent size={20} />,
+      icon: <IconCalendarEvent size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },
@@ -134,7 +134,7 @@ const applets: AppletMap = new Map<string, Applet>([
       group: "Applets",
       keywords: ["todo", "task"],
       iconNoSize: IconCheckbox,
-      icon: <IconCheckbox size={20} />,
+      icon: <IconCheckbox size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },
@@ -152,7 +152,7 @@ const applets: AppletMap = new Map<string, Applet>([
       group: "Applets",
       keywords: ["marks", "grades", "gpa", "exam", "scores"],
       iconNoSize: IconGraph,
-      icon: <IconGraph size={20} />,
+      icon: <IconGraph size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },
@@ -169,7 +169,7 @@ const applets: AppletMap = new Map<string, Applet>([
       group: "Applets",
       keywords: ["pomo", "timer", "study", "focus"],
       iconNoSize: IconHourglass,
-      icon: <IconHourglass size={20} />,
+      icon: <IconHourglass size={16} />,
       onTrigger: (action: SpotlightAction) => {
         Router.push(action.route);
       },

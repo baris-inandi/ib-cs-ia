@@ -3,7 +3,6 @@ import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import libPomoState from "../../../../../../lib/applets/pomo/libPomoState/libPomoState";
 import { pomoStateAtom } from "../../atoms/pomoState.atom";
-import { POMO_PROGRESSBAR_HEIGHT } from "../constants";
 import TimerClockText from "./PomoTimerClockText";
 
 interface PomoTimerClockProps {}
@@ -30,7 +29,6 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
       sx={(theme) => {
         return {
           color: theme.colorScheme === "dark" ? "white" : "black",
-          paddingTop: POMO_PROGRESSBAR_HEIGHT / 2,
         };
       }}
       gap={20}
@@ -41,7 +39,7 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
           value={remaining.mins >= 0 ? remaining.mins : 0}
           align="right"
         ></TimerClockText>
-        <Text size={96} lh={1} fw={300}>
+        <Text size={64} lh={1} fw={300}>
           :
         </Text>
         <TimerClockText

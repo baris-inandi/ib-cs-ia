@@ -1,8 +1,10 @@
 import DragList from "./DragList/DragList";
+import TasksHotkeys from "./TasksHotkeys";
 
 const Tasks = () => {
   return (
     <div>
+      <TasksHotkeys />
       <DragList
         data={[
           {

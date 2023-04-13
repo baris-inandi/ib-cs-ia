@@ -4,15 +4,15 @@ import IPomoState from "./IPomoState";
 /* 
   IA:
     This file contains the logic for the Pomo applet.
-    The global pomodoro state object (of type `IPomoState`) is accessed as an atom
-    throughout the applet. Its type is defined in `IPomoState.ts`. Jotai is used to
+    The global pomodoro state object of type `IPomoState` is accessed as an atom
+    throughout the applet. Its structure is defined in `IPomoState.ts`. Jotai is used to
     store the global state object in the local storage, so that refreshing the page does
     not reset the pomodoro state. This means we have to make `IPomoState` serializable
     (Meaning it can be converted to a string and back to an object without losing any data).
     This is why there is no PomoState class that implements the `IPomoState` interface.
 
-    Instead, we have a library that has functions take the global state object as an
-    argument and mutate them for preperation for a React dispatch.
+    Instead, we have a library that provides functions take the global state object
+    as an argument and mutate them, mostly for preperation for React dispatches.
     
     This is essentially where all the logic of the pomodoro applet is stored.
 */
@@ -132,7 +132,7 @@ const libPomoState = {
           ? "long break"
           : "break"
         : "focus";
-    const out = {
+    const out: IPomoState = {
       ...pomoState,
       end: dayjs().add(
         libPomoState.STAGE_DURATION_MINS[newStage],
@@ -174,7 +174,7 @@ const libPomoState = {
     };
   },
 
-  checkForAutoNextStage: (self: IPomoState): boolean => {
+  isReadyForAutoNextStage: (self: IPomoState): boolean => {
     return libPomoState.remaningSecs(self) <= 0;
   },
 

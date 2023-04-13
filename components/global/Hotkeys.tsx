@@ -91,4 +91,3 @@ const Hotkeys: React.FC<HotkeysProps> = (props) => {
 };
 
 export default Hotkeys;
-

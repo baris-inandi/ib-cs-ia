@@ -9,7 +9,7 @@ export default function TimerClockText(props: {
   return (
     <Text
       align={props.align}
-      size={96}
+      size={64}
       w={props.width ?? "fit-content"}
       lh={1}
       fw={300}

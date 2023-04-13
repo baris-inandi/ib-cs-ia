@@ -1,7 +1,7 @@
 import { Navbar } from "@mantine/core";
-import useStyles from "./sidebar.styles";
 import SidebarApplet from "./SidebarUpper/SidebarApplet/SidebarApplet";
 import SidebarUpper from "./SidebarUpper/SidebarUpper";
+import useStyles from "./sidebar.styles";
 
 const courses = [
   { emoji: "👍", label: "Sales" },
@@ -40,7 +40,7 @@ const Sidebar = () => {
         overflowY: "scroll",
       })}
       height="100%"
-      width={{ xs: 200, sm: 280, md: 350, lg: 380, xl: 450 }}
+      width={{ xs: 200, sm: 280, md: 310, lg: 330 }}
       pb="lg"
       className={classes.navbar + " noscrollbar"}
     >

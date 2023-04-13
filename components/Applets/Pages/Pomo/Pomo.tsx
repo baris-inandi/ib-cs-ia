@@ -2,24 +2,24 @@ import { Box } from "@mantine/core";
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
-import { pomoStateAtom } from "./atoms/pomoState.atom";
 import PomoHotkeys from "./PomoHotkeys";
 import PomoTimer from "./PomoTimer/PomoTimer";
+import { pomoStateAtom } from "./atoms/pomoState.atom";
 
 const Pomo = () => {
   const [pomoState, setPomoState] = useAtom(pomoStateAtom);
 
   useEffect(() => {
-    if (libPomoState.checkForAutoNextStage(pomoState)) {
-      setPomoState(libPomoState.skipToNextStage(pomoState));
+    if (libPomoState.isReadyForAutoNextStage(pomoState)) {
+      libPomoState.nextStage(pomoState, setPomoState);
     }
   }, [pomoState, setPomoState]);
 
   const [time, setTime] = useState(Date.now());
   useEffect(() => {
     const doEverySecond = () => {
-      if (libPomoState.checkForAutoNextStage(pomoState)) {
-        setPomoState(libPomoState.skipToNextStage(pomoState));
+      if (libPomoState.isReadyForAutoNextStage(pomoState)) {
+        libPomoState.nextStage(pomoState, setPomoState);
       }
       setPomoState({
         ...pomoState,

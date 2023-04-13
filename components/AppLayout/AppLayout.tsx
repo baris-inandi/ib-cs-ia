@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@mantine/core";
 import { useAtom } from "jotai";
-import { activeAppletAtom } from "../../global.atom";
+import { activeAppletAtom } from "../../lib/global.atom";
 import Sidebar from "./Sidebar/Sidebar";
 
 export default function AppLayout(props: {
@@ -45,8 +45,8 @@ export default function AppLayout(props: {
           <Flex
             px={20}
             align="center"
-            h={50}
-            mih={50}
+            h={46}
+            mih={46}
             sx={(theme) => {
               return {
                 borderBottom: `1px solid ${
@@ -83,7 +83,7 @@ export default function AppLayout(props: {
               }}
             >
               <div className="flex h-full justify-end">
-                <Box py={8}>
+                <Box py={5}>
                   {activeApplet.toolbar ? (
                     <activeApplet.toolbar />
                   ) : null}

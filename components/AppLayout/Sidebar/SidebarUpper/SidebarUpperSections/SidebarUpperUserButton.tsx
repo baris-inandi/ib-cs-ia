@@ -1,29 +1,11 @@
 import {
   Avatar,
-  createStyles,
   Group,
   Text,
   UnstyledButton,
   UnstyledButtonProps,
 } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
-
-const useStyles = createStyles((theme) => ({
-  user: {
-    "display": "block",
-    "width": "100%",
-    "padding": theme.spacing.md,
-    "color":
-      theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[8]
-          : theme.colors.gray[0],
-    },
-  },
-}));
 
 interface UserButtonProps extends UnstyledButtonProps {
   image: string;
@@ -36,13 +18,30 @@ export default function SidebarUpperUserButton({
   image,
   name,
   email,
-  ...others
 }: UserButtonProps) {
-  const { classes } = useStyles();
-
   return (
-    <UnstyledButton className={classes.user} {...others}>
-      <Group position="apart">
+    <UnstyledButton w="100%" p={9} pb={0}>
+      <Group
+        position="apart"
+        sx={(theme) => {
+          return {
+            borderRadius: theme.radius.md,
+            backgroundColor:
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0],
+            paddingLeft: theme.spacing.md,
+            paddingRight: theme.spacing.md,
+            paddingTop: theme.spacing.sm,
+            paddingBottom: theme.spacing.sm,
+            border: `1px solid ${
+              theme.colorScheme === "dark"
+                ? theme.colors.dark[4]
+                : theme.colors.gray[4]
+            }`,
+          };
+        }}
+      >
         <Avatar src={image} radius="xl" />
         <Group style={{ flex: 1 }} position="apart">
           <div>

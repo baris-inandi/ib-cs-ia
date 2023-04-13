@@ -58,7 +58,7 @@ const PomoToolbar: React.FC<PomoToolbarProps> = () => {
       <PomoTimerControlsButton
         disabled={false}
         onClick={() => {
-          libPomoState. nextStage(pomoState, setPomoState);
+          libPomoState.nextStage(pomoState, setPomoState);
         }}
       >
         <IconPlayerSkipForward size={20} />

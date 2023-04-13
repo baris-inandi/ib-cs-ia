@@ -8,3 +8,4 @@
   - if grade in a class is low, recommend study session
   - recommend changing high-scoring class study sessions to low-scoring class study sessions
 - <https://www.npmjs.com/package/next-pwa>
+- sparkle emoji or icon in recommended page (maybe the tabler bolt?)

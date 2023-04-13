@@ -20,8 +20,8 @@ import { pomoStateAtom } from "./pomoState.atom";
 */
 
 const pomoThemes = new Map<PomoStage, MantineColor>([
-  ["focus", "accent"],
-  ["break", "pink"],
+  ["focus", "red"],
+  ["break", "accent"],
   ["long break", "grape"],
 ]);
 
