@@ -1,0 +1,15 @@
+course data
+pomodoros * +weight
+tasks * +++weight
+in-calendar:
+    pomodoros * ++weight
+scores:
+    diff = nth assesment - n-1th assesment
+    
+    diff {
+        is > 0:
+            // upward trend
+            +weight*diff
+        is < 0:
+            // downward trend
+    } 

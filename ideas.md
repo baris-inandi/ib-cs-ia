@@ -10,3 +10,4 @@
 - <https://www.npmjs.com/package/next-pwa>
 - sparkle emoji or icon in recommended page (maybe the tabler bolt?)
 - definitely use clerk for auth [https://youtu.be/xazOE62k6AY](https://youtu.be/xazOE62)
+- microsoft clarity analytics
