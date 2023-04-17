@@ -20,12 +20,12 @@ import { pomoStateAtom } from "./pomoState.atom";
 */
 
 const pomoThemes = new Map<PomoStage, MantineColor>([
-  ["focus", "red"],
-  ["break", "accent"],
-  ["long break", "grape"],
+    ["focus", "red"],
+    ["break", "accent"],
+    ["long break", "grape"],
 ]);
 
 export const pomoThemeAtom = atom<MantineColor>((get): MantineColor => {
-  const stage = get(pomoStateAtom).currentPomodoroStage;
-  return pomoThemes.get(stage) ?? "accent";
+    const stage = get(pomoStateAtom).currentPomodoroStage;
+    return pomoThemes.get(stage) ?? "accent";
 });

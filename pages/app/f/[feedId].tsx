@@ -1,7 +1,7 @@
 interface FeedPageProps {}
 
 const FeedPage: React.FC<FeedPageProps> = () => {
-  return <div></div>;
+    return <div></div>;
 };
 
 export default FeedPage;

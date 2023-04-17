@@ -8,43 +8,48 @@ import PomoTimerClock from "../PomoTimerClock/PomoTimerClock";
 interface PomoProgressProps {}
 
 const PomoProgress: React.FC<PomoProgressProps> = (props) => {
-  const [pomoTheme] = useAtom(pomoThemeAtom);
-  const [pomoState] = useAtom(pomoStateAtom);
+    const [pomoTheme] = useAtom(pomoThemeAtom);
+    const [pomoState] = useAtom(pomoStateAtom);
 
-  return (
-    <div className="flex h-full w-full items-center justify-center p-4">
-      <RingProgress
-        size={300}
-        roundCaps
-        thickness={16}
-        color={pomoTheme}
-        bg="transparent"
-        label={<PomoTimerClock />}
-        mb={40}
-        sx={(theme) => {
-          return {
-            backgroundColor:
-              theme.colorScheme === "dark"
-                ? theme.fn.rgba(theme.colors[pomoTheme][5], 0.2)
-                : theme.colors[pomoTheme][2],
-            borderRadius: theme.radius.md - 1,
-          };
-        }}
-        sections={[
-          {
-            color: pomoTheme,
-            value:
-              ((pomoState.pause.is
-                ? pomoState.pause.clockState.mins * 60 +
-                  pomoState.pause.clockState.secs
-                : libPomoState.remaningSecs(pomoState)) /
-                pomoState.totalSecs) *
-              100,
-          },
-        ]}
-      ></RingProgress>
-    </div>
-  );
+    return (
+        <div className="flex h-full w-full items-center justify-center p-4">
+            <RingProgress
+                size={300}
+                roundCaps
+                thickness={16}
+                color={pomoTheme}
+                bg="transparent"
+                label={<PomoTimerClock />}
+                mb={40}
+                sx={(theme) => {
+                    return {
+                        backgroundColor:
+                            theme.colorScheme === "dark"
+                                ? theme.fn.rgba(
+                                      theme.colors[pomoTheme][5],
+                                      0.2,
+                                  )
+                                : theme.colors[pomoTheme][2],
+                        borderRadius: theme.radius.md - 1,
+                    };
+                }}
+                sections={[
+                    {
+                        color: pomoTheme,
+                        value:
+                            ((pomoState.pause.is
+                                ? pomoState.pause.clockState.mins * 60 +
+                                  pomoState.pause.clockState.secs
+                                : libPomoState.remaningSecs(
+                                      pomoState,
+                                  )) /
+                                pomoState.totalSecs) *
+                            100,
+                    },
+                ]}
+            ></RingProgress>
+        </div>
+    );
 };
 
 export default PomoProgress;
