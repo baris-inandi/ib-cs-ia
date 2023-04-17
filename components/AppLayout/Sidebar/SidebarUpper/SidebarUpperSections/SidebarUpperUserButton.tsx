@@ -20,7 +20,7 @@ export default function SidebarUpperUserButton({
   email,
 }: UserButtonProps) {
   return (
-    <UnstyledButton w="100%" p={9} pb={0}>
+    <UnstyledButton w="100%" p={10} pb={0}>
       <Group
         position="apart"
         sx={(theme) => {

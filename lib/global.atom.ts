@@ -1,4 +1,7 @@
-import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 import applets from "./applets/global/applets";
 
-export const activeAppletAtom = atom(applets.entries().next().value);
+export const activeAppletAtom = atomWithStorage(
+  "jotaiActiveAppletAtom",
+  applets.entries().next().value,
+);

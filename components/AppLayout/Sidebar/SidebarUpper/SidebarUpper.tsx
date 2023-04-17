@@ -48,7 +48,7 @@ const SidebarUpper: React.FC<Props> = (props) => {
           name="Ada Lovelace"
           email="Product owner"
         />
-        <Box p={10} pt={8}>
+        <Box p={10} pt={12}>
           <Box pb={15}>
             <SidebarUpperSearchbar />
           </Box>
