@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node concurrently.cjs",
+    "dev": "node serve-dev.cjs",
     "next-dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "db": "./database/pocketbase serve",
-    "lint": "next lint && prettier --write ."
+    "lint": "next lint --fix && prettier --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

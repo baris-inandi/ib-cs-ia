@@ -1,19 +1,23 @@
 const path = require("path");
-
 const concurrently = require("concurrently");
+const os = require("os");
+
 concurrently(
   [
     {
       command: "yarn next-dev || npm run next-dev",
       name: "N",
-      prefixColor: "blue",
+      prefixColor: "red",
       cwd: path.resolve(__dirname),
     },
     {
-      command: "npm run db",
+      command:
+        os.platform() === "win32"
+          ? '"./database/pocketbase.exe" serve'
+          : "./database/pocketbase serve",
       name: "P",
-      prefixColor: "magenta",
-      cwd: path.resolve(__dirname, "database"),
+      prefixColor: "cyan",
+      cwd: path.resolve(__dirname),
     },
   ],
   {

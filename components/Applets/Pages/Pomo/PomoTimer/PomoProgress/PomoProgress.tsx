@@ -12,7 +12,7 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
   const [pomoState] = useAtom(pomoStateAtom);
 
   return (
-    <div className="w-full h-full items-center justify-center flex p-4">
+    <div className="flex h-full w-full items-center justify-center p-4">
       <RingProgress
         size={300}
         roundCaps

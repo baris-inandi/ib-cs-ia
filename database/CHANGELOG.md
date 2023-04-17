@@ -60,11 +60,11 @@
 
 - Added new fields to the `core.RecordAuthWithOAuth2Event` struct:
 
-    ```
-    IsNewRecord     bool,          // boolean field indicating whether the OAuth2 action created a new auth record
-    ProviderName    string,        // the name of the OAuth2 provider (eg. "google")
-    ProviderClient  auth.Provider, // the loaded Provider client instance
-    ```
+  ```
+  IsNewRecord     bool,          // boolean field indicating whether the OAuth2 action created a new auth record
+  ProviderName    string,        // the name of the OAuth2 provider (eg. "google")
+  ProviderClient  auth.Provider, // the loaded Provider client instance
+  ```
 
 - Added CGO linux target for the prebuilt executable.
 
@@ -102,6 +102,7 @@
 ## v0.13.0
 
 - Added new "View" collection type allowing you to create a read-only collection from a custom SQL `SELECT` statement. It supports:
+
   - aggregations (`COUNT()`, `MIN()`, `MAX()`, `GROUP BY`, etc.)
   - column and table aliases
   - CTEs and subquery expressions
@@ -135,24 +136,24 @@
 
 - **!** Changed `To`, `Cc` and `Bcc` of `mailer.Message` to `[]mail.Address` for consistency and to allow multiple recipients and optional name.
 
-    If you are sending custom emails, you'll have to replace:
+  If you are sending custom emails, you'll have to replace:
 
-    ```go
-    message := &mailer.Message{
-      ...
+  ```go
+  message := &mailer.Message{
+    ...
 
-      // (old) To: mail.Address{Address: "to@example.com"}
-      To: []mail.Address{{Address: "to@example.com", Name: "Some optional name"}},
+    // (old) To: mail.Address{Address: "to@example.com"}
+    To: []mail.Address{{Address: "to@example.com", Name: "Some optional name"}},
 
-      // (old) Cc: []string{"cc@example.com"}
-      Cc: []mail.Address{{Address: "cc@example.com", Name: "Some optional name"}},
+    // (old) Cc: []string{"cc@example.com"}
+    Cc: []mail.Address{{Address: "cc@example.com", Name: "Some optional name"}},
 
-      // (old) Bcc: []string{"bcc@example.com"}
-      Bcc: []mail.Address{{Address: "bcc@example.com", Name: "Some optional name"}},
+    // (old) Bcc: []string{"bcc@example.com"}
+    Bcc: []mail.Address{{Address: "bcc@example.com", Name: "Some optional name"}},
 
-      ...
-    }
-    ```
+    ...
+  }
+  ```
 
 - **!** Refactored the Authentik integration as a more generic "OpenID Connect" provider (`oidc`) to support any OIDC provider (Okta, Keycloak, etc.).
   _If you've previously used Authentik, make sure to rename the provider key in your code to `oidc`._
@@ -249,24 +250,24 @@
 
 - Added "tags" support for all Record and Model related event hooks.
 
-    The "tags" allow registering event handlers that will be called only on matching table name(s) or colleciton id(s)/name(s).
-    For example:
+  The "tags" allow registering event handlers that will be called only on matching table name(s) or colleciton id(s)/name(s).
+  For example:
 
-    ```go
-    app.OnRecordBeforeCreateRequest("articles").Add(func(e *core.RecordCreateEvent) error {
-      // called only on "articles" record creation
-      log.Println(e.Record)
-      return nil
-    })
-    ```
+  ```go
+  app.OnRecordBeforeCreateRequest("articles").Add(func(e *core.RecordCreateEvent) error {
+    // called only on "articles" record creation
+    log.Println(e.Record)
+    return nil
+  })
+  ```
 
-    For all those event hooks `*hook.Hook` was replaced with `*hooks.TaggedHook`, but the hook methods signatures are the same so it should behave as it was previously if no tags were specified.
+  For all those event hooks `*hook.Hook` was replaced with `*hooks.TaggedHook`, but the hook methods signatures are the same so it should behave as it was previously if no tags were specified.
 
 - **!** Fixed the `json` field **string** value normalization ([#1703](https://github.com/pocketbase/pocketbase/issues/1703)).
 
-    In order to support seamlessly both `application/json` and `multipart/form-data`
-    requests, the following normalization rules are applied if the `json` field is a
-    **plain string value**:
+  In order to support seamlessly both `application/json` and `multipart/form-data`
+  requests, the following normalization rules are applied if the `json` field is a
+  **plain string value**:
 
   - "true" is converted to the json `true`
   - "false" is converted to the json `false`
@@ -594,19 +595,24 @@
 
   ```js
   // pb_migrations/1669663597_updated_posts_old.js
-  migrate((db) => {
-    // up
-    const dao = new Dao(db)
-    const collection = dao.findCollectionByNameOrId("lngf8rb3dqu86r3")
-    collection.name = "posts_new"
-    return dao.saveCollection(collection)
-  }, (db) => {
-    // down
-    const dao = new Dao(db)
-    const collection = dao.findCollectionByNameOrId("lngf8rb3dqu86r3")
-    collection.name = "posts_old"
-    return dao.saveCollection(collection)
-  })
+  migrate(
+    (db) => {
+      // up
+      const dao = new Dao(db);
+      const collection =
+        dao.findCollectionByNameOrId("lngf8rb3dqu86r3");
+      collection.name = "posts_new";
+      return dao.saveCollection(collection);
+    },
+    (db) => {
+      // down
+      const dao = new Dao(db);
+      const collection =
+        dao.findCollectionByNameOrId("lngf8rb3dqu86r3");
+      collection.name = "posts_old";
+      return dao.saveCollection(collection);
+    },
+  );
   ```
 
 - Added new `Dao` helpers to make it easier fetching and updating the app settings from a migration:
@@ -1312,11 +1318,11 @@ Please check the individual SDK package changelog and apply the necessary change
 
 - Marked as "Deprecated" and will be removed in v0.9+:
 
-    ```
-    core.Settings.EmailAuth{}
-    core.EmailAuthConfig{}
-    schema.FieldTypeUser
-    schema.UserOptions{}
-    ```
+  ```
+  core.Settings.EmailAuth{}
+  core.EmailAuthConfig{}
+  schema.FieldTypeUser
+  schema.UserOptions{}
+  ```
 
 - The second argument of `apis.StaticDirectoryHandler(fileSystem, enableIndexFallback)` now is used to enable/disable index.html forwarding on missing file (eg. in case of SPA).
