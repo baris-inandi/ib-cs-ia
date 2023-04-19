@@ -1,5 +1,4 @@
 import { Box, Flex, Group, Text } from "@mantine/core";
-import { IconBox } from "@tabler/icons";
 import { useAtom } from "jotai";
 import applets from "../../../../lib/applets/global/applets";
 import { activeAppletAtom } from "../../../../lib/global.atom";
@@ -30,38 +29,37 @@ const SidebarUpper: React.FC<Props> = (props) => {
     );
 
     return (
-        <>
+        <div className="select-none">
             <props.section className={props.classes.section}>
                 <Flex gap={8} py={14} px={20} h={45} align="center">
-                    <IconBox size={22} />
+                    {/* <IconBox size={22} /> */}
                     <Group align="baseline">
                         <Text size={16} fw={600}>
-                            SchoolApp
+                            CSIA SchoolApp
                         </Text>
                     </Group>
                 </Flex>
             </props.section>
 
             <props.section className={props.classes.section}>
-                <SidebarUpperUserButton
-                    image="https://api.dicebear.com/6.x/open-peeps/svg?seed=Ada%20Lovelace&backgroundColor=ffdfbf,ffd5dc,d1d4f9,c0aede,b6e3f4"
-                    name="Ada Lovelace"
-                    email="Product owner"
-                />
-                <Box p={10} pt={12}>
-                    <Box pb={15}>
-                        <SidebarUpperSearchbar />
+                <div className="p-4">
+                    <SidebarUpperUserButton />
+                    <Box pt={12}>
+                        <Box pb={15}>
+                            <SidebarUpperSearchbar />
+                        </Box>
+                        <div className={props.classes.mainLinks}>
+                            {appletSidebarItems}
+                        </div>
                     </Box>
-                    <div className={props.classes.mainLinks}>
-                        {appletSidebarItems}
-                    </div>
-                </Box>
-                <Box p={10}>
-                    <SidebarUpperUpcoming />
-                </Box>
+                    <Box>
+                        <SidebarUpperUpcoming />
+                    </Box>
+                </div>
             </props.section>
-        </>
+        </div>
     );
 };
 
 export default SidebarUpper;
+

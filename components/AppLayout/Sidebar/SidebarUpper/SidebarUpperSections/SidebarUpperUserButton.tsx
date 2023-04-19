@@ -1,62 +1,43 @@
-import {
-    Avatar,
-    Group,
-    Text,
-    UnstyledButton,
-    UnstyledButtonProps,
-} from "@mantine/core";
-import { IconChevronDown } from "@tabler/icons";
+import { Avatar, Flex, Group, Text } from "@mantine/core";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons";
+import { useRouter } from "next/router";
+import { nameInitials } from "../../../../../lib/utils/nameInitials";
 
-interface UserButtonProps extends UnstyledButtonProps {
-    image: string;
-    name: string;
-    email: string;
-    icon?: React.ReactNode;
-}
+export default function SidebarUpperUserButton() {
+    const router = useRouter();
+    let name = "Ada Lovelace";
 
-export default function SidebarUpperUserButton({
-    image,
-    name,
-    email,
-}: UserButtonProps) {
     return (
-        <UnstyledButton w="100%" p={10} pb={0}>
+        <Group position="apart" pt={4} pb={8}>
+            <Flex align="center" gap={12}>
+                <Avatar size={28} radius={999} variant="filled">
+                    {nameInitials(name)}
+                </Avatar>
+                <Text size="sm">{name}</Text>
+            </Flex>
             <Group
-                position="apart"
+                pl={1}
                 sx={(theme) => {
                     return {
-                        borderRadius: theme.radius.md,
-                        backgroundColor:
+                        color:
                             theme.colorScheme === "dark"
-                                ? theme.colors.dark[6]
-                                : theme.colors.gray[0],
-                        paddingLeft: theme.spacing.md,
-                        paddingRight: theme.spacing.md,
-                        paddingTop: theme.spacing.sm,
-                        paddingBottom: theme.spacing.sm,
-                        border: `1px solid ${
-                            theme.colorScheme === "dark"
-                                ? theme.colors.dark[4]
-                                : theme.colors.gray[4]
-                        }`,
+                                ? theme.colors.dark[5]
+                                : theme.colors.gray[7],
                     };
                 }}
             >
-                <Avatar src={image} radius="xl" />
-                <Group style={{ flex: 1 }} position="apart">
-                    <div>
-                        <Text size="md" weight={500}>
-                            {name}
-                        </Text>
-
-                        <Text color="dimmed" size="xs">
-                            {email}
-                        </Text>
-                    </div>
-
-                    <IconChevronDown size={14} stroke={1.5} />
-                </Group>
+                <IconArrowLeft
+                    className="cursor-pointer"
+                    onClick={router.back}
+                    size={18}
+                />
+                <IconArrowRight
+                    className="cursor-pointer"
+                    onClick={router.forward}
+                    size={18}
+                />
             </Group>
-        </UnstyledButton>
+        </Group>
     );
 }
+

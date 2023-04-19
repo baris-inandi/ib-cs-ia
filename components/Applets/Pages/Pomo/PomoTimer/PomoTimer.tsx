@@ -13,17 +13,14 @@ export default function PomoTimer() {
             <Paper
                 h={360}
                 w="100%"
+                withBorder
                 sx={(theme) => {
                     return {
                         background:
                             theme.colorScheme === "dark"
                                 ? theme.colors.dark[6]
                                 : theme.colors.white,
-                        border: `1px solid ${
-                            theme.colorScheme === "dark"
-                                ? theme.colors.dark[5]
-                                : theme.colors.gray[3]
-                        }`,
+
                     };
                 }}
             >

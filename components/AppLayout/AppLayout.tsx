@@ -37,7 +37,7 @@ export default function AppLayout(props: {
                         backgroundColor:
                             theme.colorScheme === "dark"
                                 ? theme.colors.dark[8]
-                                : theme.colors.gray[0],
+                                : theme.white,
                     })}
                     h="100%"
                     w="100%"
@@ -45,7 +45,8 @@ export default function AppLayout(props: {
                     maw={1440}
                 >
                     <Flex
-                        px={20}
+                        pl={20}
+                        pr={9}
                         align="center"
                         h={46}
                         mih={46}
@@ -86,7 +87,7 @@ export default function AppLayout(props: {
                             }}
                         >
                             <div className="flex h-full justify-end">
-                                <Box py={5}>
+                                <Box py={6}>
                                     {activeApplet.toolbar ? (
                                         <activeApplet.toolbar />
                                     ) : null}

@@ -1,99 +1,169 @@
-import { Text } from "@mantine/core";
-import { useListState } from "@mantine/hooks";
+import {
+    Accordion,
+    Badge,
+    Checkbox,
+    Drawer,
+    Group,
+    Text,
+} from "@mantine/core";
+import { useListState, useToggle } from "@mantine/hooks";
 import { IconGripVertical } from "@tabler/icons";
+import dayjs, { Dayjs } from "dayjs";
+import { useAtom } from "jotai";
 import { useEffect } from "react";
 import {
     DragDropContext,
     Draggable,
     Droppable,
 } from "react-beautiful-dnd";
+import { tasksAtom } from "../tasks.atom";
 import useStyles from "./DragList.styles";
+
 interface DragListProps {
-    data: {
-        position: number;
-        mass: number;
-        symbol: string;
-        name: string;
-    }[];
+    day: Dayjs;
 }
 
-// TODO: sometimes render occurs before the dnd provider inits. WAIT FOR THE RENDER!
+// TODO: sometimes render occurs before the "dnd" provider inits. WAIT FOR THE RENDER!
 
-export default function DragList({ data }: DragListProps) {
+const DragList: React.FC<DragListProps> = (props) => {
+    const [data, setData] = useAtom(tasksAtom);
     const { classes, cx } = useStyles();
     const [state, handlers] = useListState(data);
 
+    const timeOfComponentMounted = dayjs();
+    const formatDay = (day: Dayjs) => {
+        return day.format("D MMM YYYY, dddd");
+    };
+    let dayFormatted = formatDay(props.day);
+    let isOverdue = props.day.isBefore(timeOfComponentMounted);
+
     useEffect(() => {
-        console.log(state);
-        // TODO: update the list order in the database
-    }, [state]);
+        setData(state);
+    }, [state, setData]);
+
+    const [opened, openClose] = useToggle();
 
     const items = state.map((item, index) => (
-        <Draggable
-            key={item.symbol}
-            index={index}
-            draggableId={item.symbol}
-        >
-            {(provided, snapshot) => (
-                <div
-                    className={cx(classes.item, {
-                        [classes.itemDragging]: snapshot.isDragging,
-                    })}
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                >
+        <div key={item.id}>
+            <Drawer
+                opened={opened}
+                onClose={openClose}
+                position="right"
+                title={item.title}
+                size="xl"
+                overlayOpacity={0.2}
+            >
+                {/* Drawer content */}
+            </Drawer>
+            <Draggable
+                key={item.id}
+                index={index}
+                draggableId={item.id}
+            >
+                {(provided, snapshot) => (
                     <div
-                        {...provided.dragHandleProps}
-                        className={classes.dragHandle}
+                        className={cx(classes.item, {
+                            [classes.itemDragging]: snapshot.isDragging,
+                        })}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
                     >
-                        <IconGripVertical size={20} stroke={1.5} />
-                    </div>
-                    <Text className={classes.symbol}>
-                        {item.symbol}
-                    </Text>
-                    <div>
-                        <Text
+                        <div
+                            {...provided.dragHandleProps}
+                            className={classes.dragHandle}
+                        >
+                            <IconGripVertical size={20} stroke={1.5} />
+                        </div>
+                        <div className="pr-4">
+                            <Checkbox
+                                color="accent"
+                                radius={999}
+                            ></Checkbox>
+                        </div>
+                        <div
+                            className="cursor-pointer"
                             onClick={() => {
-                                console.log("click");
+                                openClose();
                             }}
                         >
-                            {item.name}
-                        </Text>
-                        <Text color="dimmed" size="sm">
-                            Position: {item.position} • Mass:{" "}
-                            {item.mass}
-                        </Text>
+                            <Text
+                                onClick={() => {
+                                    console.log("click");
+                                }}
+                            >
+                                {item.title}
+                            </Text>
+                            <Text color="dimmed" size="sm">
+                                {item.description}
+                            </Text>
+                        </div>
                     </div>
-                </div>
-            )}
-        </Draggable>
+                )}
+            </Draggable>
+        </div>
     ));
 
     return (
-        <DragDropContext
-            onDragEnd={({ destination, source, reason }) => {
-                console.log(reason);
-                if (!destination) return;
-                handlers.reorder({
-                    from: source.index,
-                    to:
-                        destination.index >= 0
-                            ? destination.index
-                            : source.index,
-                });
-            }}
+        <Accordion
+            radius="md"
+            styles={{ content: { paddingBottom: 0, paddingTop: 0 } }}
+            chevronPosition="left"
+            defaultValue="value"
         >
-            <Droppable droppableId="dnd-list" direction="vertical">
-                {(provided) => (
-                    <div
-                        {...provided.droppableProps}
-                        ref={provided.innerRef}
+            <Accordion.Item value="value">
+                <Accordion.Control>
+                    <Group className="font-medium">
+                        {dayFormatted}
+                        {dayFormatted ===
+                        formatDay(timeOfComponentMounted) ? (
+                            <Badge variant="filled">Today</Badge>
+                        ) : (
+                            isOverdue && (
+                                <Badge color="red" variant="filled">
+                                    Overdue
+                                </Badge>
+                            )
+                        )}
+                    </Group>
+                </Accordion.Control>
+                <Accordion.Panel>
+                    <DragDropContext
+                        onDragEnd={({
+                            destination,
+                            source,
+                            reason,
+                        }) => {
+                            console.log(reason);
+                            if (!destination) return;
+                            handlers.reorder({
+                                from: source.index,
+                                to:
+                                    destination.index >= 0
+                                        ? destination.index
+                                        : source.index,
+                            });
+                        }}
                     >
-                        {items}
-                        {provided.placeholder}
-                    </div>
-                )}
-            </Droppable>
-        </DragDropContext>
+                        <Droppable
+                            droppableId="dnd-list"
+                            direction="vertical"
+                        >
+                            {(provided) => (
+                                <div
+                                    {...provided.droppableProps}
+                                    ref={provided.innerRef}
+                                >
+                                    {items}
+                                    {provided.placeholder}
+                                </div>
+                            )}
+                        </Droppable>
+                    </DragDropContext>
+                </Accordion.Panel>
+            </Accordion.Item>
+        </Accordion>
     );
-}
+};
+
+export default DragList;
+

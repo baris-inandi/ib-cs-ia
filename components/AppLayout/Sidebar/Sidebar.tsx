@@ -32,6 +32,10 @@ const Sidebar = () => {
             id="sidebar"
             sx={(theme) => ({
                 zIndex: 1,
+                background:
+                    theme.colorScheme === "dark"
+                        ? theme.colors.dark[7]
+                        : theme.colors.gray[0],
                 borderRight: `1px solid ${
                     theme.colorScheme === "dark"
                         ? theme.colors.dark[5]
@@ -41,7 +45,6 @@ const Sidebar = () => {
             })}
             height="100%"
             width={{ xs: 200, sm: 280, md: 310, lg: 330 }}
-            pb="lg"
             className={classes.navbar + " noscrollbar"}
         >
             <SidebarUpper section={Navbar.Section} classes={classes} />
@@ -62,3 +65,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

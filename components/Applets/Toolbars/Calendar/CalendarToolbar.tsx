@@ -1,4 +1,5 @@
-import { Button, Flex } from "@mantine/core";
+import { Button, Flex, Popover } from "@mantine/core";
+import { Calendar } from "@mantine/dates";
 import {
     IconChevronLeft,
     IconChevronRight,
@@ -20,9 +21,30 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = () => {
                 <IconChevronRight />
             </Button>
             <div className="w-3"></div>
-            <Button h="100%" color="accent" size="xs">
-                Jump to...
-            </Button>
+            <Popover
+                transition="scale"
+                position="bottom"
+                withArrow
+                shadow="md"
+            >
+                <Popover.Target>
+                    <Button
+                        h="100%"
+                        color="accent"
+                        variant="outline"
+                        size="xs"
+                    >
+                        Jump to...
+                    </Button>
+                </Popover.Target>
+                <Popover.Dropdown>
+                    <Calendar
+                        onChange={(x) => {
+                            console.log(x);
+                        }}
+                    />
+                </Popover.Dropdown>
+            </Popover>
             <Button h="100%" color="accent" size="xs">
                 <IconPlus size={20} />
             </Button>
@@ -31,3 +53,4 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = () => {
 };
 
 export default CalendarToolbar;
+

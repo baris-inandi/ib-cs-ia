@@ -37,7 +37,7 @@ export default function TopbarSearch() {
                             "backgroundColor":
                                 theme.colorScheme === "dark"
                                     ? theme.colors.dark[6]
-                                    : theme.colors.gray[0],
+                                    : theme.white,
                             "color": "black",
                             "textAlign": "left",
                             "border": `1px solid ${
@@ -45,7 +45,7 @@ export default function TopbarSearch() {
                                     ? theme.colors.dark[4]
                                     : theme.colors.gray[4]
                             }`,
-                            "transition": "box-shadow 0.15s ease",
+                            "transition": "box-shadow 0.2s ease",
                             "&:hover": {
                                 boxShadow: theme.shadows.md,
                             },

@@ -2,27 +2,34 @@ import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
     item: {
-        transition: "box-shadow 0.33s ease-out",
+        transition: `border .33s ease-out,
+            box-shadow .33s ease-out,a
+            background-color .33s ease-out,
+            border-radius .33s ease-out`,
         display: "flex",
         alignItems: "center",
-        borderRadius: theme.radius.md,
-        border: `1px solid ${
+        borderTop: `1px solid ${
             theme.colorScheme === "dark"
                 ? theme.colors.dark[5]
                 : theme.colors.gray[3]
         }`,
         padding: `${theme.spacing.xs}px ${theme.spacing.xl}px`,
         paddingLeft: 0,
-        backgroundColor:
-            theme.colorScheme === "dark"
-                ? theme.colors.dark[6]
-                : theme.white,
-        marginBottom: theme.spacing.sm,
         height: "100%",
     },
 
     itemDragging: {
-        boxShadow: theme.shadows.md,
+        border: `1px solid ${
+            theme.colorScheme === "dark"
+                ? theme.colors.dark[4]
+                : theme.colors.gray[4]
+        }`,
+        boxShadow: theme.shadows.sm,
+        borderRadius: theme.radius.md,
+        backgroundColor:
+            theme.colorScheme === "dark"
+                ? theme.colors.dark[6]
+                : theme.colors.gray[0],
     },
 
     symbol: {
@@ -48,3 +55,4 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default useStyles;
+

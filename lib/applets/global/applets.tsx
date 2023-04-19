@@ -6,6 +6,7 @@ import {
     IconGauge,
     IconGraph,
     IconHourglass,
+    IconMessageDots,
     TablerIcon,
 } from "@tabler/icons";
 import dayjs from "dayjs";
@@ -13,6 +14,7 @@ import Router from "next/router";
 import { ReactNode } from "react";
 import Calendar from "../../../components/Applets/Pages/Calendar";
 import Dashboard from "../../../components/Applets/Pages/Dashboard";
+import Feedback from "../../../components/Applets/Pages/Feedback/Feedback";
 import Pomo from "../../../components/Applets/Pages/Pomo/Pomo";
 import Recommended from "../../../components/Applets/Pages/Recommended";
 import Scores from "../../../components/Applets/Pages/Scores";
@@ -183,6 +185,24 @@ const applets: AppletMap = new Map<string, Applet>([
             toolbar: PomoToolbar,
         },
     ],
+    [
+        "feedback",
+        {
+            id: "feedback",
+            title: "Feedback",
+            description: "Give us feedback",
+            group: "Applets",
+            keywords: ["feedback", "review"],
+            iconNoSize: IconMessageDots,
+            icon: <IconMessageDots size={16} />,
+            onTrigger: (action: SpotlightAction) => {
+                Router.push(action.route);
+            },
+            route: "/app/feedback",
+            FC: Feedback,
+        },
+    ],
 ]);
 
 export default applets;
+

@@ -48,7 +48,7 @@ const useStyles = createStyles((theme) => {
         },
 
         mainLinkIcon: {
-            marginRight: theme.spacing.sm,
+            marginRight: theme.spacing.md,
         },
     };
 });

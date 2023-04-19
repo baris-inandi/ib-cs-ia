@@ -13,12 +13,16 @@ const AppletRestoreHandler: React.FC<
     const router = useRouter();
 
     useEffect(() => {
-        console.log(activeApplet);
-
         if (typeof activeApplet === "string") {
-            router.replace(`/app/${activeApplet}`);
+            let applet = activeApplet;
+            if (applet != "default") {
+                router.replace(`/app/${applet}`);
+            }
         } else if (appletExists(activeApplet.id ?? "")) {
-            router.replace(`/app/${activeApplet.id}`);
+            let applet = activeApplet.id;
+            if (applet != "default") {
+                router.replace(`/app/${applet}`);
+            }
         } else {
             router.replace("/app/dashboard");
         }
@@ -28,3 +32,4 @@ const AppletRestoreHandler: React.FC<
 };
 
 export default AppletRestoreHandler;
+

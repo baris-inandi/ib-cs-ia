@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import DragList from "./DragList/DragList";
 import TasksHotkeys from "./TasksHotkeys";
 
@@ -5,42 +6,13 @@ const Tasks = () => {
     return (
         <div>
             <TasksHotkeys />
-            <DragList
-                data={[
-                    {
-                        position: 6,
-                        mass: 12.011,
-                        symbol: "C",
-                        name: "Carbon",
-                    },
-                    {
-                        position: 7,
-                        mass: 14.007,
-                        symbol: "N",
-                        name: "Nitrogen",
-                    },
-                    {
-                        position: 39,
-                        mass: 88.906,
-                        symbol: "Y",
-                        name: "Yttrium",
-                    },
-                    {
-                        position: 56,
-                        mass: 137.33,
-                        symbol: "Ba",
-                        name: "Barium",
-                    },
-                    {
-                        position: 58,
-                        mass: 140.12,
-                        symbol: "Ce",
-                        name: "Cerium",
-                    },
-                ]}
-            />
+            <DragList day={dayjs("2022-1-1")} />
+            <DragList day={dayjs("2022-3-29")} />
+            <DragList day={dayjs()} />
+            <DragList day={dayjs("2023-6-5")} />
         </div>
     );
 };
 
 export default Tasks;
+

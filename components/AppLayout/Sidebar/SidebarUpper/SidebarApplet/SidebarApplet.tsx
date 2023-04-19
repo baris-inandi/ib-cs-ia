@@ -42,11 +42,11 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                           background:
                               theme.colorScheme === "dark"
                                   ? theme.colors.dark[5]
-                                  : theme.colors.gray[0],
+                                  : theme.white,
                           border: `1px solid ${
                               theme.colorScheme === "dark"
                                   ? theme.colors.dark[4]
-                                  : theme.colors.gray[3]
+                                  : theme.colors.gray[4]
                           }`,
                       }
                     : {
@@ -59,14 +59,14 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                 <Box
                     sx={(theme) => {
                         return {
-                            color: theme.colors.accent[6],
+                            color: theme.colors.accent[5],
                         };
                     }}
                 >
                     <props.appletOrCourse.iconNoSize
                         size={18}
                         className={props.classes.mainLinkIcon}
-                        stroke={1.5}
+                        stroke={2.5}
                     />
                 </Box>
 
@@ -89,3 +89,4 @@ SidebarApplet.defaultProps = {
 };
 
 export default SidebarApplet;
+

@@ -43,7 +43,7 @@ const AppKbd: React.FC<AppKbdProps> = (props) => {
                     backgroundColor: props.sidebarStyles
                         ? theme.colorScheme === "dark"
                             ? theme.colors.dark[6]
-                            : theme.colors.gray[0]
+                            : theme.white
                         : theme.colorScheme === "dark"
                         ? theme.colors.dark[4]
                         : theme.white,
@@ -65,3 +65,4 @@ const AppKbd: React.FC<AppKbdProps> = (props) => {
 };
 
 export default AppKbd;
+
