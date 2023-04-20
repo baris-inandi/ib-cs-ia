@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export default interface ITask {
     id: string;
     title: string;
@@ -5,5 +7,7 @@ export default interface ITask {
     complete: boolean;
     priority: 0 | 1 | 2 | 3;
     classId: string;
+    due: Dayjs;
+    explicitlyDueTime: boolean;
 }
 

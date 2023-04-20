@@ -1,16 +1,19 @@
 import { SpotlightAction, SpotlightProvider } from "@mantine/spotlight";
 import { IconSearch } from "@tabler/icons";
+import { useAtom } from "jotai";
 import React, { ReactNode } from "react";
-import spotlightActions from "../../lib/utils/spotlightActions";
+import spotlightActionsAtom from "../../lib/utils/spotlightActions";
 
 interface Props {
     children: React.ReactNode;
 }
 
 const AppSpotlightProvider: React.FC<Props> = (props) => {
+    let [spotlightActions] = useAtom(spotlightActionsAtom);
+
     return (
         <SpotlightProvider
-            limit={5}
+            limit={8}
             placeholder="Search"
             searchIcon={
                 (<IconSearch size={18} />) as unknown as ReactNode
@@ -27,3 +30,4 @@ const AppSpotlightProvider: React.FC<Props> = (props) => {
 };
 
 export default AppSpotlightProvider;
+

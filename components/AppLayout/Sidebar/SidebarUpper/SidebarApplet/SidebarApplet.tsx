@@ -37,7 +37,7 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                 router.push(props.appletOrCourse.route);
             }}
             sx={(theme) => {
-                return props.active
+                const extras = props.active
                     ? {
                           background:
                               theme.colorScheme === "dark"
@@ -52,8 +52,22 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                     : {
                           border: "1px solid transparent",
                       };
+                return {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    fontSize: theme.fontSizes.sm,
+                    padding: `7px ${theme.spacing.xs}px`,
+                    borderRadius: theme.radius.md,
+                    fontWeight: 500,
+                    color:
+                        theme.colorScheme === "dark"
+                            ? theme.colors.dark[0]
+                            : theme.colors.gray[7],
+                    ...extras,
+                };
             }}
-            className={props.classes.mainLink}
         >
             <Box className={props.classes.mainLinkInner}>
                 <Box
@@ -66,7 +80,7 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                     <props.appletOrCourse.iconNoSize
                         size={18}
                         className={props.classes.mainLinkIcon}
-                        stroke={2.5}
+                        stroke={2}
                     />
                 </Box>
 

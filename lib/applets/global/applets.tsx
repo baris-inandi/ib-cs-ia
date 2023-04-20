@@ -7,6 +7,7 @@ import {
     IconGraph,
     IconHourglass,
     IconMessageDots,
+    IconSettings,
     TablerIcon,
 } from "@tabler/icons";
 import dayjs from "dayjs";
@@ -18,6 +19,7 @@ import Feedback from "../../../components/Applets/Pages/Feedback/Feedback";
 import Pomo from "../../../components/Applets/Pages/Pomo/Pomo";
 import Recommended from "../../../components/Applets/Pages/Recommended";
 import Scores from "../../../components/Applets/Pages/Scores";
+import Settings from "../../../components/Applets/Pages/Settings/Settings";
 import Tasks from "../../../components/Applets/Pages/Tasks/Tasks";
 import CalendarToolbar from "../../../components/Applets/Toolbars/Calendar/CalendarToolbar";
 import PomoToolbar from "../../../components/Applets/Toolbars/Pomo/PomoToolbar";
@@ -60,6 +62,9 @@ interface AppletAdditionalFields extends SpotlightAction {
     // toolbarTitleOverride?: The optional field that overrides the applet title on the toolbar.
     // Eg.this field can override the title `Calendar` with `February 2023` to make use of the
     // title area for additional functionality.
+    hiddenInSidebar?: boolean;
+    // hiddenInSidebar?: An optional value to hide an applet from the sidebar.
+    // Useful in applets such as "settings" or "feedback"
 }
 
 export type Applet = SpotlightAction & AppletAdditionalFields;
@@ -191,7 +196,7 @@ const applets: AppletMap = new Map<string, Applet>([
             id: "feedback",
             title: "Feedback",
             description: "Give us feedback",
-            group: "Applets",
+            group: "Utilities",
             keywords: ["feedback", "review"],
             iconNoSize: IconMessageDots,
             icon: <IconMessageDots size={16} />,
@@ -200,6 +205,25 @@ const applets: AppletMap = new Map<string, Applet>([
             },
             route: "/app/feedback",
             FC: Feedback,
+            hiddenInSidebar: true,
+        },
+    ],
+    [
+        "settings",
+        {
+            id: "settings",
+            title: "Settings",
+            description: "Adjust your settings",
+            group: "Utilities",
+            keywords: ["settings", "preferences", "options"],
+            iconNoSize: IconSettings,
+            icon: <IconSettings size={16} />,
+            onTrigger: (action: SpotlightAction) => {
+                Router.push(action.route);
+            },
+            route: "/app/settings",
+            FC: Settings,
+            hiddenInSidebar: true,
         },
     ],
 ]);

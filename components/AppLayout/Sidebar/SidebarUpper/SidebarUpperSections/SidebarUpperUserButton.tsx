@@ -1,5 +1,18 @@
-import { Avatar, Flex, Group, Text } from "@mantine/core";
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons";
+import {
+    Avatar,
+    Flex,
+    Group,
+    Menu,
+    Text,
+    UnstyledButton,
+} from "@mantine/core";
+import {
+    IconArrowLeft,
+    IconArrowRight,
+    IconLogout,
+    IconMessageDots,
+    IconSettings,
+} from "@tabler/icons";
 import { useRouter } from "next/router";
 import { nameInitials } from "../../../../../lib/utils/nameInitials";
 
@@ -9,19 +22,50 @@ export default function SidebarUpperUserButton() {
 
     return (
         <Group position="apart" pt={4} pb={8}>
-            <Flex align="center" gap={12}>
-                <Avatar size={28} radius={999} variant="filled">
-                    {nameInitials(name)}
-                </Avatar>
-                <Text size="sm">{name}</Text>
-            </Flex>
+            <Menu
+                radius="md"
+                withArrow
+                position="bottom-start"
+                transition="scale"
+                shadow="sm"
+                width={200}
+            >
+                <Menu.Target>
+                    <UnstyledButton>
+                        <Flex align="center" gap={12}>
+                            <Avatar
+                                size={28}
+                                radius={999}
+                                variant="filled"
+                            >
+                                {nameInitials(name)}
+                            </Avatar>
+                            <Text size="sm">{name}</Text>
+                        </Flex>
+                    </UnstyledButton>
+                </Menu.Target>
+                <Menu.Dropdown>
+                    <Menu.Item icon={<IconSettings size={14} />}>
+                        Settings
+                    </Menu.Item>
+                    <Menu.Item icon={<IconMessageDots size={14} />}>
+                        Give feedback
+                    </Menu.Item>
+                    <Menu.Item
+                        color="red"
+                        icon={<IconLogout size={14} />}
+                    >
+                        Log out
+                    </Menu.Item>
+                </Menu.Dropdown>
+            </Menu>
             <Group
                 pl={1}
                 sx={(theme) => {
                     return {
                         color:
                             theme.colorScheme === "dark"
-                                ? theme.colors.dark[5]
+                                ? theme.colors.dark[2]
                                 : theme.colors.gray[7],
                     };
                 }}

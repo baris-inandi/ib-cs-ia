@@ -1,12 +1,16 @@
 import { Button, Flex, Popover, Text } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
 import { IconEye, IconEyeOff, IconPlus } from "@tabler/icons";
-import { useState } from "react";
+import { useAtom } from "jotai";
+import { tasksShowCompleteAtom } from "../../Pages/Tasks/tasks.atom";
 
 interface TasksToolbarProps {}
 
 const TasksToolbar: React.FC<TasksToolbarProps> = () => {
-    const [showCompleted, setShowCompleted] = useState(false);
+    const [showCompleted, setShowCompleted] = useAtom(
+        tasksShowCompleteAtom,
+    );
+
     return (
         <Flex h="100%" align="center" gap={10}>
             <Button

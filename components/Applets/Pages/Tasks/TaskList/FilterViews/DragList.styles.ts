@@ -8,14 +8,9 @@ const useStyles = createStyles((theme) => ({
             border-radius .33s ease-out`,
         display: "flex",
         alignItems: "center",
-        borderTop: `1px solid ${
-            theme.colorScheme === "dark"
-                ? theme.colors.dark[5]
-                : theme.colors.gray[3]
-        }`,
-        padding: `${theme.spacing.xs}px ${theme.spacing.xl}px`,
+        height: 56,
         paddingLeft: 0,
-        height: "100%",
+        paddingRight: 20,
     },
 
     itemDragging: {
@@ -50,7 +45,6 @@ const useStyles = createStyles((theme) => ({
                 : theme.colors.gray[6],
         paddingLeft: theme.spacing.md,
         paddingRight: theme.spacing.md,
-        backgroundColor: "accent",
     },
 }));
 

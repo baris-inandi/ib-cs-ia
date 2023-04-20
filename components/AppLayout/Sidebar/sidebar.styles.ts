@@ -27,20 +27,6 @@ const useStyles = createStyles((theme) => {
             border: `1px solid ${theme.colors.gray[2]}`,
         },
 
-        mainLink: {
-            display: "flex",
-            alignItems: "center",
-            width: "100%",
-            fontSize: theme.fontSizes.sm,
-            padding: `9px ${theme.spacing.xs}px`,
-            borderRadius: theme.radius.md,
-            fontWeight: 500,
-            color:
-                theme.colorScheme === "dark"
-                    ? theme.colors.dark[0]
-                    : theme.colors.gray[7],
-        },
-
         mainLinkInner: {
             display: "flex",
             alignItems: "center",
@@ -53,3 +39,4 @@ const useStyles = createStyles((theme) => {
     };
 });
 export default useStyles;
+

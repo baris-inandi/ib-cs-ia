@@ -95,9 +95,10 @@ export default function AppLayout(props: {
                             </div>
                         </Box>
                     </Flex>
-                    <Box p={20}>{props.children}</Box>
+                    {props.children}
                 </Flex>
             </Flex>
         </div>
     );
 }
+
