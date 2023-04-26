@@ -13,10 +13,11 @@ import { Calendar } from "@mantine/dates";
 import { useToggle } from "@mantine/hooks";
 import { IconCalendarDue } from "@tabler/icons";
 import dayjs from "dayjs";
-import ITask from "../../../../../../../lib/applets/tasks/ITask";
-import { resolveTaskAccentFromPriority } from "../../../../../../../lib/applets/tasks/resolveTaskAccentFromPriority";
-import { nameInitials } from "../../../../../../../lib/utils/nameInitials";
-import useStyles from "../DragList.styles";
+import ITask from "../../../../../../lib/applets/tasks/ITask";
+import { resolveTaskAccentFromPriority } from "../../../../../../lib/applets/tasks/resolveTaskAccentFromPriority";
+import { nameInitials } from "../../../../../../lib/utils/nameInitials";
+import TaskItemDrawer from "./TaskItemDrawer/TaskItemDrawer";
+import useStyles from "./taskitem.styles";
 
 interface TaskItemProps {
     task: ITask;
@@ -34,11 +35,10 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                 opened={opened}
                 onClose={openClose}
                 position="right"
-                title={props.task.title}
                 size="xl"
                 overlayOpacity={0.2}
             >
-                {/* Drawer content */}
+                <TaskItemDrawer task={props.task} />
             </Drawer>
 
             <Box
@@ -56,7 +56,6 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                 <div className="pr-5">
                     <Checkbox
                         size="xs"
-                        checked={props.task.complete}
                         color={resolveTaskAccentFromPriority(
                             props.task.priority,
                         )}
@@ -100,14 +99,15 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                     ></Checkbox>
                 </div>
                 <Group position="apart" w="100%">
-                    <Group>
-                        <div
+                    <Group align="stretch">
+                        <UnstyledButton
                             className="w-60 cursor-pointer"
                             onClick={() => {
                                 openClose();
                             }}
                         >
                             <Text
+                                lh={"125%"}
                                 className={
                                     props.task.complete
                                         ? "line-through"
@@ -119,10 +119,10 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                             >
                                 {props.task.title}
                             </Text>
-                            <Text color="dimmed" size="sm">
+                            <Text color="dimmed" size="sm" lh={"125%"}>
                                 {props.task.description}
                             </Text>
-                        </div>
+                        </UnstyledButton>
                         <Popover
                             transition="scale"
                             position="bottom"

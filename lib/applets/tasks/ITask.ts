@@ -11,3 +11,13 @@ export default interface ITask {
     explicitlyDueTime: boolean;
 }
 
+export type TaskViewFilter = "datetime" | "priority" | "course";
+
+export type TaskAccordions = Array<ITaskAccordion>;
+
+interface ITaskAccordion {
+    accordionTitle: string;
+    tasks: Array<ITask>;
+    unsafeArbitraryParams?: Record<string, any>;
+}
+

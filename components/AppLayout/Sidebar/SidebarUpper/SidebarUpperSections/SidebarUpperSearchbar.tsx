@@ -43,7 +43,7 @@ export default function TopbarSearch() {
                             "border": `1px solid ${
                                 theme.colorScheme === "dark"
                                     ? theme.colors.dark[4]
-                                    : theme.colors.gray[4]
+                                    : theme.colors.gray[3]
                             }`,
                             "transition": "box-shadow 0.2s ease",
                             "&:hover": {

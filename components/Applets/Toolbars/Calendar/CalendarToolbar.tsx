@@ -5,6 +5,7 @@ import {
     IconChevronRight,
     IconPlus,
 } from "@tabler/icons";
+import DimmedButton from "../../../global/DimmedButton";
 
 interface CalendarToolbarProps {}
 
@@ -45,9 +46,9 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = () => {
                     />
                 </Popover.Dropdown>
             </Popover>
-            <Button h="100%" color="accent" size="xs">
+            <DimmedButton h="100%" color="accent" size="xs">
                 <IconPlus size={20} />
-            </Button>
+            </DimmedButton>
         </Flex>
     );
 };

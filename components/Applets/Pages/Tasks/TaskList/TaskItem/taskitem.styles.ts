@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
             border-radius .33s ease-out`,
         display: "flex",
         alignItems: "center",
-        height: 56,
+        height: 48,
         paddingLeft: 0,
         paddingRight: 20,
     },
@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
         border: `1px solid ${
             theme.colorScheme === "dark"
                 ? theme.colors.dark[4]
-                : theme.colors.gray[4]
+                : theme.colors.gray[3]
         }`,
         boxShadow: theme.shadows.sm,
         borderRadius: theme.radius.md,

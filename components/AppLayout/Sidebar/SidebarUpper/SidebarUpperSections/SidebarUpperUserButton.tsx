@@ -28,7 +28,7 @@ export default function SidebarUpperUserButton() {
                 position="bottom-start"
                 transition="scale"
                 shadow="sm"
-                width={200}
+                width={250}
             >
                 <Menu.Target>
                     <UnstyledButton>

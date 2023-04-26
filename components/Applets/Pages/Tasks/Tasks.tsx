@@ -1,12 +1,11 @@
-import { Tabs } from "@mantine/core";
+import { Tabs, Text } from "@mantine/core";
 import {
     IconCalendar,
     IconExclamationCircle,
     IconSchool,
 } from "@tabler/icons";
 import { useAtom } from "jotai";
-import TaskListFilterViewDatetime from "./TaskList/FilterViews/TaskListFilterViewDatetime";
-import TaskListFilterViewPriority from "./TaskList/FilterViews/TaskListFilterViewPriority";
+import TaskList from "./TaskList/TaskList";
 import TasksHotkeys from "./TasksHotkeys";
 import { tasksFilterTabSelectionAtom } from "./tasks.atom";
 
@@ -35,6 +34,9 @@ const Tasks = () => {
                 }}
             >
                 <Tabs.List>
+                    <div className="flex h-full justify-center">
+                        <Text>Filter by:</Text>
+                    </div>
                     <Tabs.Tab
                         value="datetime"
                         icon={<IconCalendar size={18} />}
@@ -55,20 +57,16 @@ const Tasks = () => {
                     </Tabs.Tab>
                 </Tabs.List>
 
-                <Tabs.Panel value="customorder" pt="xs">
-                    <TaskListFilterViewDatetime />
-                </Tabs.Panel>
-
                 <Tabs.Panel value="datetime" pt="xs">
-                    <TaskListFilterViewDatetime />
+                    <TaskList filter="datetime" />
                 </Tabs.Panel>
 
                 <Tabs.Panel value="priority" pt="xs">
-                    <TaskListFilterViewPriority />
+                    <TaskList filter="priority" />
                 </Tabs.Panel>
 
                 <Tabs.Panel value="course" pt="xs">
-                    <TaskListFilterViewDatetime />
+                    <TaskList filter="course" />
                 </Tabs.Panel>
             </Tabs>
         </>
