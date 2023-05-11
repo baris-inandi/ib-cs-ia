@@ -10,6 +10,8 @@ const TaskWizardLite: React.FC<TaskWizardProps> = () => {
     const [open, toggle] = useToggle();
     const [text, setText] = useState("");
 
+    // TODO: this should use focus-within to keep it open while focused at buttons on the bottom
+
     return (
         <Accordion
             styles={{
