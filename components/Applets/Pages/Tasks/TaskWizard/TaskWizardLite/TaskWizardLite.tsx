@@ -82,4 +82,3 @@ const TaskWizardLite: React.FC<TaskWizardProps> = () => {
 };
 
 export default TaskWizardLite;
-

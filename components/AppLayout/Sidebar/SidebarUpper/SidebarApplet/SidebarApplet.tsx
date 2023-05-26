@@ -103,4 +103,3 @@ SidebarApplet.defaultProps = {
 };
 
 export default SidebarApplet;
-

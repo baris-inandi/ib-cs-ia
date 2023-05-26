@@ -229,4 +229,3 @@ const applets: AppletMap = new Map<string, Applet>([
 ]);
 
 export default applets;
-

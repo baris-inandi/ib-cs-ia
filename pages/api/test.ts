@@ -7,4 +7,3 @@ export default function handler(
 ) {
     res.status(200).json(michael("Do this that  shit   yes tomorrow"));
 }
-

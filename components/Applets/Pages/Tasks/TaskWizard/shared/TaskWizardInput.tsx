@@ -25,4 +25,3 @@ const TaskWizardInput: React.FC<TaskWizardInputProps> = (props) => {
 };
 
 export default TaskWizardInput;
-

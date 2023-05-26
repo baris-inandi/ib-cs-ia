@@ -13,4 +13,3 @@ const AuthGoogle: React.FC<AuthGoogleProps> = () => {
 };
 
 export default AuthGoogle;
-

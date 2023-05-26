@@ -32,4 +32,3 @@ const AppletRestoreHandler: React.FC<
 };
 
 export default AppletRestoreHandler;
-

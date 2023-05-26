@@ -105,4 +105,3 @@ const TaskList: React.FC<TaskListViewProps> = (props) => {
 };
 
 export default TaskList;
-

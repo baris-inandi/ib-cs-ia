@@ -82,4 +82,3 @@ const SidebarUpper: React.FC<Props> = (props) => {
 };
 
 export default SidebarUpper;
-

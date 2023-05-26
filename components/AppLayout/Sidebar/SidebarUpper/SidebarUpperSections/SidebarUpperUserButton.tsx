@@ -61,6 +61,7 @@ export default function SidebarUpperUserButton() {
             </Menu>
             <Group
                 pl={1}
+                noWrap
                 sx={(theme) => {
                     return {
                         color:
@@ -84,4 +85,3 @@ export default function SidebarUpperUserButton() {
         </Group>
     );
 }
-

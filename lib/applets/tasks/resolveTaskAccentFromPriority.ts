@@ -7,4 +7,3 @@ export const resolveTaskAccentFromPriority = (
 ) => {
     return colors[priority];
 };
-

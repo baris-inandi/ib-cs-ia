@@ -24,4 +24,3 @@ const michael = (input: string) => {
 };
 
 export default michael;
-

@@ -30,4 +30,3 @@ const AppSpotlightProvider: React.FC<Props> = (props) => {
 };
 
 export default AppSpotlightProvider;
-

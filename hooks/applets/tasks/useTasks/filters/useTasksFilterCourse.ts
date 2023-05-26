@@ -43,4 +43,3 @@ export const useTasksFilterCourse = (data: Array<ITask>) => {
         return accordion;
     });
 };
-

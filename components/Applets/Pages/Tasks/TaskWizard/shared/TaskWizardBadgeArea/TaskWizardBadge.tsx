@@ -9,4 +9,3 @@ const TaskWizardBadge: React.FC<BadgeProps> = (props) => {
 };
 
 export default TaskWizardBadge;
-

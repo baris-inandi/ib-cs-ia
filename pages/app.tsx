@@ -7,4 +7,3 @@ const AppPage: React.FC<AppPageProps> = () => {
 };
 
 export default AppPage;
-

@@ -10,11 +10,11 @@ const DimmedButton: React.FC<ButtonProps> = (props) => {
                         background: "inherit",
                         opacity: 0.8,
                     },
-                    color:
+                    "color":
                         theme.colorScheme === "dark"
                             ? "white"
                             : "black",
-                    backgroundColor:
+                    "backgroundColor":
                         theme.colorScheme === "dark"
                             ? theme.colors.dark[4]
                             : theme.colors.gray[4],
@@ -25,4 +25,3 @@ const DimmedButton: React.FC<ButtonProps> = (props) => {
 };
 
 export default DimmedButton;
-

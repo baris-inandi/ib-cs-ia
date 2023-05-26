@@ -6,4 +6,3 @@ export const nameInitials = (name: string) => {
         .join("")
         .toUpperCase();
 };
-

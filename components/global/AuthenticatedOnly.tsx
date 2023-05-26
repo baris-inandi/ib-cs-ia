@@ -20,4 +20,3 @@ const AuthenticatedOnly: React.FC<AuthenticatedOnlyProps> = (props) => {
 };
 
 export default AuthenticatedOnly;
-

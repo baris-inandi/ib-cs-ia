@@ -7,4 +7,3 @@ const spotlightActionsAtom = atom<Array<SpotlightAction | Applet>>(
 );
 
 export default spotlightActionsAtom;
-

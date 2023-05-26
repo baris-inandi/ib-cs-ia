@@ -65,4 +65,3 @@ const AppKbd: React.FC<AppKbdProps> = (props) => {
 };
 
 export default AppKbd;
-

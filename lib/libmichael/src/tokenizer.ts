@@ -19,4 +19,3 @@ const michaelTokenizer = (input: string) => {
 };
 
 export default michaelTokenizer;
-

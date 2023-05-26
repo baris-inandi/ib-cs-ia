@@ -54,4 +54,3 @@ const CalendarToolbar: React.FC<CalendarToolbarProps> = () => {
 };
 
 export default CalendarToolbar;
-

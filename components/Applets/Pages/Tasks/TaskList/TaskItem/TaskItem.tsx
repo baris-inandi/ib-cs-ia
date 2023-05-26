@@ -98,8 +98,8 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                         radius={999}
                     ></Checkbox>
                 </div>
-                <Group position="apart" w="100%">
-                    <Group align="stretch">
+                <Group noWrap position="apart" w="100%">
+                    <Group noWrap align="stretch">
                         <UnstyledButton
                             className="w-60 cursor-pointer"
                             onClick={() => {
@@ -132,6 +132,7 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                             <Popover.Target>
                                 <UnstyledButton>
                                     <Group
+                                        noWrap
                                         spacing="xs"
                                         sx={(theme) => {
                                             return {
@@ -190,7 +191,7 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                             </Popover.Dropdown>
                         </Popover>
                     </Group>
-                    <Group spacing="xl">
+                    <Group noWrap spacing="xl">
                         <Text color="dimmed" align="right" size="sm">
                             {props.task.classId}
                         </Text>
@@ -215,4 +216,3 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
 };
 
 export default TaskItem;
-

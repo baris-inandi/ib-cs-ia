@@ -7,14 +7,14 @@ import { useColorScheme } from "@mantine/hooks";
 import { Provider as JotaiProvider } from "jotai";
 import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
+import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import AppHead from "../components/global/AppHead";
 import AppWebkitScrollbarStyleProvider from "../components/global/AppWebkitScrollbarStyleProvider";
-import AppSpotlightProvider from "../components/Spotlight/AppSpotlightProvider";
 import _mantineTheme from "../mantine.theme";
 import "../styles/global.css";
 import "../styles/tailwind.css";
 
-/* 
+/*
   IA:
     This is the app component. It is the parent of all other components.
     It will be rendered on every page.

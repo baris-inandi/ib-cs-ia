@@ -45,4 +45,3 @@ export const useTasksFilterPriority = (data: Array<ITask>) => {
         })
         .reverse();
 };
-

@@ -38,4 +38,3 @@ const keywordMatcher = deepmerge(
     keywordMatcherAliases,
 );
 export default keywordMatcher;
-

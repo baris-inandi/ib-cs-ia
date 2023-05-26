@@ -20,7 +20,6 @@ export default function PomoTimer() {
                             theme.colorScheme === "dark"
                                 ? theme.colors.dark[6]
                                 : theme.colors.white,
-
                     };
                 }}
             >
