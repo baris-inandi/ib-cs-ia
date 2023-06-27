@@ -1,7 +1,6 @@
 import { Button, ButtonVariant } from "@mantine/core";
 import { useAtom } from "jotai";
 import { ReactNode } from "react";
-import libPomoState from "../../../../../lib/applets/pomo/libPomoState/libPomoState";
 import { pomoStateAtom } from "../../../Pages/Pomo/atoms/pomoState.atom";
 import { pomoThemeAtom } from "../../../Pages/Pomo/atoms/pomoTheme.atom";
 
@@ -33,7 +32,7 @@ const PomoTimerControlsButton: React.FC<
                 ? props.children
                 : (props.isPositiveIfForIncreaseDecreaseTime
                       ? "+"
-                      : "-") + libPomoState.getIncrementMins(pomoState)}
+                      : "-") + 31}
         </Button>
     );
 };

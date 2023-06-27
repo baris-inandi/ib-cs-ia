@@ -1,6 +1,4 @@
 import { useAtom } from "jotai";
-import libPomoState from "../../../../lib/applets/pomo/libPomoState/libPomoState";
-import toggleTimer from "../../../../lib/applets/pomo/toolbar/toggleTimer";
 import Hotkeys from "../../../global/Hotkeys";
 import { pomoStateAtom } from "./atoms/pomoState.atom";
 
@@ -12,8 +10,9 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
     return (
         <Hotkeys
             appletTitle="Pomodoro Hotkeys"
-            hotkeys={[
-                {
+            hotkeys={
+                [
+                    /*  {
                     help: "Start/stop timer",
                     hotkey: "Space",
                     callback: () => {
@@ -51,8 +50,9 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
                     callback: () => {
                         libPomoState.nextStage(pomoState, setPomoState);
                     },
-                },
-            ]}
+                }, */
+                ]
+            }
         />
     );
 };

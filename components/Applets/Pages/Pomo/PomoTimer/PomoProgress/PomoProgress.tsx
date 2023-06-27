@@ -1,6 +1,5 @@
 import { RingProgress } from "@mantine/core";
 import { useAtom } from "jotai";
-import libPomoState from "../../../../../../lib/applets/pomo/libPomoState/libPomoState";
 import { pomoStateAtom } from "../../atoms/pomoState.atom";
 import { pomoThemeAtom } from "../../atoms/pomoTheme.atom";
 import PomoTimerClock from "../PomoTimerClock/PomoTimerClock";
@@ -36,15 +35,7 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
                 sections={[
                     {
                         color: pomoTheme,
-                        value:
-                            ((pomoState.pause.is
-                                ? pomoState.pause.clockState.mins * 60 +
-                                  pomoState.pause.clockState.secs
-                                : libPomoState.remaningSecs(
-                                      pomoState,
-                                  )) /
-                                pomoState.totalSecs) *
-                            100,
+                        value: 31,
                     },
                 ]}
             ></RingProgress>

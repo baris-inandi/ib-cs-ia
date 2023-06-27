@@ -30,7 +30,7 @@ const theme: MantineThemeOverride = {
         accent: DEFAULT_THEME.colors.indigo,
     },
     primaryColor: "accent",
-    primaryShade: { light: 5, dark: 4 },
+    primaryShade: { light: 5, dark: 6 },
     fontFamily:
         '-apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif',
 };

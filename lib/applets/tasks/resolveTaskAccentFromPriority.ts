@@ -1,6 +1,6 @@
 import { MantineColor } from "@mantine/core";
 
-const colors: Array<MantineColor> = ["gray", "accent", "orange", "red"];
+const colors: Array<MantineColor> = ["gray", "indigo", "yellow", "red"];
 
 export const resolveTaskAccentFromPriority = (
     priority: 0 | 1 | 2 | 3,

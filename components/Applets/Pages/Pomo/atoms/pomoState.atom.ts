@@ -1,7 +1,5 @@
-import { atomWithStorage } from "jotai/utils";
-import { DEFAULT_POMOSTATE } from "../../../../../lib/applets/pomo/libPomoState/IPomoState";
+import { atom } from "jotai";
+import PomoStateNext from "../../../../../lib/applets/pomo/PomoStateNext/PomoStateNext";
 
-export const pomoStateAtom = atomWithStorage(
-    "jotaiPomoStateAtom",
-    DEFAULT_POMOSTATE,
-);
+export const pomoStateAtom = atom<PomoStateNext>(new PomoStateNext());
+// TODO: to persist the pomodoro state, turn this into a localstorage atom

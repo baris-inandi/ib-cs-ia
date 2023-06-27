@@ -20,8 +20,6 @@ const AppSpotlightProvider: React.FC<Props> = (props) => {
             }
             shortcut={["mod + P", "mod + K", "."]}
             highlightQuery
-            transitionDuration={200}
-            transition="scale"
             actions={spotlightActions as SpotlightAction[]}
         >
             {props.children}

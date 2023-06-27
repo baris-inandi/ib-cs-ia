@@ -22,7 +22,7 @@ export default function AppLayout(props: {
                             theme.colorScheme === "dark"
                                 ? theme.white
                                 : theme.black,
-                        borderTop: `1px solid ${
+                        border: `1px solid ${
                             theme.colorScheme === "dark"
                                 ? theme.colors.dark[5]
                                 : theme.colors.gray[4]

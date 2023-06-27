@@ -1,5 +1,5 @@
 import { Accordion, Box } from "@mantine/core";
-import { useToggle } from "@mantine/hooks";
+import { useFocusWithin } from "@mantine/hooks";
 import { useState } from "react";
 import TaskWizardBadgeArea from "../shared/TaskWizardBadgeArea/TaskWizardBadgeArea";
 import TaskWizardInput from "../shared/TaskWizardInput";
@@ -7,77 +7,71 @@ import TaskWizardInput from "../shared/TaskWizardInput";
 interface TaskWizardProps {}
 
 const TaskWizardLite: React.FC<TaskWizardProps> = () => {
-    const [open, toggle] = useToggle();
     const [text, setText] = useState("");
-
-    // TODO: this should use focus-within to keep it open while focused at buttons on the bottom
+    const { ref, focused } = useFocusWithin();
 
     return (
-        <Accordion
-            styles={{
-                content: {
-                    padding: 0,
-                },
-                item: {
-                    border: "none",
-                    padding: 0,
-                },
-                control: {
-                    "display": "block",
-                    "cursor": "default",
-                    "padding": 0,
-                    "backgroundColor": "transparent",
-                    "&:hover": {
-                        backgroundColor: "transparent",
+        <div ref={ref}>
+            <Accordion
+                styles={{
+                    content: {
+                        padding: 0,
                     },
-                },
-            }}
-            value={open ? "content" : null}
-            chevron={false}
-        >
-            <Accordion.Item value="content">
-                <Accordion.Control>
-                    <Box
-                        className="select-none pl-11"
-                        sx={(theme) => {
-                            return {
-                                width: "100%",
-                                borderTop: `1px solid ${
-                                    theme.colorScheme === "dark"
-                                        ? theme.colors.dark[5]
-                                        : theme.colors.gray[3]
-                                }`,
-                            };
-                        }}
-                    >
+                    item: {
+                        border: "none",
+                        padding: 0,
+                    },
+                    control: {
+                        "display": "block",
+                        "cursor": "default",
+                        "padding": 0,
+                        "backgroundColor": "transparent",
+                        "&:hover": {
+                            backgroundColor: "transparent",
+                        },
+                    },
+                }}
+                value={focused ? "content" : null}
+                chevron={false}
+            >
+                <Accordion.Item value="content">
+                    <Accordion.Control>
                         <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                height: 48,
-                                paddingLeft: 0,
-                                paddingRight: 0,
+                            className="select-none pl-11"
+                            sx={(theme) => {
+                                return {
+                                    width: "100%",
+                                    borderTop: `1px solid ${
+                                        theme.colorScheme === "dark"
+                                            ? theme.colors.dark[5]
+                                            : theme.colors.gray[3]
+                                    }`,
+                                };
                             }}
                         >
-                            <TaskWizardInput
-                                value={[text, setText]}
-                                onFocus={() => {
-                                    toggle();
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    height: 48,
+                                    paddingLeft: 0,
+                                    paddingRight: 0,
                                 }}
-                                onBlur={() => {
-                                    toggle();
-                                }}
-                            />
+                            >
+                                <TaskWizardInput
+                                    value={[text, setText]}
+                                />
+                            </Box>
                         </Box>
-                    </Box>
-                </Accordion.Control>
-                <Accordion.Panel>
-                    <div className="pl-11">
-                        <TaskWizardBadgeArea />
-                    </div>
-                </Accordion.Panel>
-            </Accordion.Item>
-        </Accordion>
+                    </Accordion.Control>
+                    <Accordion.Panel>
+                        <div className="pl-11">
+                            <TaskWizardBadgeArea />
+                        </div>
+                    </Accordion.Panel>
+                </Accordion.Item>
+            </Accordion>
+        </div>
     );
 };
 

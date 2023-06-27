@@ -14,6 +14,7 @@ import { useToggle } from "@mantine/hooks";
 import { IconCalendarDue } from "@tabler/icons";
 import dayjs from "dayjs";
 import ITask from "../../../../../../lib/applets/tasks/ITask";
+import displayShortTaskDueDate from "../../../../../../lib/applets/tasks/displayShortTaskDueDate";
 import { resolveTaskAccentFromPriority } from "../../../../../../lib/applets/tasks/resolveTaskAccentFromPriority";
 import { nameInitials } from "../../../../../../lib/utils/nameInitials";
 import TaskItemDrawer from "./TaskItemDrawer/TaskItemDrawer";
@@ -35,10 +36,12 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                 opened={opened}
                 onClose={openClose}
                 position="right"
-                size="xl"
-                overlayOpacity={0.2}
+                size="lg"
+                styles={{ content: { overflow: "scroll" } }}
             >
-                <TaskItemDrawer task={props.task} />
+                <div className="pb-10">
+                    <TaskItemDrawer task={props.task} />
+                </div>
             </Drawer>
 
             <Box
@@ -55,7 +58,7 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
             >
                 <div className="pr-5">
                     <Checkbox
-                        size="xs"
+                        size="sm"
                         color={resolveTaskAccentFromPriority(
                             props.task.priority,
                         )}
@@ -124,7 +127,6 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                             </Text>
                         </UnstyledButton>
                         <Popover
-                            transition="scale"
                             position="bottom"
                             withArrow
                             shadow="md"
@@ -159,35 +161,16 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                                             stroke={1.5}
                                         />
                                         <Text size="sm">
-                                            {props.task.due.format(
-                                                "D MMM",
+                                            {displayShortTaskDueDate(
+                                                props.task,
+                                                timeAtComponentMounted,
                                             )}
-                                            {timeAtComponentMounted.format(
-                                                "YYYY",
-                                            ) !==
-                                            props.task.due.format(
-                                                "YYYY",
-                                            )
-                                                ? props.task.due.format(
-                                                      " YYYY",
-                                                  )
-                                                : ""}
-                                            {props.task
-                                                .explicitlyDueTime
-                                                ? props.task.due.format(
-                                                      " HH:mm",
-                                                  )
-                                                : ""}
                                         </Text>
                                     </Group>
                                 </UnstyledButton>
                             </Popover.Target>
                             <Popover.Dropdown>
-                                <Calendar
-                                    onChange={(x) => {
-                                        console.log(x);
-                                    }}
-                                />
+                                <Calendar />
                             </Popover.Dropdown>
                         </Popover>
                     </Group>
@@ -216,3 +199,4 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
 };
 
 export default TaskItem;
+

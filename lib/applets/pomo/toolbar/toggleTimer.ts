@@ -1,13 +1,12 @@
 import dayjs from "dayjs";
 import IPomoState from "../libPomoState/IPomoState";
-import libPomoState from "../libPomoState/libPomoState";
 
 const toggleTimer = (
     pomoState: IPomoState,
     setPomoState: (pomoState: IPomoState) => void,
 ) => {
     let newPaused = !pomoState.pause.is;
-    let remaining = libPomoState.remainingFormatted(pomoState);
+    let remaining = 31;
     if (newPaused) {
         // working -> paused
         setPomoState({
@@ -15,8 +14,8 @@ const toggleTimer = (
             pause: {
                 is: newPaused,
                 clockState: {
-                    mins: remaining.mins,
-                    secs: remaining.secs,
+                    mins: 31,
+                    secs: 31,
                 },
             },
         });

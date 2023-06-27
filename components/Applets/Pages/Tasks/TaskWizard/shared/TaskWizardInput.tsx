@@ -3,8 +3,6 @@ import { UseState } from "../../../../../../lib/utils/types";
 
 interface TaskWizardInputProps extends InputProps {
     value: UseState<string>;
-    onFocus?: () => void;
-    onBlur: () => void;
 }
 
 const TaskWizardInput: React.FC<TaskWizardInputProps> = (props) => {
