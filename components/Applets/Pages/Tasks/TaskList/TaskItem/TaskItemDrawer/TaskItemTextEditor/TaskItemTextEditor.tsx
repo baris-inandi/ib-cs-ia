@@ -76,4 +76,3 @@ const TaskItemTextEditor: React.FC<TaskItemTextEditorProps> = (
 };
 
 export default TaskItemTextEditor;
-

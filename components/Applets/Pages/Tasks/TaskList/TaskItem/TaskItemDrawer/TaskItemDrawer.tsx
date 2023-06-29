@@ -18,7 +18,6 @@ const TaskItemDrawer: React.FC<TaskItemDrawerProps> = (props) => {
             <Text className="text-2xl font-bold">
                 {props.task.title}
             </Text>
-            <TaskItemTextEditor task={props.task}></TaskItemTextEditor>
             <Flex gap={10} wrap="wrap" className="pt-3">
                 <Badge
                     color={resolveTaskAccentFromPriority(
@@ -45,4 +44,3 @@ const TaskItemDrawer: React.FC<TaskItemDrawerProps> = (props) => {
 };
 
 export default TaskItemDrawer;
-
