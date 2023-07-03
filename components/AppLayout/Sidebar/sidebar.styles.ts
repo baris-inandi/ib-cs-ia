@@ -26,16 +26,6 @@ const useStyles = createStyles((theme) => {
             backgroundColor: theme.colors.gray[0],
             border: `1px solid ${theme.colors.gray[2]}`,
         },
-
-        mainLinkInner: {
-            display: "flex",
-            alignItems: "center",
-            flex: 1,
-        },
-
-        mainLinkIcon: {
-            marginRight: theme.spacing.md,
-        },
     };
 });
 export default useStyles;

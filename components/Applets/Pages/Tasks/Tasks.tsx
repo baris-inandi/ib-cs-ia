@@ -33,29 +33,29 @@ const Tasks = () => {
                     tab: { padding: "8px 12px" },
                 }}
             >
-                <Tabs.List>
-                    <div className="flex h-full justify-center">
-                        <Text>Filter by:</Text>
-                    </div>
-                    <Tabs.Tab
-                        value="datetime"
-                        icon={<IconCalendar size={18} />}
-                    >
-                        By Date/Time
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                        value="priority"
-                        icon={<IconExclamationCircle size={18} />}
-                    >
-                        By Priority
-                    </Tabs.Tab>
-                    <Tabs.Tab
-                        value="course"
-                        icon={<IconSchool size={18} />}
-                    >
-                        By Course
-                    </Tabs.Tab>
-                </Tabs.List>
+                <div className="flex items-center gap-3 px-5">
+                    <Text>Filter by:</Text>
+                    <Tabs.List>
+                        <Tabs.Tab
+                            value="datetime"
+                            icon={<IconCalendar size={18} />}
+                        >
+                            By Date/Time
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                            value="priority"
+                            icon={<IconExclamationCircle size={18} />}
+                        >
+                            By Priority
+                        </Tabs.Tab>
+                        <Tabs.Tab
+                            value="course"
+                            icon={<IconSchool size={18} />}
+                        >
+                            By Course
+                        </Tabs.Tab>
+                    </Tabs.List>
+                </div>
 
                 <Tabs.Panel value="datetime" pt="xs">
                     <TaskList filter="datetime" />

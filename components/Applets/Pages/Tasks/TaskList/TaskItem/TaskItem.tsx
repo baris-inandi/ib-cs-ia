@@ -1,8 +1,6 @@
 import {
     Avatar,
     Box,
-    Checkbox,
-    Drawer,
     Group,
     Popover,
     Text,
@@ -15,8 +13,8 @@ import { IconCalendarDue } from "@tabler/icons";
 import dayjs from "dayjs";
 import ITask from "../../../../../../lib/applets/tasks/ITask";
 import displayShortTaskDueDate from "../../../../../../lib/applets/tasks/displayShortTaskDueDate";
-import { resolveTaskAccentFromPriority } from "../../../../../../lib/applets/tasks/resolveTaskAccentFromPriority";
 import { nameInitials } from "../../../../../../lib/utils/nameInitials";
+import TaskItemCheckbox from "./TaskItemCheckbox/TaskItemCheckbox";
 import TaskItemDrawer from "./TaskItemDrawer/TaskItemDrawer";
 import useStyles from "./taskitem.styles";
 
@@ -32,18 +30,11 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
 
     return (
         <div>
-            <Drawer
+            <TaskItemDrawer
+                task={props.task}
+                openClose={openClose}
                 opened={opened}
-                onClose={openClose}
-                position="right"
-                size="lg"
-                styles={{ content: { overflow: "scroll" } }}
-            >
-                <div className="pb-10">
-                    <TaskItemDrawer task={props.task} />
-                </div>
-            </Drawer>
-
+            />
             <Box
                 sx={(theme) => {
                     return {
@@ -57,49 +48,7 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                 className={"select-none pl-11 " + cx(classes.item)}
             >
                 <div className="pr-5">
-                    <Checkbox
-                        size="sm"
-                        color={resolveTaskAccentFromPriority(
-                            props.task.priority,
-                        )}
-                        styles={(theme) => {
-                            let priorityAccent =
-                                resolveTaskAccentFromPriority(
-                                    props.task.priority,
-                                );
-                            return {
-                                root: {
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    display: "flex",
-                                },
-                                input: {
-                                    "transition":
-                                        "background 0.1s ease-out",
-                                    "cursor": "pointer",
-                                    "background": theme.fn.rgba(
-                                        theme.colors[priorityAccent][5],
-                                        0.1,
-                                    ),
-                                    "&:hover": {
-                                        background: theme.fn.rgba(
-                                            theme.colors[
-                                                priorityAccent
-                                            ][5],
-                                            0.3,
-                                        ),
-                                    },
-                                    "borderColor": theme.fn.rgba(
-                                        theme.colors[priorityAccent][7],
-                                        theme.colorScheme === "dark"
-                                            ? 0.4
-                                            : 0.6,
-                                    ),
-                                },
-                            };
-                        }}
-                        radius={999}
-                    ></Checkbox>
+                    <TaskItemCheckbox task={props.task} />
                 </div>
                 <Group noWrap position="apart" w="100%">
                     <Group noWrap align="stretch">

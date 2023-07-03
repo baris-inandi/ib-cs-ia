@@ -8,6 +8,7 @@ import { Style } from "../../../../lib/utils/types";
 import SidebarApplet from "./SidebarApplet/SidebarApplet";
 import SidebarUpperSearchbar from "./SidebarUpperSections/SidebarUpperSearchbar";
 import SidebarUpperUserButton from "./SidebarUpperSections/SidebarUpperUserButton";
+import Link from "@next/link";
 
 interface Props {
     section: any;
@@ -39,9 +40,11 @@ const SidebarUpper: React.FC<Props> = (props) => {
                 <Flex gap={8} py={14} px={15} h={45} align="center">
                     {/* <IconBox size={22} /> */}
                     <Group position="apart" w="100%">
-                        <Text pt={2} pl={2} size={16} fw={600}>
-                            CSIA SchoolApp
-                        </Text>
+                        <Link href="/app/">
+                            <Text pt={2} pl={2} size={16} fw={600}>
+                                CSIA SchoolApp
+                            </Text>
+                        </Link>
                         <Group
                             sx={(theme) => {
                                 return {

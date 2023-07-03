@@ -55,10 +55,10 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                 return {
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
                     width: "100%",
-                    fontSize: theme.fontSizes.sm,
-                    padding: `7px ${theme.spacing.xs}px`,
+                    fontSize: theme.fontSizes.md,
+                    padding: "6px 12px",
                     borderRadius: theme.radius.md,
                     fontWeight: 500,
                     color:
@@ -69,26 +69,29 @@ const SidebarApplet: React.FC<SidebarAppletProps> = (props) => {
                 };
             }}
         >
-            <Box className={props.classes.mainLinkInner}>
-                <Box
-                    sx={(theme) => {
-                        return {
-                            color: theme.colors.accent[5],
-                        };
-                    }}
-                >
-                    <props.appletOrCourse.iconNoSize
-                        size={18}
-                        className={props.classes.mainLinkIcon}
-                        stroke={2}
-                    />
-                </Box>
+            <div className="flex flex-col">
+                <div className="flex flex-row items-center">
+                    <Box
+                        sx={(theme) => {
+                            return {
+                                marginRight: theme.spacing.sm,
+                                color: theme.colors.accent[5],
+                                height: 18,
+                            };
+                        }}
+                    >
+                        <props.appletOrCourse.iconNoSize
+                            size={18}
+                            stroke={2}
+                        />
+                    </Box>
 
-                <Text>{props.appletOrCourse.title}</Text>
-                <Text pl={5} size={12} color="dimmed" pt={0}>
-                    {isAI ? "AI" : ""}
-                </Text>
-            </Box>
+                    <Text>{props.appletOrCourse.title}</Text>
+                    <Text pl={5} size={12} color="dimmed" pt={0}>
+                        {isAI ? "AI" : ""}
+                    </Text>
+                </div>
+            </div>
             {props.kbdindex ? (
                 <Text color="dimmed">{shortcut}</Text>
             ) : (
