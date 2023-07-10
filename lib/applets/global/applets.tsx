@@ -13,14 +13,14 @@ import {
 import dayjs from "dayjs";
 import Router from "next/router";
 import { ReactNode } from "react";
+import Pomo from "../../../components/Applets/Pages/Applets/Pomo/Pomo";
+import Tasks from "../../../components/Applets/Pages/Applets/Tasks/Tasks";
 import Calendar from "../../../components/Applets/Pages/Calendar";
 import Dashboard from "../../../components/Applets/Pages/Dashboard";
 import Feedback from "../../../components/Applets/Pages/Feedback/Feedback";
-import Pomo from "../../../components/Applets/Pages/Pomo/Pomo";
 import Recommended from "../../../components/Applets/Pages/Recommended";
 import Scores from "../../../components/Applets/Pages/Scores";
 import Settings from "../../../components/Applets/Pages/Settings/Settings";
-import Tasks from "../../../components/Applets/Pages/Tasks/Tasks";
 import CalendarToolbar from "../../../components/Applets/Toolbars/Calendar/CalendarToolbar";
 import PomoToolbar from "../../../components/Applets/Toolbars/Pomo/PomoToolbar";
 import TasksToolbar from "../../../components/Applets/Toolbars/Tasks/TasksToolbar";
@@ -229,3 +229,4 @@ const applets: AppletMap = new Map<string, Applet>([
 ]);
 
 export default applets;
+

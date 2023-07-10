@@ -1,5 +1,14 @@
 let nextConfig = {
     // next.js config
+    async redirects() {
+        return [
+            {
+                source: "/app",
+                destination: "/app/dashboard",
+                permanent: false,
+            },
+        ];
+    },
 };
 
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
@@ -20,3 +29,4 @@ if (process.env.USE_PWA !== "false") {
 nextConfig = withBundleAnalyzer(nextConfig);
 
 module.exports = nextConfig;
+

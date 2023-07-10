@@ -1,5 +1,5 @@
 import { useAtom } from "jotai";
-import { tasksAtom } from "../../../../components/Applets/Pages/Tasks/tasks.atom";
+import { tasksAtom } from "../../../../components/Applets/Pages/Applets/Tasks/tasks.atom";
 import ITask, {
     TaskAccordions,
     TaskViewFilter,
@@ -40,3 +40,4 @@ export const useTasks = () => {
 
     return handlers;
 };
+

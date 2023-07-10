@@ -1,14 +1,13 @@
 import { Box, Flex, Group, Text } from "@mantine/core";
 import { IconSettings } from "@tabler/icons";
-import { useAtom } from "jotai";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import applets from "../../../../lib/applets/global/applets";
-import { activeAppletAtom } from "../../../../lib/global.atom";
 import { Style } from "../../../../lib/utils/types";
-import SidebarApplet from "./SidebarApplet/SidebarApplet";
+import SidebarItem from "../SidebarItem/SidebarItem";
+import SidebarLabel from "../SidebarLabel/SidebarLabel";
 import SidebarUpperSearchbar from "./SidebarUpperSections/SidebarUpperSearchbar";
 import SidebarUpperUserButton from "./SidebarUpperSections/SidebarUpperUserButton";
-import Link from "next/link"
 
 interface Props {
     section: any;
@@ -16,19 +15,18 @@ interface Props {
 }
 
 const SidebarUpper: React.FC<Props> = (props) => {
-    const [activeApplet] = useAtom(activeAppletAtom);
     const router = useRouter();
 
     const appletSidebarItems = Array.from(applets.values()).map(
         (applet, i) => {
             if (applet.hiddenInSidebar) return <></>;
             return (
-                <SidebarApplet
+                <SidebarItem
                     kbdindex={i + 1}
                     classes={props.classes}
                     appletOrCourse={applet}
                     key={applet.id}
-                    active={activeApplet.id === applet.id}
+                    active={router.asPath === applet.route}
                 />
             );
         },
@@ -36,14 +34,30 @@ const SidebarUpper: React.FC<Props> = (props) => {
 
     return (
         <div className="select-none">
-            <props.section className={props.classes.section}>               
+            <props.section className={props.classes.section}>
                 <Flex gap={8} py={14} px={15} h={45} align="center">
-                    {/* <IconBox size={22} /> */}
                     <Group position="apart" w="100%">
-                        {/* TODO: don't hardcode "dashboard" here */}
-                        {/* also this might be completely wrong idk */}
-                        <Link href="/app/dashboard" passHref>
-                            <Text pt={2} pl={2} size={16} fw={600}>
+                        <Link
+                            href="/app/dashboard"
+                            passHref
+                            style={{
+                                textDecoration: "unset",
+                            }}
+                        >
+                            <Text
+                                pt={2}
+                                pl={2}
+                                size={16}
+                                fw={600}
+                                sx={(theme) => {
+                                    return {
+                                        color:
+                                            theme.colorScheme === "dark"
+                                                ? theme.white
+                                                : theme.black,
+                                    };
+                                }}
+                            >
                                 CSIA SchoolApp
                             </Text>
                         </Link>
@@ -70,12 +84,13 @@ const SidebarUpper: React.FC<Props> = (props) => {
             </props.section>
 
             <props.section className={props.classes.section}>
-                <div className="p-4">
+                <div className="p-5">
                     <SidebarUpperUserButton />
                     <Box pt={12}>
                         <Box pb={15}>
                             <SidebarUpperSearchbar />
                         </Box>
+                        <SidebarLabel text="Applets" />
                         <div className={props.classes.mainLinks}>
                             {appletSidebarItems}
                         </div>
@@ -87,3 +102,4 @@ const SidebarUpper: React.FC<Props> = (props) => {
 };
 
 export default SidebarUpper;
+

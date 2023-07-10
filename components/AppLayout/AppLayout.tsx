@@ -52,6 +52,10 @@ export default function AppLayout(props: {
                         mih={46}
                         sx={(theme) => {
                             return {
+                                boxShadow: `0 0 16px -9px ${theme.fn.rgba(
+                                    theme.black,
+                                    0.25,
+                                )}`,
                                 borderBottom: `1px solid ${
                                     theme.colorScheme === "dark"
                                         ? theme.colors.dark[5]
@@ -74,8 +78,10 @@ export default function AppLayout(props: {
                                 };
                             }}
                         >
-                            {activeApplet.toolbarTitleOverride ??
-                                activeApplet.title}
+                            {activeApplet.isCourse
+                                ? activeApplet.courseId
+                                : activeApplet.toolbarTitleOverride ??
+                                  activeApplet.title}
                         </Text>
                         <Box
                             w="100%"
@@ -101,3 +107,4 @@ export default function AppLayout(props: {
         </div>
     );
 }
+

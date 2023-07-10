@@ -54,7 +54,7 @@ export default function TopbarSearch() {
                 >
                     <Group w="100%" h="100%" position="apart">
                         <Flex
-                            gap={6}
+                            gap={8}
                             align="center"
                             pl={6}
                             sx={(theme) => {
@@ -66,8 +66,8 @@ export default function TopbarSearch() {
                                 };
                             }}
                         >
-                            <IconSearch size={16} />
-                            <Text size={14}>Search</Text>
+                            <IconSearch size={17} />
+                            <Text size={16}>Search</Text>
                         </Flex>
                         <AppKbd
                             fullHeight
@@ -86,3 +86,4 @@ export default function TopbarSearch() {
         </div>
     );
 }
+

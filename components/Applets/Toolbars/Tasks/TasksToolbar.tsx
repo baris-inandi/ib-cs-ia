@@ -2,7 +2,7 @@ import { Button, Flex, Popover, Text } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
 import { IconEye, IconEyeOff, IconPlus } from "@tabler/icons";
 import { useAtom } from "jotai";
-import { tasksShowCompleteAtom } from "../../Pages/Tasks/tasks.atom";
+import { tasksShowCompleteAtom } from "../../Pages/Applets/Tasks/tasks.atom";
 
 interface TasksToolbarProps {}
 
@@ -66,3 +66,4 @@ const TasksToolbar: React.FC<TasksToolbarProps> = () => {
 };
 
 export default TasksToolbar;
+

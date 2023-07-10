@@ -26,7 +26,7 @@ export default function SidebarUpperUserButton() {
                 radius="md"
                 withArrow
                 position="bottom-start"
-                transition="scale"
+                transitionProps={{ transition: "scale" }}
                 shadow="sm"
                 width={250}
             >
@@ -85,3 +85,4 @@ export default function SidebarUpperUserButton() {
         </Group>
     );
 }
+

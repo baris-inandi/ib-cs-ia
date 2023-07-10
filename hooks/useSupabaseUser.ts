@@ -2,6 +2,9 @@ import { AuthError, User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
+/*
+@deprecated
+*/
 export const useSupabaseUser = () => {
     /*
         IA:
@@ -38,3 +41,4 @@ export const useSupabaseUser = () => {
         err, // ho
     ];
 };
+

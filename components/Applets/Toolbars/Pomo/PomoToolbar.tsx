@@ -6,7 +6,7 @@ import {
 } from "@tabler/icons";
 import { useAtom } from "jotai";
 import React from "react";
-import { pomoStateAtom } from "../../Pages/Pomo/atoms/pomoState.atom";
+import { pomoStateAtom } from "../../Pages/Applets/Pomo/atoms/pomoState.atom";
 import PomoTimerControlsButton from "./PomoTimerControlsButton/PomoTimerControlsButton";
 
 interface PomoToolbarProps {}
@@ -56,3 +56,4 @@ const PomoToolbar: React.FC<PomoToolbarProps> = () => {
 };
 
 export default PomoToolbar;
+

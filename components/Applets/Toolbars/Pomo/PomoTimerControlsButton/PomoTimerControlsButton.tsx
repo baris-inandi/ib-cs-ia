@@ -1,8 +1,8 @@
 import { Button, ButtonVariant } from "@mantine/core";
 import { useAtom } from "jotai";
 import { ReactNode } from "react";
-import { pomoStateAtom } from "../../../Pages/Pomo/atoms/pomoState.atom";
-import { pomoThemeAtom } from "../../../Pages/Pomo/atoms/pomoTheme.atom";
+import { pomoStateAtom } from "../../../Pages/Applets/Pomo/atoms/pomoState.atom";
+import { pomoThemeAtom } from "../../../Pages/Applets/Pomo/atoms/pomoTheme.atom";
 
 interface PomoTimerControlsButtonProps {
     onClick: () => void;
@@ -38,3 +38,4 @@ const PomoTimerControlsButton: React.FC<
 };
 
 export default PomoTimerControlsButton;
+
