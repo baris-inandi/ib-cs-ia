@@ -41,4 +41,3 @@ const TaskItemCheckbox: React.FC<TaskItemCheckboxProps> = (props) => {
 };
 
 export default TaskItemCheckbox;
-

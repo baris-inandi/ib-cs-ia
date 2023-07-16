@@ -1,7 +1,13 @@
-import { Button, Flex, Popover, Text } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import { Calendar } from "@mantine/dates";
-import { IconEye, IconEyeOff, IconPlus } from "@tabler/icons";
+import {
+    IconCalendarTime,
+    IconEye,
+    IconEyeOff,
+    IconPlus,
+} from "@tabler/icons";
 import { useAtom } from "jotai";
+import ToolbarButton from "../../../global/toolbar/ToolbarButton/ToolbarButton";
 import { tasksShowCompleteAtom } from "../../Pages/Applets/Tasks/tasks.atom";
 
 interface TasksToolbarProps {}
@@ -13,54 +19,20 @@ const TasksToolbar: React.FC<TasksToolbarProps> = () => {
 
     return (
         <Flex h="100%" align="center" gap={10}>
-            <Button
+            <ToolbarButton
                 onClick={() => {
                     setShowCompleted(!showCompleted);
                 }}
-                h="100%"
-                color="accent"
-                variant={showCompleted ? "outline" : "filled"}
-                size="xs"
-            >
-                {showCompleted ? (
-                    <IconEyeOff size={20} />
-                ) : (
-                    <IconEye size={20} />
-                )}
-                <Text pl={8}>
-                    {showCompleted
-                        ? "Hide completed"
-                        : "Show completed"}
-                </Text>
-            </Button>
-            <div className="w-4"></div>
-            <Popover
-                transition="scale"
-                position="bottom"
-                withArrow
-                shadow="md"
-            >
-                <Popover.Target>
-                    <Button
-                        h="100%"
-                        color="accent"
-                        variant="outline"
-                        size="xs"
-                    >
-                        Jump to...
-                    </Button>
-                </Popover.Target>
-                <Popover.Dropdown>
-                    <Calendar
-                        onChange={(x) => {
-                            console.log(x);
-                        }}
-                    />
-                </Popover.Dropdown>
-            </Popover>
-            <Button h="100%" color="accent" size="xs">
-                <IconPlus size={20} />
-            </Button>
+                icon={showCompleted ? IconEyeOff : IconEye}
+                label={
+                    showCompleted ? "Hide completed" : "Show completed"
+                }
+            />
+
+            <ToolbarButton icon={IconCalendarTime} label="Jump to">
+                <Calendar />
+            </ToolbarButton>
+            <ToolbarButton icon={IconPlus} label="New Task" />
         </Flex>
     );
 };

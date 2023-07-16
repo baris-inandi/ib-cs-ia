@@ -13,4 +13,3 @@ const SidebarLabel: React.FC<SidebarLabelProps> = (props) => {
 };
 
 export default SidebarLabel;
-

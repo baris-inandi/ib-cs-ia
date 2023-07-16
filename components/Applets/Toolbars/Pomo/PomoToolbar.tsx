@@ -6,8 +6,8 @@ import {
 } from "@tabler/icons";
 import { useAtom } from "jotai";
 import React from "react";
+import ToolbarButton from "../../../global/toolbar/ToolbarButton/ToolbarButton";
 import { pomoStateAtom } from "../../Pages/Applets/Pomo/atoms/pomoState.atom";
-import PomoTimerControlsButton from "./PomoTimerControlsButton/PomoTimerControlsButton";
 
 interface PomoToolbarProps {}
 
@@ -16,41 +16,18 @@ const PomoToolbar: React.FC<PomoToolbarProps> = () => {
 
     return (
         <Flex h="100%" justify="center" align="center" gap={10}>
-            <PomoTimerControlsButton
-                onClick={() => {}}
-                disabled={false}
-                isPositiveIfForIncreaseDecreaseTime={false}
-                variant="outline"
+            <ToolbarButton label="-5" /> {/* - 5 */}
+            <ToolbarButton label="+5" /> {/* + 5 */}
+            <ToolbarButton label="Reset" />
+            <ToolbarButton
+                label={pomoState.pausedMillis ? "Play" : "Pause"}
+                icon={
+                    pomoState.pausedMillis
+                        ? IconPlayerPlay
+                        : IconPlayerPause
+                }
             />
-            <PomoTimerControlsButton
-                onClick={() => {}}
-                disabled={false}
-                isPositiveIfForIncreaseDecreaseTime={true}
-                variant="outline"
-            />
-            <div className="w-3"></div>
-            <PomoTimerControlsButton
-                disabled={false}
-                onClick={() => {}}
-            >
-                Reset
-            </PomoTimerControlsButton>
-            <PomoTimerControlsButton
-                disabled={false}
-                onClick={() => {}}
-            >
-                {pomoState.pause.is ? (
-                    <IconPlayerPlay size={20} />
-                ) : (
-                    <IconPlayerPause size={20} />
-                )}
-            </PomoTimerControlsButton>
-            <PomoTimerControlsButton
-                disabled={false}
-                onClick={() => {}}
-            >
-                <IconPlayerSkipForward size={20} />
-            </PomoTimerControlsButton>
+            <ToolbarButton label="Skip" icon={IconPlayerSkipForward} />
         </Flex>
     );
 };

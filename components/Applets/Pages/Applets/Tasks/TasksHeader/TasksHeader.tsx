@@ -31,4 +31,3 @@ const TasksHeader: React.FC<TasksHeaderProps> = () => {
 };
 
 export default TasksHeader;
-

@@ -54,4 +54,3 @@ const TaskItemDrawer: React.FC<TaskItemDrawerProps> = (props) => {
 };
 
 export default TaskItemDrawer;
-

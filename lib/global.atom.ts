@@ -6,4 +6,3 @@ export const activeAppletAtom = atomWithStorage<Applet | Course>(
     "jotaiActiveAppletAtom",
     applets.entries().next().value[0],
 );
-

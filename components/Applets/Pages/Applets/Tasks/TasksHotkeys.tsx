@@ -20,4 +20,3 @@ const TasksHotkeys: React.FC<TasksHotkeysProps> = () => {
 };
 
 export default TasksHotkeys;
-

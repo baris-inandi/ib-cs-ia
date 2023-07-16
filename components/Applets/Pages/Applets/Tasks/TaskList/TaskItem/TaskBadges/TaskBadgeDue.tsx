@@ -65,4 +65,3 @@ const TaskBadgeDue: React.FC<TaskBadgeDueProps> = (props) => {
 };
 
 export default TaskBadgeDue;
-

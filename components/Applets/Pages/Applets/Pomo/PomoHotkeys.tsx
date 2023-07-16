@@ -58,4 +58,3 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
 };
 
 export default PomoHotkeys;
-

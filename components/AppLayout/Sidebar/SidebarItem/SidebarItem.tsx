@@ -75,7 +75,7 @@ const SidebarItem: React.FC<SidebarItemProps> = (props) => {
                     <Box
                         sx={(theme) => {
                             return {
-                                marginRight: theme.spacing.sm,
+                                marginRight: theme.spacing.md,
                                 color: theme.colors.accent[5],
                                 height: 18,
                             };
@@ -117,7 +117,7 @@ const SidebarItem: React.FC<SidebarItemProps> = (props) => {
                 <Text color="dimmed">{shortcut}</Text>
             ) : (
                 props.appletOrCourse.admin && (
-                    <Avatar size={28} radius={999} variant="light">
+                    <Avatar size={28} radius={999} variant="filled">
                         {nameInitials(props.appletOrCourse.admin.name)}
                     </Avatar>
                 )
@@ -131,4 +131,3 @@ SidebarItem.defaultProps = {
 };
 
 export default SidebarItem;
-

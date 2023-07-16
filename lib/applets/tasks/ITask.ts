@@ -20,4 +20,3 @@ interface ITaskAccordion {
     tasks: Array<ITask>;
     unsafeArbitraryParams?: Record<string, any>;
 }
-

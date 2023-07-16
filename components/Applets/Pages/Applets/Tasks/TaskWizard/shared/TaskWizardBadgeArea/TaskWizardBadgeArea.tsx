@@ -24,4 +24,3 @@ const TaskWizardBadgeArea: React.FC<TaskWizardBadgeAreaProps> = (
 };
 
 export default TaskWizardBadgeArea;
-

@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 
 /*
+IA:
+- legacy hook for getting the supabase user
+*/
+
+/*
 @deprecated
 */
 export const useSupabaseUser = () => {

@@ -1,35 +1,48 @@
+import dayjs, { Dayjs } from "dayjs";
 import { PomoStage } from "../libPomoState/IPomoState";
 
-export interface ClockState {
-    mins: number;
-    secs: number;
-}
+const DEFAULT_MILLIS = 0.2 * 60000;
 
-const DEFAULT_SECS = 25 * 60;
+interface IPomoStateNextStarted {
+    at: Dayjs;
+    millis: number;
+}
 
 export default class PomoStateNext {
-    public secs = DEFAULT_SECS;
-    public pause = { is: false, secs: DEFAULT_SECS };
-    public currentPomodoroNumber = 1;
-    public currentPomodoroStage: PomoStage = "focus";
-    public previousHookCall = Date.now();
-    /* public history: Array<{
-        stage: PomoStage;
-        pomoNumber: number;
-    }>; */
+    pausedMillis: number | undefined;
+    started: IPomoStateNextStarted = {
+        at: dayjs(),
+        millis: DEFAULT_MILLIS,
+    };
+    millis: number = DEFAULT_MILLIS;
+    currentPomodoroStage: PomoStage = "focus";
+    currentPomodoroNumber: number = 1;
+
     hook() {
-        // check if new stage is available
-        // change the pomodoronumber accordingly
-        console.log((Date.now() - this.previousHookCall) / 1000);
-        this.secs -=
-            Math.floor(Date.now() - this.previousHookCall) / 1000;
-        this.previousHookCall = Date.now();
+        if (this.pausedMillis === undefined) {
+            const elapsed = dayjs().diff(this.started.at);
+            this.millis = this.started.millis - elapsed;
+        }
     }
 
-    getClockState(): ClockState {
+    pauseplay() {
+        if (this.pausedMillis === undefined) {
+            this.pausedMillis = this.millis;
+        } else {
+            this.millis = this.pausedMillis;
+            this.pausedMillis = undefined;
+        }
+    }
+
+    getClockState() {
         return {
-            mins: Math.floor(this.secs / 60),
-            secs: Math.floor(this.secs % 60),
+            mins: Math.floor(this.millis / 60000),
+            secs: Math.floor((this.millis % 60000) / 1000),
         };
     }
+
+    progress() {
+        return this.millis / this.started.millis;
+    }
 }
+

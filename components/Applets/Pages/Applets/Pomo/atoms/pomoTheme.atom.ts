@@ -7,8 +7,12 @@ import { pomoStateAtom } from "./pomoState.atom";
     IA:
     - The aim of this atom is to dynamically change the pomodoro theme based on the current stage.
         - stages are typical stages "focus", "break", "long break" of a pomodoro
-          defined by type `PomoStage` in `IPomoState.ts`
-    - `pomoThemes` maps every PomoStage to a MantineColor.
+          defined by type `PomoStageNext` in `PomoStageNext.ts`
+          - this is for new implementations that use the `PomoStateNext` class.
+            Legacy code may use `PomoStage` (defined at `IPomoState.ts`) instead.
+          - `PomoStageNext` is an enum that is initialized with the values "focus", "break", "long break"
+            therefore it can be used as a drop-in replacement for `PomoStage` without any changes in implementation.
+    - `pomoThemes` maps every PomoStageNext to a MantineColor.
     - `pomoThemeAtom` is a jotai atom that returns the MantineColor
         - It is a derived atom that depends on `pomoStateAtom`
             - Jotai enables `atom` to be called with a parameter of `(get: Getter) => T` where `get` is a

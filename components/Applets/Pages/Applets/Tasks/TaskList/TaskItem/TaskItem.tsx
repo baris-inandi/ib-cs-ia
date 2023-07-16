@@ -32,6 +32,10 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
             <Box
                 sx={(theme) => {
                     return {
+                        background:
+                            theme.colorScheme === "dark"
+                                ? theme.colors.dark[8]
+                                : theme.colors.white,
                         borderTop: `1px solid ${
                             theme.colorScheme === "dark"
                                 ? theme.colors.dark[5]
@@ -84,7 +88,7 @@ const TaskItem: React.FC<TaskItemProps> = (props) => {
                             <Avatar
                                 size={28}
                                 radius={999}
-                                variant="light"
+                                variant="filled"
                             >
                                 {nameInitials("Ada Lovelace")}
                             </Avatar>

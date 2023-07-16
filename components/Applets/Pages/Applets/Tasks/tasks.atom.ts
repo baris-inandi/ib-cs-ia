@@ -139,4 +139,3 @@ export const tasksAtom = atomWithStorage<Array<ITask>>(
         },
     ],
 );
-

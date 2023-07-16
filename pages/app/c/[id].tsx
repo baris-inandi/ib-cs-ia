@@ -100,7 +100,7 @@ const CoursePage: React.FC<CoursePageProps> = (props) => {
                             >
                                 from
                             </Text>
-                            <p className="text-white m-0 text-xl font-semibold">
+                            <p className="m-0 text-xl font-semibold text-white">
                                 David J. Malan
                             </p>
                         </div>
@@ -123,4 +123,3 @@ export const getServerSideProps = async (
 };
 
 export default CoursePage;
-

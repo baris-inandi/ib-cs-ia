@@ -1,5 +1,6 @@
 import { RingProgress } from "@mantine/core";
 import { useAtom } from "jotai";
+import { pomoStateAtom } from "../../atoms/pomoState.atom";
 import { pomoThemeAtom } from "../../atoms/pomoTheme.atom";
 import PomoTimerClock from "../PomoTimerClock/PomoTimerClock";
 
@@ -7,6 +8,7 @@ interface PomoProgressProps {}
 
 const PomoProgress: React.FC<PomoProgressProps> = (props) => {
     const [pomoTheme] = useAtom(pomoThemeAtom);
+    const [pomoState] = useAtom(pomoStateAtom);
 
     return (
         <div className="flex h-full w-full items-center justify-center p-4">
@@ -32,7 +34,7 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
                 sections={[
                     {
                         color: pomoTheme,
-                        value: 31,
+                        value: pomoState.progress(),
                     },
                 ]}
             ></RingProgress>
@@ -41,4 +43,3 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
 };
 
 export default PomoProgress;
-

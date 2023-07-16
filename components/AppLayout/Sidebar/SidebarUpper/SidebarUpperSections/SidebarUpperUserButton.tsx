@@ -12,6 +12,7 @@ import {
     IconLogout,
     IconMessageDots,
     IconSettings,
+    IconUser,
 } from "@tabler/icons";
 import { useRouter } from "next/router";
 import { nameInitials } from "../../../../../lib/utils/nameInitials";
@@ -28,7 +29,7 @@ export default function SidebarUpperUserButton() {
                 position="bottom-start"
                 transitionProps={{ transition: "scale" }}
                 shadow="sm"
-                width={250}
+                width={260}
             >
                 <Menu.Target>
                     <UnstyledButton>
@@ -45,15 +46,32 @@ export default function SidebarUpperUserButton() {
                     </UnstyledButton>
                 </Menu.Target>
                 <Menu.Dropdown>
-                    <Menu.Item icon={<IconSettings size={14} />}>
+                    <Menu.Item
+                        icon={<IconUser size={14} />}
+                        component="a"
+                        href="/app/profile"
+                    >
+                        Profile
+                    </Menu.Item>
+                    <Menu.Item
+                        icon={<IconSettings size={14} />}
+                        component="a"
+                        href="/app/settings"
+                    >
                         Settings
                     </Menu.Item>
-                    <Menu.Item icon={<IconMessageDots size={14} />}>
+                    <Menu.Item
+                        icon={<IconMessageDots size={14} />}
+                        component="a"
+                        href="/app/feedback"
+                    >
                         Give feedback
                     </Menu.Item>
                     <Menu.Item
                         color="red"
                         icon={<IconLogout size={14} />}
+                        component="a"
+                        href="/auth/logout"
                     >
                         Log out
                     </Menu.Item>

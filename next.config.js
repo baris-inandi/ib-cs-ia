@@ -29,4 +29,3 @@ if (process.env.USE_PWA !== "false") {
 nextConfig = withBundleAnalyzer(nextConfig);
 
 module.exports = nextConfig;
-

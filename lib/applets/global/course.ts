@@ -40,4 +40,3 @@ export const makeCourse = (builder: CourseBuilder): Course => {
         emoji: builder.emoji,
     };
 };
-

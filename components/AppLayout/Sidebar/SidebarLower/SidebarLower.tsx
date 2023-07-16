@@ -74,4 +74,3 @@ const SidebarLower: React.FC<Props> = (props) => {
 };
 
 export default SidebarLower;
-
