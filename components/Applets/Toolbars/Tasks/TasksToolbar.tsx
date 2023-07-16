@@ -38,4 +38,3 @@ const TasksToolbar: React.FC<TasksToolbarProps> = () => {
 };
 
 export default TasksToolbar;
-

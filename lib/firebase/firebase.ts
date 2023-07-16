@@ -19,4 +19,3 @@ const firebaseConfig = {
 // Initialize Firebase
 export const firebase = initializeApp(firebaseConfig);
 export const fireabseAnalytics = getAnalytics(firebase);
-

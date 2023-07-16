@@ -3,4 +3,3 @@ export enum PomoStageNext {
     BREAK = "break",
     LONG_BREAK = "long break",
 }
-

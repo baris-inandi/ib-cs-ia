@@ -18,4 +18,3 @@ export const useDoEvery = (interval: number, callback: () => void) => {
         };
     }, [$, callback, interval]);
 };
-

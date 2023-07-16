@@ -22,4 +22,3 @@ const TasksToolbarPopoverWrapper: React.FC<
 };
 
 export default TasksToolbarPopoverWrapper;
-

@@ -33,4 +33,3 @@ export const pomoThemeAtom = atom<MantineColor>((get): MantineColor => {
     const stage = get(pomoStateAtom).currentPomodoroStage;
     return pomoThemes.get(stage) ?? "accent";
 });
-

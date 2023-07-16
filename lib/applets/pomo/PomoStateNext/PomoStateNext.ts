@@ -45,4 +45,3 @@ export default class PomoStateNext {
         return this.millis / this.started.millis;
     }
 }
-

@@ -50,4 +50,3 @@ const Pomo = () => {
 };
 
 export default Pomo;
-
