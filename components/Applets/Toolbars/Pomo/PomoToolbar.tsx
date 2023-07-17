@@ -51,4 +51,3 @@ const PomoToolbar: React.FC<PomoToolbarProps> = () => {
 };
 
 export default PomoToolbar;
-

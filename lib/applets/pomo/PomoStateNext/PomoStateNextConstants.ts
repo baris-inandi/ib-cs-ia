@@ -21,4 +21,3 @@ const POMO_CONSTS = {
 
 export default POMO_CONSTS;
 export type PomoStateNextConsts = typeof POMO_CONSTS;
-

@@ -142,4 +142,3 @@ export default class PomoStateNext {
         this.setPomoState = setPomoState;
     }
 }
-

@@ -48,4 +48,3 @@ const PomoProgress: React.FC<PomoProgressProps> = (props) => {
 };
 
 export default PomoProgress;
-

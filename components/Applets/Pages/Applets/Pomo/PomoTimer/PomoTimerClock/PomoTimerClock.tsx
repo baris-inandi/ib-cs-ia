@@ -47,4 +47,3 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
 };
 
 export default PomoTimerClock;
-
