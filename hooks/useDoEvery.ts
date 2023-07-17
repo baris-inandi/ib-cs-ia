@@ -8,6 +8,7 @@ IA:
 
 export const useDoEvery = (interval: number, callback: () => void) => {
     const [$, set$] = useState(false);
+    useEffect(callback, [callback]);
     useEffect(() => {
         const i = setInterval(() => {
             set$(!$);

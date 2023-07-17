@@ -18,8 +18,11 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
                 return {
                     color:
                         theme.colorScheme === "dark"
-                            ? "white"
-                            : "black",
+                            ? theme.colors[pomoState.theme()][2]
+                            : theme.fn.darken(
+                                  theme.colors[pomoState.theme()][9],
+                                  0.4,
+                              ),
                 };
             }}
             gap={20}
@@ -44,3 +47,4 @@ const PomoTimerClock: React.FC<PomoTimerClockProps> = (props) => {
 };
 
 export default PomoTimerClock;
+

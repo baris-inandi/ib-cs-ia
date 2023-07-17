@@ -3,6 +3,7 @@ import {
     IconPlayerPause,
     IconPlayerPlay,
     IconPlayerSkipForward,
+    IconRefresh,
 } from "@tabler/icons";
 import { useAtom } from "jotai";
 import React from "react";
@@ -12,24 +13,42 @@ import { pomoStateAtom } from "../../Pages/Applets/Pomo/atoms/pomoState.atom";
 interface PomoToolbarProps {}
 
 const PomoToolbar: React.FC<PomoToolbarProps> = () => {
-    const [pomoState, setPomoState] = useAtom(pomoStateAtom);
+    const [pomoState] = useAtom(pomoStateAtom);
 
     return (
         <Flex h="100%" justify="center" align="center" gap={10}>
-            <ToolbarButton label="-5" /> {/* - 5 */}
-            <ToolbarButton label="+5" /> {/* + 5 */}
-            <ToolbarButton label="Reset" />
             <ToolbarButton
-                label={pomoState.pausedMillis ? "Play" : "Pause"}
+                label="-5"
+                onClick={() => pomoState.decrement()}
+            />
+            <ToolbarButton
+                label="+5"
+                onClick={() => pomoState.increment()}
+            />
+            <ToolbarButton
+                icon={IconRefresh}
+                label="Reset"
+                onClick={() => pomoState.reset()}
+            />
+            <ToolbarButton
+                label={pomoState.pausedMillis ? "Continue" : "Pause"}
                 icon={
-                    pomoState.pausedMillis
+                    pomoState.isPaused()
                         ? IconPlayerPlay
                         : IconPlayerPause
                 }
+                onClick={() => pomoState.pauseplay()}
             />
-            <ToolbarButton label="Skip" icon={IconPlayerSkipForward} />
+            <ToolbarButton
+                label="Skip"
+                icon={IconPlayerSkipForward}
+                onClick={() => {
+                    pomoState.nextStage();
+                }}
+            />
         </Flex>
     );
 };
 
 export default PomoToolbar;
+

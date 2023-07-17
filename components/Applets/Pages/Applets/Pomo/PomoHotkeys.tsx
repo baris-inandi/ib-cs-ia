@@ -10,22 +10,19 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
     return (
         <Hotkeys
             appletTitle="Pomodoro Hotkeys"
-            hotkeys={
-                [
-                    /*  {
+            hotkeys={[
+                {
                     help: "Start/stop timer",
                     hotkey: "Space",
                     callback: () => {
-                        toggleTimer(pomoState, setPomoState);
+                        pomoState.pauseplay();
                     },
                 },
                 {
                     help: "Reset timer",
                     hotkey: "alt+R",
                     callback: () => {
-                        setPomoState(
-                            libPomoState.generateDefaultPomoState(),
-                        );
+                        pomoState.reset();
                     },
                 },
                 {
@@ -33,7 +30,7 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
                     hotkey: "arrowUp",
                     hotkeyDisplay: "↑",
                     callback: () => {
-                        setPomoState(libPomoState.increment(pomoState));
+                        pomoState.increment();
                     },
                 },
                 {
@@ -41,20 +38,20 @@ const PomoHotkeys: React.FC<PomoHotkeysProps> = () => {
                     hotkey: "arrowDown",
                     hotkeyDisplay: "↓",
                     callback: () => {
-                        setPomoState(libPomoState.decrement(pomoState));
+                        pomoState.decrement();
                     },
                 },
                 {
                     help: "Skip to next stage",
                     hotkey: "Mod+Enter",
                     callback: () => {
-                        libPomoState.nextStage(pomoState, setPomoState);
+                        pomoState.nextStage();
                     },
-                }, */
-                ]
-            }
+                },
+            ]}
         />
     );
 };
 
 export default PomoHotkeys;
+

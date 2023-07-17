@@ -5,6 +5,7 @@ import { supabase } from "../lib/supabase";
 /*
 IA:
 - legacy hook for getting the supabase user
+- Switched to fireabse auth. Use the firebase API instead.
 */
 
 /*
