@@ -8,9 +8,9 @@ const POMO_CONSTS = {
         [PomoStageNext.LONG_BREAK, 15 * 60000],
     ]),
     POMO_THEME_COLOR: new Map<PomoStageNext, MantineColor>([
-        [PomoStageNext.FOCUS, "red"],
+        [PomoStageNext.FOCUS, "orange"],
         [PomoStageNext.BREAK, "accent"],
-        [PomoStageNext.LONG_BREAK, "grape"],
+        [PomoStageNext.LONG_BREAK, "blue"],
     ]),
     POMO_INCREMENTS: new Map<PomoStageNext, number>([
         [PomoStageNext.FOCUS, 5 * 60000],
@@ -21,3 +21,4 @@ const POMO_CONSTS = {
 
 export default POMO_CONSTS;
 export type PomoStateNextConsts = typeof POMO_CONSTS;
+

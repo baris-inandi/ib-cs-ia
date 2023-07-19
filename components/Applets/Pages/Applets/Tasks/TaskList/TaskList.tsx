@@ -51,7 +51,7 @@ const TaskList: React.FC = () => {
                 return accordion.accordionTitle;
             })}
         >
-            {accordions.map((accordion, i) => {
+            {accordions.map((accordion) => {
                 return (
                     <Accordion.Item
                         key={accordion.accordionTitle}
@@ -92,3 +92,4 @@ const TaskList: React.FC = () => {
 };
 
 export default TaskList;
+

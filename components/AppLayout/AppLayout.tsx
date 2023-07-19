@@ -1,5 +1,7 @@
 import { Box, Flex, Text } from "@mantine/core";
 import { useAtom } from "jotai";
+import { usePomoThemeIfInPomoApplet } from "../../hooks/applets/pomo/usePomoThemeIfInPomoApplet";
+import { usePomoSidebarHueRotate } from "../../hooks/ui/usePomoSidebarHueRotate";
 import { activeAppletAtom } from "../../lib/global.atom";
 import Sidebar from "./Sidebar/Sidebar";
 
@@ -7,6 +9,9 @@ export default function AppLayout(props: {
     children: React.ReactNode;
 }) {
     const [activeApplet] = useAtom(activeAppletAtom);
+    const [documentHue] = usePomoSidebarHueRotate();
+    const pomoThemeIfInPomoApplet = usePomoThemeIfInPomoApplet();
+
     return (
         <div className="opacity-0 sm:opacity-100">
             <Flex
@@ -52,6 +57,12 @@ export default function AppLayout(props: {
                         mih={46}
                         sx={(theme) => {
                             return {
+                                filter: `hue-rotate(${documentHue}deg)`,
+                                backgroundColor: pomoThemeIfInPomoApplet
+                                    ? theme.colorScheme === "dark"
+                                        ? theme.colors["dark"][7]
+                                        : theme.colors["gray"][1]
+                                    : "unset",
                                 boxShadow: `0 0 16px -9px ${theme.fn.rgba(
                                     theme.black,
                                     0.25,
@@ -107,3 +118,4 @@ export default function AppLayout(props: {
         </div>
     );
 }
+

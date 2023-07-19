@@ -1,4 +1,10 @@
-import { Box, Text, Tooltip, UnstyledButton } from "@mantine/core";
+import {
+    Box,
+    Text,
+    Tooltip,
+    UnstyledButton,
+    useMantineTheme,
+} from "@mantine/core";
 import { TablerIcon, TablerIconProps } from "@tabler/icons";
 import TasksToolbarPopoverWrapper from "./TasksToolbarPopoverWrapper/TasksToolbarPopoverWrapper";
 
@@ -11,10 +17,20 @@ interface ToolbarButtonProps {
 }
 
 const ToolbarButton: React.FC<ToolbarButtonProps> = (props) => {
+    const theme = useMantineTheme();
     const inner = (
-        <Text color="dimmed" size="lg" className="font-semibold">
+        <Text
+            sx={{
+                color:
+                    theme.colorScheme === "dark"
+                        ? theme.colors.dark[1]
+                        : theme.colors.gray[7],
+            }}
+            size="lg"
+            className="font-semibold"
+        >
             {props.icon ? (
-                <props.icon size={24} stroke={2} {...props.iconProps} />
+                <props.icon size={24} stroke={1.5} {...props.iconProps} />
             ) : (
                 props.label
             )}
@@ -46,3 +62,4 @@ const ToolbarButton: React.FC<ToolbarButtonProps> = (props) => {
 };
 
 export default ToolbarButton;
+

@@ -6,9 +6,13 @@ IA:
   milliseconds within a `useEffect`.
 */
 
-export const useDoEvery = (interval: number, callback: () => void) => {
+export const useDoEvery = (
+    interval: number,
+    callback: () => void,
+    dependencies?: any[],
+) => {
     const [$, set$] = useState(false);
-    useEffect(callback, [callback]);
+    useEffect(callback, [callback, ...(dependencies ?? [])]);
     useEffect(() => {
         const i = setInterval(() => {
             set$(!$);
@@ -19,3 +23,4 @@ export const useDoEvery = (interval: number, callback: () => void) => {
         };
     }, [$, callback, interval]);
 };
+
